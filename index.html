@@ -1,12 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>Welcome to IDontGetAI's Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI学习合辑 - IDontGetAI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>🎉 Hello, World!</h1>
-    <p>This is <strong>https://idontgetai.github.io/</strong></p>
-    <p>Powered by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+    <!-- 导航栏 -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>AI学习合辑</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#courses">课程</a>
+                <a href="#notes">笔记</a>
+                <a href="#about">关于</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>探索人工智能的无限可能</h2>
+                <p>这里汇集了优质的AI学习课程和详细的学习笔记，帮助你系统性地掌握人工智能知识。</p>
+                <a href="#courses" class="btn-primary">开始学习</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程部分 -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-header">
+                <h2>精选课程</h2>
+                <p>精心挑选的AI学习课程，涵盖从基础到进阶的各个领域</p>
+            </div>
+            <div class="courses-grid">
+                <!-- 课程卡片1 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://via.placeholder.com/300x200/4A90E2/FFFFFF?text=机器学习基础" alt="机器学习基础">
+                    </div>
+                    <div class="course-content">
+                        <h3>机器学习基础</h3>
+                        <p class="course-description">掌握机器学习的核心概念和算法，包括监督学习、无监督学习和强化学习。</p>
+                        <div class="course-meta">
+                            <span class="difficulty">入门</span>
+                            <span class="duration">12周</span>
+                        </div>
+                        <a href="#" class="btn-secondary">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 课程卡片2 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://via.placeholder.com/300x200/50E3C2/FFFFFF?text=深度学习" alt="深度学习">
+                    </div>
+                    <div class="course-content">
+                        <h3>深度学习</h3>
+                        <p class="course-description">深入学习神经网络、CNN、RNN等深度学习模型，以及TensorFlow和PyTorch框架。</p>
+                        <div class="course-meta">
+                            <span class="difficulty">进阶</span>
+                            <span class="duration">16周</span>
+                        </div>
+                        <a href="#" class="btn-secondary">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 课程卡片3 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://via.placeholder.com/300x200/E94E77/FFFFFF?text=自然语言处理" alt="自然语言处理">
+                    </div>
+                    <div class="course-content">
+                        <h3>自然语言处理</h3>
+                        <p class="course-description">学习NLP的核心技术，包括词嵌入、Transformer模型、BERT和GPT等。</p>
+                        <div class="course-meta">
+                            <span class="difficulty">进阶</span>
+                            <span class="duration">14周</span>
+                        </div>
+                        <a href="#" class="btn-secondary">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 笔记部分 -->
+    <section id="notes" class="notes">
+        <div class="container">
+            <div class="section-header">
+                <h2>学习笔记</h2>
+                <p>详细的学习笔记，帮助你巩固所学知识</p>
+            </div>
+            <div class="notes-grid">
+                <!-- 笔记卡片1 -->
+                <div class="note-card">
+                    <div class="note-header">
+                        <h3>线性回归模型详解</h3>
+                        <span class="note-date">2024-01-15</span>
+                    </div>
+                    <p class="note-excerpt">线性回归是机器学习中最基础的算法之一，本文详细介绍了线性回归的数学原理、求解方法和应用场景...</p>
+                    <a href="#" class="note-link">阅读全文 →</a>
+                </div>
+                
+                <!-- 笔记卡片2 -->
+                <div class="note-card">
+                    <div class="note-header">
+                        <h3>神经网络反向传播算法</h3>
+                        <span class="note-date">2024-01-20</span>
+                    </div>
+                    <p class="note-excerpt">反向传播算法是训练神经网络的核心，本文深入讲解了反向传播的数学推导和实现细节...</p>
+                    <a href="#" class="note-link">阅读全文 →</a>
+                </div>
+                
+                <!-- 笔记卡片3 -->
+                <div class="note-card">
+                    <div class="note-header">
+                        <h3>Transformer模型架构分析</h3>
+                        <span class="note-date">2024-01-25</span>
+                    </div>
+                    <p class="note-excerpt">Transformer模型彻底改变了NLP领域，本文详细分析了Transformer的架构设计、注意力机制和训练方法...</p>
+                    <a href="#" class="note-link">阅读全文 →</a>
+                </div>
+                
+                <!-- 笔记卡片4 -->
+                <div class="note-card">
+                    <div class="note-header">
+                        <h3>PyTorch入门教程</h3>
+                        <span class="note-date">2024-02-01</span>
+                    </div>
+                    <p class="note-excerpt">PyTorch是目前最流行的深度学习框架之一，本文从零开始介绍了PyTorch的基本使用方法...</p>
+                    <a href="#" class="note-link">阅读全文 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于部分 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>关于我</h2>
+                <p>我是一名AI爱好者，正在系统性地学习人工智能知识。创建这个网站的目的是分享我在学习过程中发现的优质课程和整理的学习笔记，希望能帮助到更多对AI感兴趣的朋友。</p>
+                <p>如果你有任何建议或想分享的资源，欢迎通过GitHub联系我！</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 AI学习合辑 | IDontGetAI</p>
+                <div class="social-links">
+                    <a href="https://github.com/IDontGetAI" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
