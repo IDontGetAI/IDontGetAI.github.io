@@ -1,3 +1,4 @@
+--- index.html (原始)
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -56,7 +57,7 @@
                         <a href="#" class="btn-secondary">查看详情</a>
                     </div>
                 </div>
-                
+
                 <!-- 课程卡片2 -->
                 <div class="course-card">
                     <div class="course-image">
@@ -72,7 +73,7 @@
                         <a href="#" class="btn-secondary">查看详情</a>
                     </div>
                 </div>
-                
+
                 <!-- 课程卡片3 -->
                 <div class="course-card">
                     <div class="course-image">
@@ -109,7 +110,7 @@
                     <p class="note-excerpt">线性回归是机器学习中最基础的算法之一，本文详细介绍了线性回归的数学原理、求解方法和应用场景...</p>
                     <a href="#" class="note-link">阅读全文 →</a>
                 </div>
-                
+
                 <!-- 笔记卡片2 -->
                 <div class="note-card">
                     <div class="note-header">
@@ -119,7 +120,7 @@
                     <p class="note-excerpt">反向传播算法是训练神经网络的核心，本文深入讲解了反向传播的数学推导和实现细节...</p>
                     <a href="#" class="note-link">阅读全文 →</a>
                 </div>
-                
+
                 <!-- 笔记卡片3 -->
                 <div class="note-card">
                     <div class="note-header">
@@ -129,7 +130,7 @@
                     <p class="note-excerpt">Transformer模型彻底改变了NLP领域，本文详细分析了Transformer的架构设计、注意力机制和训练方法...</p>
                     <a href="#" class="note-link">阅读全文 →</a>
                 </div>
-                
+
                 <!-- 笔记卡片4 -->
                 <div class="note-card">
                     <div class="note-header">
@@ -167,5 +168,148 @@
     </footer>
 
     <script src="script.js"></script>
+</body>
+</html>
+
++++ index.html (修改后)
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI学习记录</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>人工智能学习记录</h1>
+            <p>记录我的AI学习之旅</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#courses">课程</a></li>
+                <li><a href="#materials">教材和笔记</a></li>
+                <li><a href="#methodology">方法论</a></li>
+                <li><a href="#reading">其他阅读笔记</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="courses">
+            <h2>课程</h2>
+            <div class="section-content">
+                <div class="card">
+                    <h3>视频</h3>
+                    <p>这里将记录我观看的AI相关视频课程，包括课程链接、学习笔记和心得体会。</p>
+                    <ul>
+                        <li><a href="#">深度学习基础课程</a></li>
+                        <li><a href="#">机器学习实战</a></li>
+                        <li><a href="#">自然语言处理入门</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>网络资源</h3>
+                    <p>收集整理有用的在线学习资源，包括网站、博客、论坛等。</p>
+                    <ul>
+                        <li><a href="#">Coursera AI课程</a></li>
+                        <li><a href="#">Kaggle学习路径</a></li>
+                        <li><a href="#">GitHub开源项目</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>笔记</h3>
+                    <p>整理课程学习过程中记录的重要知识点和思考。</p>
+                    <ul>
+                        <li><a href="#">线性代数复习笔记</a></li>
+                        <li><a href="#">概率论与统计学习</a></li>
+                        <li><a href="#">神经网络基础概念</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="materials">
+            <h2>教材和笔记</h2>
+            <div class="section-content">
+                <div class="card">
+                    <h3>教材</h3>
+                    <p>推荐的AI学习教材及资源下载链接。</p>
+                    <ul>
+                        <li><a href="#">《机器学习》- 周志华</a></li>
+                        <li><a href="#">《深度学习》- Ian Goodfellow</a></li>
+                        <li><a href="#">《统计学习方法》- 李航</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>学习笔记</h3>
+                    <p>详细的学习笔记，包含公式推导、代码实现和案例分析。</p>
+                    <ul>
+                        <li><a href="#">监督学习算法总结</a></li>
+                        <li><a href="#">无监督学习方法</a></li>
+                        <li><a href="#">强化学习入门</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodology">
+            <h2>方法论</h2>
+            <div class="section-content">
+                <div class="card full-width">
+                    <p>在AI学习过程中总结的学习方法和经验分享。</p>
+                    <ul>
+                        <li>理论与实践相结合的学习策略</li>
+                        <li>如何选择合适的项目进行练习</li>
+                        <li>构建知识体系的方法</li>
+                        <li>持续学习和跟进最新研究的方法</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="reading">
+            <h2>其他阅读笔记</h2>
+            <div class="section-content">
+                <div class="card">
+                    <h3>论文阅读</h3>
+                    <p>阅读的经典AI论文总结和笔记。</p>
+                    <ul>
+                        <li><a href="#">Attention Is All You Need</a></li>
+                        <li><a href="#">BERT: Pre-training of Deep Bidirectional Transformers</a></li>
+                        <li><a href="#">Generative Adversarial Networks</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>技术博客</h3>
+                    <p>重要的技术博客文章总结。</p>
+                    <ul>
+                        <li><a href="#">深度学习框架对比</a></li>
+                        <li><a href="#">模型优化技巧</a></li>
+                        <li><a href="#">数据预处理方法</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>行业报告</h3>
+                    <p>AI行业发展趋势和研究报告。</p>
+                    <ul>
+                        <li><a href="#">AI技术发展现状</a></li>
+                        <li><a href="#">AI在各行业的应用</a></li>
+                        <li><a href="#">未来AI发展趋势</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AI学习记录. 保留所有权利.</p>
+        </div>
+    </footer>
 </body>
 </html>
