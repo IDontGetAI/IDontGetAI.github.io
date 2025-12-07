@@ -1,315 +1,392 @@
---- index.html (原始)
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI学习合辑 - IDontGetAI</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- 导航栏 -->
-    <header class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h1>AI学习合辑</h1>
-            </div>
-            <nav class="nav-links">
-                <a href="#courses">课程</a>
-                <a href="#notes">笔记</a>
-                <a href="#about">关于</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- 英雄区域 -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>探索人工智能的无限可能</h2>
-                <p>这里汇集了优质的AI学习课程和详细的学习笔记，帮助你系统性地掌握人工智能知识。</p>
-                <a href="#courses" class="btn-primary">开始学习</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 课程部分 -->
-    <section id="courses" class="courses">
-        <div class="container">
-            <div class="section-header">
-                <h2>精选课程</h2>
-                <p>精心挑选的AI学习课程，涵盖从基础到进阶的各个领域</p>
-            </div>
-            <div class="courses-grid">
-                <!-- 课程卡片1 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://via.placeholder.com/300x200/4A90E2/FFFFFF?text=机器学习基础" alt="机器学习基础">
-                    </div>
-                    <div class="course-content">
-                        <h3>机器学习基础</h3>
-                        <p class="course-description">掌握机器学习的核心概念和算法，包括监督学习、无监督学习和强化学习。</p>
-                        <div class="course-meta">
-                            <span class="difficulty">入门</span>
-                            <span class="duration">12周</span>
-                        </div>
-                        <a href="#" class="btn-secondary">查看详情</a>
-                    </div>
-                </div>
-
-                <!-- 课程卡片2 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://via.placeholder.com/300x200/50E3C2/FFFFFF?text=深度学习" alt="深度学习">
-                    </div>
-                    <div class="course-content">
-                        <h3>深度学习</h3>
-                        <p class="course-description">深入学习神经网络、CNN、RNN等深度学习模型，以及TensorFlow和PyTorch框架。</p>
-                        <div class="course-meta">
-                            <span class="difficulty">进阶</span>
-                            <span class="duration">16周</span>
-                        </div>
-                        <a href="#" class="btn-secondary">查看详情</a>
-                    </div>
-                </div>
-
-                <!-- 课程卡片3 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://via.placeholder.com/300x200/E94E77/FFFFFF?text=自然语言处理" alt="自然语言处理">
-                    </div>
-                    <div class="course-content">
-                        <h3>自然语言处理</h3>
-                        <p class="course-description">学习NLP的核心技术，包括词嵌入、Transformer模型、BERT和GPT等。</p>
-                        <div class="course-meta">
-                            <span class="difficulty">进阶</span>
-                            <span class="duration">14周</span>
-                        </div>
-                        <a href="#" class="btn-secondary">查看详情</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 笔记部分 -->
-    <section id="notes" class="notes">
-        <div class="container">
-            <div class="section-header">
-                <h2>学习笔记</h2>
-                <p>详细的学习笔记，帮助你巩固所学知识</p>
-            </div>
-            <div class="notes-grid">
-                <!-- 笔记卡片1 -->
-                <div class="note-card">
-                    <div class="note-header">
-                        <h3>线性回归模型详解</h3>
-                        <span class="note-date">2024-01-15</span>
-                    </div>
-                    <p class="note-excerpt">线性回归是机器学习中最基础的算法之一，本文详细介绍了线性回归的数学原理、求解方法和应用场景...</p>
-                    <a href="#" class="note-link">阅读全文 →</a>
-                </div>
-
-                <!-- 笔记卡片2 -->
-                <div class="note-card">
-                    <div class="note-header">
-                        <h3>神经网络反向传播算法</h3>
-                        <span class="note-date">2024-01-20</span>
-                    </div>
-                    <p class="note-excerpt">反向传播算法是训练神经网络的核心，本文深入讲解了反向传播的数学推导和实现细节...</p>
-                    <a href="#" class="note-link">阅读全文 →</a>
-                </div>
-
-                <!-- 笔记卡片3 -->
-                <div class="note-card">
-                    <div class="note-header">
-                        <h3>Transformer模型架构分析</h3>
-                        <span class="note-date">2024-01-25</span>
-                    </div>
-                    <p class="note-excerpt">Transformer模型彻底改变了NLP领域，本文详细分析了Transformer的架构设计、注意力机制和训练方法...</p>
-                    <a href="#" class="note-link">阅读全文 →</a>
-                </div>
-
-                <!-- 笔记卡片4 -->
-                <div class="note-card">
-                    <div class="note-header">
-                        <h3>PyTorch入门教程</h3>
-                        <span class="note-date">2024-02-01</span>
-                    </div>
-                    <p class="note-excerpt">PyTorch是目前最流行的深度学习框架之一，本文从零开始介绍了PyTorch的基本使用方法...</p>
-                    <a href="#" class="note-link">阅读全文 →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 关于部分 -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <h2>关于我</h2>
-                <p>我是一名AI爱好者，正在系统性地学习人工智能知识。创建这个网站的目的是分享我在学习过程中发现的优质课程和整理的学习笔记，希望能帮助到更多对AI感兴趣的朋友。</p>
-                <p>如果你有任何建议或想分享的资源，欢迎通过GitHub联系我！</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2024 AI学习合辑 | IDontGetAI</p>
-                <div class="social-links">
-                    <a href="https://github.com/IDontGetAI" target="_blank">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
-+++ index.html (修改后)
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI学习记录</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>人工智能课程学习记录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        nav {
+            background-color: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .card h4 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .card p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            background-color: #3498db;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>人工智能学习记录</h1>
-            <p>记录我的AI学习之旅</p>
-        </div>
+        <h1>人工智能课程学习记录</h1>
+        <p class="subtitle">记录AI学习的点点滴滴，分享知识与感悟</p>
     </header>
-
+    
     <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#courses">课程</a></li>
-                <li><a href="#materials">教材和笔记</a></li>
-                <li><a href="#methodology">方法论</a></li>
-                <li><a href="#reading">其他阅读笔记</a></li>
-            </ul>
-        </div>
+        <ul>
+            <li><a href="#courses">课程</a></li>
+            <li><a href="#materials">教材和笔记</a></li>
+            <li><a href="#methodology">方法论</a></li>
+            <li><a href="#reading-notes">阅读笔记</a></li>
+        </ul>
     </nav>
-
-    <main class="container">
+    
+    <div class="container">
         <section id="courses">
-            <h2>课程</h2>
-            <div class="section-content">
-                <div class="card">
-                    <h3>视频</h3>
-                    <p>这里将记录我观看的AI相关视频课程，包括课程链接、学习笔记和心得体会。</p>
-                    <ul>
-                        <li><a href="#">深度学习基础课程</a></li>
-                        <li><a href="#">机器学习实战</a></li>
-                        <li><a href="#">自然语言处理入门</a></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>网络资源</h3>
-                    <p>收集整理有用的在线学习资源，包括网站、博客、论坛等。</p>
-                    <ul>
-                        <li><a href="#">Coursera AI课程</a></li>
-                        <li><a href="#">Kaggle学习路径</a></li>
-                        <li><a href="#">GitHub开源项目</a></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>笔记</h3>
-                    <p>整理课程学习过程中记录的重要知识点和思考。</p>
-                    <ul>
-                        <li><a href="#">线性代数复习笔记</a></li>
-                        <li><a href="#">概率论与统计学习</a></li>
-                        <li><a href="#">神经网络基础概念</a></li>
-                    </ul>
+            <h2>1. 课程</h2>
+            
+            <h3>视频课程</h3>
+            <div class="card">
+                <h4>吴恩达机器学习课程</h4>
+                <p>平台：Coursera</p>
+                <p>链接：<a href="https://www.coursera.org/learn/machine-learning" target="_blank">https://www.coursera.org/learn/machine-learning</a></p>
+                <p>描述：经典的机器学习入门课程，涵盖监督学习、无监督学习等核心内容。</p>
+                <div class="tags">
+                    <span class="tag">监督学习</span>
+                    <span class="tag">无监督学习</span>
+                    <span class="tag">入门</span>
                 </div>
             </div>
+            
+            <div class="card">
+                <h4>深度学习专项课程</h4>
+                <p>平台：Coursera</p>
+                <p>链接：<a href="https://www.coursera.org/specializations/deep-learning" target="_blank">https://www.coursera.org/specializations/deep-learning</a></p>
+                <p>描述：由吴恩达教授讲解的深度学习系列课程，涵盖神经网络、CNN、RNN等内容。</p>
+                <div class="tags">
+                    <span class="tag">深度学习</span>
+                    <span class="tag">神经网络</span>
+                    <span class="tag">进阶</span>
+                </div>
+            </div>
+            
+            <h3>网络资源</h3>
+            <ul>
+                <li><a href="https://cs231n.github.io/" target="_blank">CS231n: 卷积神经网络与计算机视觉</a></li>
+                <li><a href="https://cs224n.stanford.edu/" target="_blank">CS224n: 自然语言处理与深度学习</a></li>
+                <li><a href="https://pytorch.org/tutorials/" target="_blank">PyTorch官方教程</a></li>
+                <li><a href="https://www.tensorflow.org/tutorials" target="_blank">TensorFlow官方教程</a></li>
+                <li><a href="https://arxiv.org/" target="_blank">arXiv: 预印本平台，最新AI论文</a></li>
+            </ul>
+            
+            <h3>课程笔记</h3>
+            <ul>
+                <li><a href="#">吴恩达机器学习课程笔记</a></li>
+                <li><a href="#">深度学习专项课程笔记</a></li>
+                <li><a href="#">CS231n课程笔记</a></li>
+                <li><a href="#">CS224n课程笔记</a></li>
+            </ul>
         </section>
-
+        
         <section id="materials">
-            <h2>教材和笔记</h2>
-            <div class="section-content">
-                <div class="card">
-                    <h3>教材</h3>
-                    <p>推荐的AI学习教材及资源下载链接。</p>
-                    <ul>
-                        <li><a href="#">《机器学习》- 周志华</a></li>
-                        <li><a href="#">《深度学习》- Ian Goodfellow</a></li>
-                        <li><a href="#">《统计学习方法》- 李航</a></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>学习笔记</h3>
-                    <p>详细的学习笔记，包含公式推导、代码实现和案例分析。</p>
-                    <ul>
-                        <li><a href="#">监督学习算法总结</a></li>
-                        <li><a href="#">无监督学习方法</a></li>
-                        <li><a href="#">强化学习入门</a></li>
-                    </ul>
+            <h2>2. 教材和笔记</h2>
+            
+            <h3>推荐教材</h3>
+            <div class="card">
+                <h4>《机器学习》 - 周志华</h4>
+                <p>别名：西瓜书</p>
+                <p>描述：国内经典的机器学习教材，内容全面，适合入门。</p>
+                <div class="tags">
+                    <span class="tag">机器学习</span>
+                    <span class="tag">教材</span>
+                    <span class="tag">中文</span>
                 </div>
             </div>
+            
+            <div class="card">
+                <h4>《深度学习》 - Ian Goodfellow</h4>
+                <p>别名：花书</p>
+                <p>描述：深度学习领域的权威教材，涵盖深度学习的数学基础和最新进展。</p>
+                <div class="tags">
+                    <span class="tag">深度学习</span>
+                    <span class="tag">教材</span>
+                    <span class="tag">英文</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h4>《统计学习方法》 - 李航</h4>
+                <p>描述：理论性较强的机器学习教材，适合深入理解算法原理。</p>
+                <div class="tags">
+                    <span class="tag">机器学习</span>
+                    <span class="tag">教材</span>
+                    <span class="tag">中文</span>
+                </div>
+            </div>
+            
+            <h3>学习笔记</h3>
+            <ul>
+                <li><a href="#">线性代数笔记</a></li>
+                <li><a href="#">概率论与数理统计笔记</a></li>
+                <li><a href="#">机器学习算法原理笔记</a></li>
+                <li><a href="#">深度学习实践笔记</a></li>
+                <li><a href="#">编程实现笔记</a></li>
+            </ul>
         </section>
-
+        
         <section id="methodology">
-            <h2>方法论</h2>
-            <div class="section-content">
-                <div class="card full-width">
-                    <p>在AI学习过程中总结的学习方法和经验分享。</p>
-                    <ul>
-                        <li>理论与实践相结合的学习策略</li>
-                        <li>如何选择合适的项目进行练习</li>
-                        <li>构建知识体系的方法</li>
-                        <li>持续学习和跟进最新研究的方法</li>
-                    </ul>
-                </div>
+            <h2>3. 方法论</h2>
+            
+            <div class="card">
+                <h4>AI学习方法论</h4>
+                <ul>
+                    <li><strong>系统性学习</strong>：先掌握基础理论，再进行实践</li>
+                    <li><strong>项目驱动</strong>：通过实际项目巩固知识，积累经验</li>
+                    <li><strong>持续跟进</strong>：关注最新研究进展，阅读顶会论文</li>
+                    <li><strong>交流分享</strong>：与他人交流学习心得，碰撞思想火花</li>
+                    <li><strong>刻意练习</strong>：针对薄弱环节进行强化训练</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>论文阅读方法</h4>
+                <ul>
+                    <li><strong>快速浏览</strong>：先看标题、摘要、结论，判断是否值得深入阅读</li>
+                    <li><strong>结构化阅读</strong>：按照引言、方法、实验、结论的顺序阅读</li>
+                    <li><strong>批判性思考</strong>：分析论文的创新点和局限性</li>
+                    <li><strong>总结记录</strong>：记录论文的核心思想和关键方法</li>
+                    <li><strong>复现验证</strong>：尝试复现实验结果，加深理解</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>项目实践流程</h4>
+                <ul>
+                    <li><strong>问题定义</strong>：明确项目目标和需求</li>
+                    <li><strong>数据收集</strong>：获取或生成合适的数据集</li>
+                    <li><strong>数据预处理</strong>：清洗、标准化、特征工程</li>
+                    <li><strong>模型选择</strong>：根据问题类型选择合适的模型</li>
+                    <li><strong>训练调参</strong>：训练模型并进行超参数调优</li>
+                    <li><strong>评估部署</strong>：评估模型性能，部署到生产环境</li>
+                </ul>
             </div>
         </section>
-
-        <section id="reading">
-            <h2>其他阅读笔记</h2>
-            <div class="section-content">
-                <div class="card">
-                    <h3>论文阅读</h3>
-                    <p>阅读的经典AI论文总结和笔记。</p>
-                    <ul>
-                        <li><a href="#">Attention Is All You Need</a></li>
-                        <li><a href="#">BERT: Pre-training of Deep Bidirectional Transformers</a></li>
-                        <li><a href="#">Generative Adversarial Networks</a></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>技术博客</h3>
-                    <p>重要的技术博客文章总结。</p>
-                    <ul>
-                        <li><a href="#">深度学习框架对比</a></li>
-                        <li><a href="#">模型优化技巧</a></li>
-                        <li><a href="#">数据预处理方法</a></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>行业报告</h3>
-                    <p>AI行业发展趋势和研究报告。</p>
-                    <ul>
-                        <li><a href="#">AI技术发展现状</a></li>
-                        <li><a href="#">AI在各行业的应用</a></li>
-                        <li><a href="#">未来AI发展趋势</a></li>
-                    </ul>
+        
+        <section id="reading-notes">
+            <h2>4. 其他阅读笔记</h2>
+            
+            <div class="card">
+                <h4>《人工智能：一种现代的方法》</h4>
+                <p>作者：Stuart Russell, Peter Norvig</p>
+                <p>笔记：这是一本全面介绍人工智能领域的经典教材，涵盖了AI的历史、逻辑、搜索、机器学习等多个方面。阅读后对AI有了更全面的认识。</p>
+                <div class="tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">经典</span>
+                    <span class="tag">阅读笔记</span>
                 </div>
             </div>
+            
+            <div class="card">
+                <h4>《Python机器学习实战》</h4>
+                <p>作者：Sebastian Raschka</p>
+                <p>笔记：这本书通过大量的实例和代码，介绍了如何使用Python进行机器学习实践。书中的案例丰富，代码可操作性强，非常适合实践学习。</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">机器学习</span>
+                    <span class="tag">实践</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h4>《深度学习入门：基于Python的理论与实现》</h4>
+                <p>作者：斋藤康毅</p>
+                <p>笔记：这本书从零开始实现神经网络，不依赖深度学习框架，非常适合理解深度学习的底层原理。通过手动实现各种算法，对神经网络的工作原理有了更深刻的认识。</p>
+                <div class="tags">
+                    <span class="tag">深度学习</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">入门</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h4>最新论文笔记</h4>
+                <ul>
+                    <li><a href="#">Transformer模型相关论文笔记</a></li>
+                    <li><a href="#">预训练语言模型论文笔记</a></li>
+                    <li><a href="#">计算机视觉最新进展笔记</a></li>
+                    <li><a href="#">强化学习论文笔记</a></li>
+                </ul>
+            </div>
         </section>
-    </main>
-
+    </div>
+    
     <footer>
-        <div class="container">
-            <p>&copy; 2025 AI学习记录. 保留所有权利.</p>
-        </div>
+        <p>&copy; 2024 人工智能课程学习记录. All rights reserved.</p>
     </footer>
+    
+    <script>
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
