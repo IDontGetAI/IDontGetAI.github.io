@@ -588,6 +588,11 @@ p {
     margin-bottom: 0.5rem;
 }
 
+/* 隐藏样式 */
+.hidden {
+    display: none !important;
+}
+
 /* 页脚样式 */
 .footer {
     background-color: #333;

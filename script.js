@@ -44,12 +44,137 @@ function highlightNav() {
     });
 }
 
+// 留言管理功能
+function manageMessages() {
+    const messagesContainer = document.querySelector('.messages');
+    if (!messagesContainer) return;
+    
+    // 添加折叠功能
+    function toggleMessages() {
+        const messageItems = messagesContainer.querySelectorAll('.message-item');
+        const toggleBtn = messagesContainer.querySelector('.toggle-messages');
+        
+        if (messageItems.length > 10) {
+            // 如果没有折叠按钮，创建一个
+            if (!toggleBtn) {
+                const btn = document.createElement('button');
+                btn.className = 'toggle-messages btn';
+                btn.textContent = '显示更多留言';
+                btn.style.margin = '1rem 0';
+                btn.style.display = 'block';
+                btn.style.marginLeft = 'auto';
+                btn.style.marginRight = 'auto';
+                
+                btn.addEventListener('click', function() {
+                    const hiddenMessages = messagesContainer.querySelectorAll('.message-item.hidden');
+                    if (hiddenMessages.length > 0) {
+                        // 展开所有留言
+                        hiddenMessages.forEach(msg => msg.classList.remove('hidden'));
+                        this.textContent = '收起部分留言';
+                    } else {
+                        // 只显示前10条留言
+                        for (let i = 10; i < messageItems.length; i++) {
+                            messageItems[i].classList.add('hidden');
+                        }
+                        this.textContent = '显示更多留言';
+                    }
+                });
+                
+                messagesContainer.appendChild(btn);
+            }
+            
+            // 初始只显示前10条留言
+            for (let i = 10; i < messageItems.length; i++) {
+                messageItems[i].classList.add('hidden');
+            }
+        } else if (toggleBtn) {
+            // 如果留言数量不超过10条，移除折叠按钮
+            toggleBtn.remove();
+            // 显示所有留言
+            messageItems.forEach(msg => msg.classList.remove('hidden'));
+        }
+    }
+    
+    // 添加管理按钮到每条留言
+    function addManagementButtons() {
+        const messageItems = messagesContainer.querySelectorAll('.message-item');
+        
+        messageItems.forEach(item => {
+            // 如果已经添加了管理按钮，跳过
+            if (item.querySelector('.message-management')) return;
+            
+            // 创建管理按钮容器
+            const managementDiv = document.createElement('div');
+            managementDiv.className = 'message-management';
+            managementDiv.style.display = 'flex';
+            managementDiv.style.justifyContent = 'flex-end';
+            managementDiv.style.marginTop = '0.5rem';
+            
+            // 删除按钮
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-message';
+            deleteBtn.textContent = '删除';
+            deleteBtn.style.backgroundColor = '#dc3545';
+            deleteBtn.style.color = 'white';
+            deleteBtn.style.border = 'none';
+            deleteBtn.style.borderRadius = '4px';
+            deleteBtn.style.padding = '0.3rem 0.6rem';
+            deleteBtn.style.marginLeft = '0.5rem';
+            deleteBtn.style.cursor = 'pointer';
+            
+            deleteBtn.addEventListener('click', function() {
+                if (confirm('确定要删除这条留言吗？')) {
+                    item.remove();
+                    toggleMessages(); // 重新检查是否需要折叠
+                }
+            });
+            
+            // 隐藏按钮
+            const hideBtn = document.createElement('button');
+            hideBtn.className = 'hide-message';
+            hideBtn.textContent = '隐藏';
+            hideBtn.style.backgroundColor = '#6c757d';
+            hideBtn.style.color = 'white';
+            hideBtn.style.border = 'none';
+            hideBtn.style.borderRadius = '4px';
+            hideBtn.style.padding = '0.3rem 0.6rem';
+            hideBtn.style.marginLeft = '0.5rem';
+            hideBtn.style.cursor = 'pointer';
+            
+            hideBtn.addEventListener('click', function() {
+                item.classList.toggle('hidden');
+                toggleMessages(); // 重新检查是否需要折叠
+            });
+            
+            // 添加按钮到容器
+            managementDiv.appendChild(hideBtn);
+            managementDiv.appendChild(deleteBtn);
+            
+            // 添加管理按钮到留言项
+            item.appendChild(managementDiv);
+        });
+    }
+    
+    // 初始化
+    toggleMessages();
+    addManagementButtons();
+    
+    // 返回函数用于在添加新留言后调用
+    return {
+        toggleMessages,
+        addManagementButtons
+    };
+}
+
 // 表单提交处理
 function handleFormSubmit() {
     const form = document.querySelector('form');
     const messagesContainer = document.querySelector('.messages');
     
     if (form && messagesContainer) {
+        // 初始化留言管理
+        const messageManager = manageMessages();
+        
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -85,6 +210,12 @@ function handleFormSubmit() {
                 } else {
                     messagesContainer.appendChild(messageItem);
                 }
+                
+                // 为新留言添加管理按钮
+                messageManager.addManagementButtons();
+                
+                // 更新折叠状态
+                messageManager.toggleMessages();
                 
                 // 显示成功消息
                 alert('留言提交成功！感谢您的反馈。');
@@ -127,6 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightNav();
     handleFormSubmit();
     animateProgressBars();
+    // 初始化留言管理
+    manageMessages();
 });
 
 // 添加导航栏滚动效果
