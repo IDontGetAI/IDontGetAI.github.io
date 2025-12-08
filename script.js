@@ -47,8 +47,9 @@ function highlightNav() {
 // 表单提交处理
 function handleFormSubmit() {
     const form = document.querySelector('form');
+    const messagesContainer = document.querySelector('.messages');
     
-    if (form) {
+    if (form && messagesContainer) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -58,8 +59,37 @@ function handleFormSubmit() {
             const message = document.getElementById('message').value;
             
             if (name && email && message) {
-                // 这里可以添加AJAX请求发送表单数据
+                // 创建新留言元素
+                const messageItem = document.createElement('div');
+                messageItem.className = 'message-item';
+                
+                // 获取当前日期
+                const now = new Date();
+                const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+                
+                // 设置留言内容
+                messageItem.innerHTML = `
+                    <div class="message-header">
+                        <span class="message-name">${name}</span>
+                        <span class="message-date">${dateStr}</span>
+                    </div>
+                    <div class="message-content">
+                        <p>${message}</p>
+                    </div>
+                `;
+                
+                // 将新留言添加到留言列表开头
+                const firstMessage = messagesContainer.querySelector('.message-item');
+                if (firstMessage) {
+                    messagesContainer.insertBefore(messageItem, firstMessage);
+                } else {
+                    messagesContainer.appendChild(messageItem);
+                }
+                
+                // 显示成功消息
                 alert('留言提交成功！感谢您的反馈。');
+                
+                // 重置表单
                 form.reset();
             } else {
                 alert('请填写所有必填字段。');
