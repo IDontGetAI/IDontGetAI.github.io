@@ -44,10 +44,110 @@ function highlightNav() {
     });
 }
 
+// 管理员权限管理
+function AdminManager() {
+    const ADMIN_PASSWORD = 'admin123'; // 管理员密码，可自行修改
+    
+    // 检查是否为管理员
+    function isAdmin() {
+        return localStorage.getItem('isAdmin') === 'true';
+    }
+    
+    // 登录管理员
+    function login(password) {
+        if (password === ADMIN_PASSWORD) {
+            localStorage.setItem('isAdmin', 'true');
+            return true;
+        }
+        return false;
+    }
+    
+    // 注销管理员
+    function logout() {
+        localStorage.removeItem('isAdmin');
+    }
+    
+    return {
+        isAdmin,
+        login,
+        logout
+    };
+}
+
+// 创建管理员实例
+const adminManager = AdminManager();
+
 // 留言管理功能
 function manageMessages() {
     const messagesContainer = document.querySelector('.messages');
     if (!messagesContainer) return;
+    
+    // 添加管理员登录区域
+    function addAdminLogin() {
+        // 如果已经有登录区域，跳过
+        if (messagesContainer.querySelector('.admin-login')) return;
+        
+        // 创建登录区域
+        const loginDiv = document.createElement('div');
+        loginDiv.className = 'admin-login';
+        loginDiv.style.backgroundColor = '#f8f9fa';
+        loginDiv.style.padding = '1rem';
+        loginDiv.style.borderRadius = '8px';
+        loginDiv.style.marginBottom = '1rem';
+        loginDiv.style.textAlign = 'center';
+        
+        let loginHTML;
+        if (adminManager.isAdmin()) {
+            // 已登录状态
+            loginHTML = `
+                <p style="margin-bottom: 0.5rem;">您已以管理员身份登录</p>
+                <button id="logout-btn" class="btn" style="background-color: #dc3545;">注销</button>
+            `;
+        } else {
+            // 未登录状态
+            loginHTML = `
+                <p style="margin-bottom: 0.5rem;">管理员登录</p>
+                <div style="display: flex; justify-content: center; gap: 0.5rem; align-items: center;">
+                    <input type="password" id="admin-password" placeholder="输入管理员密码" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <button id="login-btn" class="btn">登录</button>
+                </div>
+            `;
+        }
+        
+        loginDiv.innerHTML = loginHTML;
+        
+        // 添加到留言容器顶部
+        const firstChild = messagesContainer.firstChild;
+        messagesContainer.insertBefore(loginDiv, firstChild);
+        
+        // 添加登录事件
+        const loginBtn = loginDiv.querySelector('#login-btn');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function() {
+                const password = document.getElementById('admin-password').value;
+                if (adminManager.login(password)) {
+                    // 登录成功，重新加载登录区域和管理按钮
+                    loginDiv.remove();
+                    addAdminLogin();
+                    addManagementButtons();
+                } else {
+                    alert('密码错误，请重试！');
+                }
+            });
+        }
+        
+        // 添加注销事件
+        const logoutBtn = loginDiv.querySelector('#logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                adminManager.logout();
+                // 注销成功，重新加载登录区域并移除管理按钮
+                loginDiv.remove();
+                addAdminLogin();
+                removeManagementButtons();
+            });
+        }
+    }
     
     // 添加折叠功能
     function toggleMessages() {
@@ -97,6 +197,9 @@ function manageMessages() {
     
     // 添加管理按钮到每条留言
     function addManagementButtons() {
+        // 只有管理员才能添加管理按钮
+        if (!adminManager.isAdmin()) return;
+        
         const messageItems = messagesContainer.querySelectorAll('.message-item');
         
         messageItems.forEach(item => {
@@ -155,7 +258,14 @@ function manageMessages() {
         });
     }
     
+    // 移除所有管理按钮
+    function removeManagementButtons() {
+        const managementDivs = messagesContainer.querySelectorAll('.message-management');
+        managementDivs.forEach(div => div.remove());
+    }
+    
     // 初始化
+    addAdminLogin();
     toggleMessages();
     addManagementButtons();
     
