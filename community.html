@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI学习笔记 - 社区互动</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">AI学习笔记</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="learning-courses.html">学习课程</a></li>
+                <li><a href="study-plan.html">学习计划</a></li>
+                <li><a href="projects.html">项目展示</a></li>
+                <li><a href="tools.html">学习工具</a></li>
+                <li><a href="community.html">社区互动</a></li>
+                <li><a href="resources.html">资源库</a></li>
+                <li><a href="self-reflection.html">自我反思</a></li>
+                <li><a href="about-me.html">关于我</a></li>
+                <li><a href="links.html">友情链接</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 社区互动页面 -->
+    <section class="community">
+        <div class="container">
+            <h1>社区互动</h1>
+            <p>学习不是孤独的旅程，加入社区可以与其他学习者交流经验，共同进步。</p>
+
+            <!-- 留言板 -->
+            <div class="community-section">
+                <h2>留言板</h2>
+                <div class="message-board">
+                    <div class="message-form">
+                        <h3>留下你的留言</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">姓名：</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">邮箱：</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">留言内容：</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">提交留言</button>
+                        </form>
+                    </div>
+
+                    <div class="messages">
+                        <h3>最新留言</h3>
+                        <div class="message-item">
+                            <div class="message-header">
+                                <span class="message-name">张三</span>
+                                <span class="message-date">2024-01-15</span>
+                            </div>
+                            <div class="message-content">
+                                <p>网站内容很丰富，学习了很多AI知识，感谢分享！</p>
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-header">
+                                <span class="message-name">李四</span>
+                                <span class="message-date">2024-01-10</span>
+                            </div>
+                            <div class="message-content">
+                                <p>项目展示部分很实用，希望能看到更多实战项目。</p>
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-header">
+                                <span class="message-name">王五</span>
+                                <span class="message-date">2024-01-05</span>
+                            </div>
+                            <div class="message-content">
+                                <p>学习计划很详细，对我很有帮助，谢谢！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习小组 -->
+            <div class="community-section">
+                <h2>学习小组</h2>
+                <div class="study-groups">
+                    <div class="group-item">
+                        <h3>Python学习小组</h3>
+                        <p>每周日晚上8点线上交流，讨论Python编程相关内容。</p>
+                        <p>加入方式：添加微信xxx，备注Python学习小组。</p>
+                    </div>
+                    <div class="group-item">
+                        <h3>机器学习讨论群</h3>
+                        <p>每日分享机器学习相关资讯和学习资料，定期举办线上讲座。</p>
+                        <p>加入方式：扫码加入QQ群xxx。</p>
+                    </div>
+                    <div class="group-item">
+                        <h3>深度学习实战群</h3>
+                        <p>专注于深度学习项目实战，分享项目经验和代码。</p>
+                        <p>加入方式：发送邮件到xxx，主题为深度学习实战群。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 博客/日志 -->
+            <div class="community-section">
+                <h2>博客/日志</h2>
+                <div class="blog-list">
+                    <div class="blog-item">
+                        <h3><a href="#">深度学习入门笔记（一）：神经网络基础</a></h3>
+                        <p>发布日期：2024-01-20</p>
+                        <p>本文介绍了神经网络的基本概念、结构和工作原理，适合深度学习初学者阅读。</p>
+                    </div>
+                    <div class="blog-item">
+                        <h3><a href="#">Python数据分析实战：使用Pandas处理数据</a></h3>
+                        <p>发布日期：2024-01-15</p>
+                        <p>本文通过实际案例介绍了如何使用Pandas进行数据清洗、转换和分析。</p>
+                    </div>
+                    <div class="blog-item">
+                        <h3><a href="#">机器学习算法总结：线性回归</a></h3>
+                        <p>发布日期：2024-01-10</p>
+                        <p>本文详细介绍了线性回归算法的原理、推导和实现方法。</p>
+                    </div>
+                </div>
+                <a href="#" class="btn">查看更多博客</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AI学习笔记. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

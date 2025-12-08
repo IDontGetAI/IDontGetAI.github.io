@@ -1,273 +1,198 @@
---- script.js (原始)
-// 平滑滚动效果
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
+// 平滑滚动
+function smoothScroll() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
-});
+}
 
-// 导航栏滚动高亮
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
+// 导航栏高亮
+function highlightNav() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= (sectionTop - 100)) {
+                current = section.getAttribute('class');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
 
-    // 滚动时添加导航栏阴影
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
-    } else {
+// 表单提交处理
+function handleFormSubmit() {
+    const form = document.querySelector('form');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 简单的表单验证
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                // 这里可以添加AJAX请求发送表单数据
+                alert('留言提交成功！感谢您的反馈。');
+                form.reset();
+            } else {
+                alert('请填写所有必填字段。');
+            }
+        });
+    }
+}
+
+// 进度条动画
+function animateProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const width = target.style.width;
+                target.style.width = '0%';
+                setTimeout(() => {
+                    target.style.width = width;
+                }, 100);
+                observer.unobserve(target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    progressBars.forEach(bar => {
+        observer.observe(bar);
+    });
+}
+
+// 页面加载完成后执行
+document.addEventListener('DOMContentLoaded', () => {
+    smoothScroll();
+    highlightNav();
+    handleFormSubmit();
+    animateProgressBars();
+});
+
+// 添加导航栏滚动效果
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.pageYOffset > 50) {
+        navbar.style.backgroundColor = '#222';
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
-
-    // 高亮当前滚动到的部分对应的导航链接
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// 为导航链接添加active样式
-const style = document.createElement('style');
-style.textContent = `
-    .nav-links a.active {
-        color: #4A90E2;
-        font-weight: 600;
-    }
-`;
-document.head.appendChild(style);
-
-// 卡片悬停动画增强
-document.addEventListener('DOMContentLoaded', function() {
-    const courseCards = document.querySelectorAll('.course-card');
-    const noteCards = document.querySelectorAll('.note-card');
-
-    courseCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-
-    noteCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.01)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
-
-// 页面加载动画
-window.addEventListener('load', function() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease-in-out';
-
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// 回到顶部按钮
-const backToTopButton = document.createElement('button');
-backToTopButton.innerHTML = '↑';
-backToTopButton.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #4A90E2;
-    color: white;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    z-index: 999;
-`;
-
-document.body.appendChild(backToTopButton);
-
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 300) {
-        backToTopButton.style.opacity = '1';
-        backToTopButton.style.visibility = 'visible';
     } else {
-        backToTopButton.style.opacity = '0';
-        backToTopButton.style.visibility = 'hidden';
+        navbar.style.backgroundColor = '#333';
+        navbar.style.boxShadow = 'none';
     }
 });
 
-backToTopButton.addEventListener('click', function() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-+++ script.js (修改后)
-// 平滑滚动效果
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
+// 添加回到顶部按钮
+function addBackToTopButton() {
+    const button = document.createElement('button');
+    button.innerHTML = '↑';
+    button.id = 'back-to-top';
+    button.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 999;
+    `;
+    
+    document.body.appendChild(button);
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            button.style.opacity = '1';
+            button.style.visibility = 'visible';
+        } else {
+            button.style.opacity = '0';
+            button.style.visibility = 'hidden';
         }
     });
-});
-
-// 导航栏滚动高亮
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('nav');
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
-
-    // 滚动时添加导航栏阴影
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
-
-    // 高亮当前滚动到的部分对应的导航链接
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
+    
+    button.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
+}
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
+// 页面加载完成后添加回到顶部按钮
+document.addEventListener('DOMContentLoaded', addBackToTopButton);
+
+// 添加链接悬停效果
+function addLinkHoverEffect() {
+    const links = document.querySelectorAll('a');
+    
+    links.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
     });
-});
+}
 
-// 为导航链接添加active样式
-const style = document.createElement('style');
-style.textContent = `
-    nav a.active {
-        color: #4A90E2;
-        font-weight: 600;
-    }
-`;
-document.head.appendChild(style);
+// 页面加载完成后添加链接悬停效果
+document.addEventListener('DOMContentLoaded', addLinkHoverEffect);
 
-// 卡片悬停动画增强
-document.addEventListener('DOMContentLoaded', function() {
-    const courseCards = document.querySelectorAll('.card');
-    const noteCards = document.querySelectorAll('.card');
-
-    courseCards.forEach(card => {
+// 添加卡片悬停效果
+function addCardHoverEffect() {
+    const cards = document.querySelectorAll('.course-item, .category-item, .project-item, .tool-item, .group-item, .blog-item, .resource-item, .summary-item, .insight-item, .link-item');
+    
+    cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.15)';
+            this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
         });
-
+        
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
         });
     });
+}
 
-    noteCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.01)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
-
-// 页面加载动画
-window.addEventListener('load', function() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease-in-out';
-
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// 回到顶部按钮
-const backToTopButton = document.createElement('button');
-backToTopButton.innerHTML = '↑';
-backToTopButton.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #4A90E2;
-    color: white;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    z-index: 999;
-`;
-
-document.body.appendChild(backToTopButton);
-
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 300) {
-        backToTopButton.style.opacity = '1';
-        backToTopButton.style.visibility = 'visible';
-    } else {
-        backToTopButton.style.opacity = '0';
-        backToTopButton.style.visibility = 'hidden';
-    }
-});
-
-backToTopButton.addEventListener('click', function() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
+// 页面加载完成后添加卡片悬停效果
+document.addEventListener('DOMContentLoaded', addCardHoverEffect);

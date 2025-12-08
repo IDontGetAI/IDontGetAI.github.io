@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idontgetai 的学习主页</title>
+    <!-- Tailwind CSS: 用于快速构建美观的界面 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js: 用于处理页面切换和交互，轻量级 -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Phosphor Icons: 漂亮的图标库 -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        /* 自定义一些过渡动画 */
+        [x-cloak] { display: none !important; }
+        .fade-enter-active { transition: opacity 0.3s ease; }
+        .fade-enter-from { opacity: 0; }
+    </style>
+    
+    <script>
+        // 配置 Tailwind 主题色
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb', // 科技蓝
+                        secondary: '#475569', // 板岩灰
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans" x-data="{ 
+    currentTab: 'home', 
+    mobileMenuOpen: false,
+    navItems: [
+        { id: 'home', label: '首页 Home', icon: 'ph-house' },
+        { id: 'courses', label: '1. 学习课程 Courses', icon: 'ph-graduation-cap' },
+        { id: 'plan', label: '2. 学习计划 Plan', icon: 'ph-calendar-check' },
+        { id: 'projects', label: '3. 项目展示 Projects', icon: 'ph-rocket-launch' },
+        { id: 'tools', label: '4. 学习工具 Tools', icon: 'ph-wrench' },
+        { id: 'community', label: '5. 社区互动 Community', icon: 'ph-chats-circle' },
+        { id: 'resources', label: '6. 资源库 Resources', icon: 'ph-books' },
+        { id: 'reflection', label: '7. 自我反思 Reflection', icon: 'ph-brain' },
+        { id: 'about', label: '8. 关于我 About Me', icon: 'ph-user' },
+        { id: 'links', label: '9. 友情链接 Links', icon: 'ph-link' }
+    ]
+}">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- 移动端遮罩层 -->
+        <div x-show="mobileMenuOpen" 
+             class="fixed inset-0 bg-black/50 z-40 md:hidden"
+             @click="mobileMenuOpen = false"
+             x-transition.opacity></div>
+
+        <!-- 侧边导航栏 -->
+        <aside :class="mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'"
+               class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200 transform transition-transform duration-300 md:relative md:translate-x-0 flex flex-col">
+            
+            <!-- Logo 区 -->
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                        Idontgetai
+                    </h1>
+                    <p class="text-xs text-slate-400">Personal Learning Hub</p>
+                </div>
+                <!-- 关闭按钮 (仅移动端) -->
+                <button @click="mobileMenuOpen = false" class="md:hidden text-slate-400 hover:text-slate-600">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+
+            <!-- 菜单列表 -->
+            <nav class="flex-1 overflow-y-auto p-4 space-y-1">
+                <template x-for="item in navItems" :key="item.id">
+                    <button @click="currentTab = item.id; mobileMenuOpen = false; window.scrollTo(0,0)"
+                            :class="currentTab === item.id ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'"
+                            class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-left">
+                        <i :class="'ph ' + item.icon + ' text-lg' " :class="currentTab === item.id ? 'text-blue-600' : 'text-slate-400'"></i>
+                        <span x-text="item.label"></span>
+                    </button>
+                </template>
+            </nav>
+            
+            <div class="p-4 border-t border-slate-100 text-xs text-center text-slate-400">
+                <p>&copy; 2024 Idontgetai</p>
+            </div>
+        </aside>
+
+        <!-- 主内容区域 -->
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-slate-50 relative">
+            
+            <!-- 移动端顶部 Header -->
+            <header class="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+                <button @click="mobileMenuOpen = true" class="text-slate-600">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+                <span class="font-bold text-slate-800" x-text="navItems.find(i => i.id === currentTab).label"></span>
+                <div class="w-6"></div> <!-- 占位符以保持标题居中 -->
+            </header>
+
+            <!-- 滚动内容区 -->
+            <div class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-12 scroll-smooth">
+                <div class="max-w-4xl mx-auto space-y-8 pb-12">
+
+                    <!-- ================= 首页 Home ================= -->
+                    <div x-show="currentTab === 'home'" x-transition.opacity.duration.300ms>
+                        <!-- 欢迎 Hero -->
+                        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white shadow-lg mb-8 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
+                                <i class="ph ph-rocket-launch text-9xl"></i>
+                            </div>
+                            <h1 class="text-3xl md:text-4xl font-bold mb-4">欢迎来到我的学习宇宙</h1>
+                            <p class="text-blue-100 text-lg mb-6 max-w-2xl">
+                                这里的每一行代码、每一篇笔记，都是我通往 AI 与全栈开发之路的脚印。
+                                无论你是偶然路过，还是志同道合的朋友，希望我的记录能给你带来启发。
+                            </p>
+                            <button @click="currentTab = 'courses'" 
+                                    class="bg-white text-blue-600 px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center gap-2">
+                                开始探索 <i class="ph ph-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 学习进度 -->
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                                <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                    <i class="ph ph-chart-bar text-green-500 text-xl"></i> 当前学习进度
+                                </h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span>Python 基础</span>
+                                            <span class="font-bold text-green-600">100%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2">
+                                            <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span>Web 开发 (HTML/CSS/JS)</span>
+                                            <span class="font-bold text-blue-600">65%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2">
+                                            <div class="bg-blue-500 h-2 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span>机器学习入门</span>
+                                            <span class="font-bold text-orange-600">20%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2">
+                                            <div class="bg-orange-500 h-2 rounded-full" style="width: 20%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 个人简介摘要 -->
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col">
+                                <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                    <i class="ph ph-user-circle text-purple-500 text-xl"></i> 关于我
+                                </h3>
+                                <p class="text-slate-600 text-sm leading-relaxed flex-1">
+                                    你好，我是 Idontgetai。建立这个网站是为了对抗遗忘，同时也想证明：只要开始行动，就没有学不会的技术。我正在专注于构建 AI 应用和全栈项目。
+                                </p>
+                                <button @click="currentTab = 'about'" class="mt-4 text-blue-600 font-medium hover:underline text-sm self-start">
+                                    查看完整介绍 &rarr;
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= 1. 学习课程 ================= -->
+                    <div x-show="currentTab === 'courses'" x-cloak x-data="{ subTab: 'videos' }">
+                        <div class="border-b border-slate-200 mb-6">
+                            <h2 class="text-2xl font-bold mb-4">学习课程资料</h2>
+                            <div class="flex space-x-6">
+                                <button @click="subTab = 'videos'" :class="subTab === 'videos' ? 'border-b-2 border-blue-600 text-blue-600' : 'text-slate-500'" class="pb-2 font-medium transition-colors">视频课程</button>
+                                <button @click="subTab = 'books'" :class="subTab === 'books' ? 'border-b-2 border-blue-600 text-blue-600' : 'text-slate-500'" class="pb-2 font-medium transition-colors">书籍阅读</button>
+                                <button @click="subTab = 'notes'" :class="subTab === 'notes' ? 'border-b-2 border-blue-600 text-blue-600' : 'text-slate-500'" class="pb-2 font-medium transition-colors">笔记分类</button>
+                            </div>
+                        </div>
+
+                        <!-- 视频内容 -->
+                        <div x-show="subTab === 'videos'" class="grid gap-4">
+                            <div class="bg-white p-5 rounded-lg border border-slate-100 shadow-sm flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-lg">CS50: Introduction to Computer Science</h4>
+                                    <p class="text-slate-500 text-sm">Harvard / edX</p>
+                                </div>
+                                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">已完成</span>
+                            </div>
+                            <div class="bg-white p-5 rounded-lg border border-slate-100 shadow-sm flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-lg">Andrew Ng Machine Learning</h4>
+                                    <p class="text-slate-500 text-sm">Coursera</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded">进行中</span>
+                            </div>
+                        </div>
+
+                        <!-- 书籍内容 -->
+                        <div x-show="subTab === 'books'" class="grid grid-cols-1 sm:grid-cols-2 gap-4" x-cloak>
+                            <div class="bg-white p-4 rounded-lg border border-slate-100 shadow-sm">
+                                <div class="h-32 bg-slate-200 rounded mb-3 flex items-center justify-center text-slate-400">封面占位</div>
+                                <h4 class="font-bold">Fluent Python</h4>
+                                <p class="text-slate-500 text-xs mb-2">Luciano Ramalho</p>
+                                <div class="w-full bg-slate-100 rounded-full h-1.5">
+                                    <div class="bg-blue-500 h-1.5 rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <!-- 更多书籍... -->
+                        </div>
+
+                         <!-- 笔记内容 -->
+                         <div x-show="subTab === 'notes'" class="space-y-4" x-cloak>
+                            <a href="#" class="block bg-white p-4 rounded-lg border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-slate-800">Python 装饰器深入理解</h4>
+                                <p class="text-slate-500 text-sm mt-1">Python 进阶 • 2023-10-12</p>
+                            </a>
+                            <a href="#" class="block bg-white p-4 rounded-lg border-l-4 border-purple-500 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-slate-800">反向传播算法推导手记</h4>
+                                <p class="text-slate-500 text-sm mt-1">机器学习 • 2023-11-05</p>
+                            </a>
+                         </div>
+                    </div>
+
+                    <!-- ================= 2. 学习计划 ================= -->
+                    <div x-show="currentTab === 'plan'" x-cloak>
+                        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                            <i class="ph ph-calendar-check text-blue-600"></i> 学习计划 & 追踪
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <!-- 本周计划 -->
+                            <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                                <h3 class="font-bold text-lg mb-4">本周任务 (Week 42)</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-center gap-3">
+                                        <i class="ph ph-check-circle text-green-500 text-xl"></i>
+                                        <span class="text-slate-400 line-through">复习 React Hooks 基础</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="ph ph-check-circle text-green-500 text-xl"></i>
+                                        <span class="text-slate-400 line-through">完成个人主页布局设计</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="ph ph-circle text-slate-300 text-xl"></i>
+                                        <span class="text-slate-800">阅读《深度学习》第三章</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <i class="ph ph-circle text-slate-300 text-xl"></i>
+                                        <span class="text-slate-800">写一篇关于 Flexbox 的博客</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 状态反思 -->
+                            <div class="bg-orange-50 p-6 rounded-xl border border-orange-100">
+                                <h3 class="font-bold text-orange-800 mb-2">本周反思</h3>
+                                <p class="text-sm text-orange-700 leading-relaxed">
+                                    这周在 CSS 布局上花的时间太多了，导致算法题没有刷。下周需要调整时间分配，早上优先做算法，晚上做项目。
+                                </p>
+                                <div class="mt-4 pt-4 border-t border-orange-200">
+                                    <p class="text-xs font-bold text-orange-600 uppercase">目标完成度</p>
+                                    <p class="text-2xl font-bold text-orange-800">60%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= 3. 项目展示 ================= -->
+                    <div x-show="currentTab === 'projects'" x-cloak>
+                        <h2 class="text-2xl font-bold mb-6">我的项目实验室</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 项目卡片 1 -->
+                            <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden group hover:shadow-md transition-all">
+                                <div class="h-48 bg-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-slate-300 transition-colors">
+                                    [项目截图占位]
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-bold text-xl mb-2">Personal Learning Hub</h3>
+                                    <p class="text-slate-600 text-sm mb-4">
+                                        就是你现在看到的这个网站。使用 GitHub Pages 托管，纯 HTML/CSS 构建，旨在记录个人学习历程。
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-md">HTML</span>
+                                        <span class="px-2 py-1 bg-cyan-50 text-cyan-600 text-xs rounded-md">Tailwind</span>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <a href="#" class="text-sm font-bold text-slate-700 hover:text-blue-600 flex items-center gap-1">
+                                            <i class="ph ph-github-logo"></i> 源码
+                                        </a>
+                                        <a href="#" class="text-sm font-bold text-slate-700 hover:text-blue-600 flex items-center gap-1">
+                                            <i class="ph ph-globe"></i> 预览
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 项目卡片 2 -->
+                            <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden group hover:shadow-md transition-all">
+                                <div class="h-48 bg-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-slate-300 transition-colors">
+                                    [天气预测模型截图]
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-bold text-xl mb-2">简易天气预测器</h3>
+                                    <p class="text-slate-600 text-sm mb-4">
+                                        基于 Scikit-Learn 的线性回归模型，使用过去5年的历史数据预测明日气温。
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded-md">Python</span>
+                                        <span class="px-2 py-1 bg-green-50 text-green-600 text-xs rounded-md">ML</span>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <a href="#" class="text-sm font-bold text-slate-700 hover:text-blue-600 flex items-center gap-1">
+                                            <i class="ph ph-github-logo"></i> 源码
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= 4. 学习工具 ================= -->
+                    <div x-show="currentTab === 'tools'" x-cloak>
+                        <h2 class="text-2xl font-bold mb-6">兵器库 (Tools)</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- 工具 1 -->
+                            <div class="bg-white p-5 rounded-lg border border-slate-100 hover:border-blue-300 transition-colors">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold">VS Code</h3>
+                                    <span class="text-xs bg-slate-100 px-2 py-1 rounded">编辑器</span>
+                                </div>
+                                <div class="flex text-yellow-400 text-xs mb-2">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                                </div>
+                                <p class="text-xs text-slate-500">
+                                    写代码的神器。推荐安装 Prettier 和 ESLint 插件，能极大地提高代码质量。
+                                </p>
+                            </div>
+                            <!-- 工具 2 -->
+                            <div class="bg-white p-5 rounded-lg border border-slate-100 hover:border-blue-300 transition-colors">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold">Obsidian</h3>
+                                    <span class="text-xs bg-slate-100 px-2 py-1 rounded">笔记</span>
+                                </div>
+                                <div class="flex text-yellow-400 text-xs mb-2">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star-half"></i>
+                                </div>
+                                <p class="text-xs text-slate-500">
+                                    本地化的双链笔记软件，非常适合构建个人的知识图谱。
+                                </p>
+                            </div>
+                             <!-- 工具 3 -->
+                             <div class="bg-white p-5 rounded-lg border border-slate-100 hover:border-blue-300 transition-colors">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold">Docker</h3>
+                                    <span class="text-xs bg-slate-100 px-2 py-1 rounded">DevOps</span>
+                                </div>
+                                <div class="flex text-yellow-400 text-xs mb-2">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph ph-star"></i>
+                                </div>
+                                <p class="text-xs text-slate-500">
+                                    学习曲线有点陡峭，但学会后部署环境再也不用担心“在我电脑上能跑”的问题了。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= 5. 社区互动 ================= -->
+                    <div x-show="currentTab === 'community'" x-cloak>
+                         <h2 class="text-2xl font-bold mb-6">社区 & 讨论</h2>
+                         <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm mb-6">
+                            <h3 class="font-bold text-lg mb-4">留言板</h3>
+                            <div class="space-y-4 mb-6 h-48 overflow-y-auto pr-2 bg-slate-50 rounded-lg p-4">
+                                <!-- 模拟留言 -->
+                                <div class="flex gap-3">
+                                    <div class="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center text-xs font-bold text-blue-700">A</div>
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-700">Alice <span class="text-slate-400 font-normal scale-90">2天前</span></p>
+                                        <p class="text-sm text-slate-600 bg-white p-2 rounded shadow-sm inline-block mt-1">网站做得真不错，学习路径很清晰！</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3">
+                                    <div class="w-8 h-8 bg-green-200 rounded-full flex items-center justify-center text-xs font-bold text-green-700">B</div>
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-700">Bob <span class="text-slate-400 font-normal scale-90">1天前</span></p>
+                                        <p class="text-sm text-slate-600 bg-white p-2 rounded shadow-sm inline-block mt-1">我也在学 CS50，有问题可以一起交流吗？</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <input type="text" placeholder="写下你的想法..." class="flex-1 border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-blue-500">
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700">发送</button>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- ================= 6. 资源库 ================= -->
+                    <div x-show="currentTab === 'resources'" x-cloak>
+                        <h2 class="text-2xl font-bold mb-6">宝藏资源库</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-700 mb-3 border-l-4 border-blue-500 pl-3">官方文档 & 教程</h3>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://developer.mozilla.org" target="_blank" class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm hover:border-blue-500 hover:text-blue-600 transition-colors">MDN Web Docs</a>
+                                    <a href="https://react.dev" target="_blank" class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm hover:border-blue-500 hover:text-blue-600 transition-colors">React 官方文档</a>
+                                    <a href="https://tailwindcss.com" target="_blank" class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm hover:border-blue-500 hover:text-blue-600 transition-colors">Tailwind CSS</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-700 mb-3 border-l-4 border-green-500 pl-3">练手平台</h3>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://leetcode.com" target="_blank" class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm hover:border-green-500 hover:text-green-600 transition-colors">LeetCode</a>
+                                    <a href="https://www.codewars.com" target="_blank" class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm hover:border-green-500 hover:text-green-600 transition-colors">Codewars</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= 7. 自我反思 ================= -->
+                    <div x-show="currentTab === 'reflection'" x-cloak>
+                        <h2 class="text-2xl font-bold mb-6">自我反思日记</h2>
+                        <div class="relative pl-6 border-l border-slate-200 space-y-8">
+                            <!-- 日志 1 -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] bg-white border border-slate-200 rounded-full w-4 h-4 mt-1.5"></div>
+                                <span class="text-xs text-slate-400 mb-1 block">2023年10月20日</span>
+                                <h3 class="font-bold text-lg text-slate-800">关于学习效率的思考</h3>
+                                <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                                    最近发现自己虽然看了很多教程，但真正动手写代码时还是卡壳。这说明“输入”和“输出”严重失衡。接下来的策略是：每看30分钟视频，必须强迫自己写至少20行相关的代码，不管多简单。
+                                </p>
+                            </div>
+                             <!-- 日志 2 -->
+                             <div class="relative">
+                                <div class="absolute -left-[31px] bg-white border border-slate-200 rounded-full w-4 h-4 mt-1.5"></div>
+                                <span class="text-xs text-slate-400 mb-1 block">2023年10月05日</span>
+                                <h3 class="font-bold text-lg text-slate-800">Hello World!</h3>
+                                <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                                    正式启动这个学习计划。不仅是为了找工作，更是为了通过技术去理解这个快速变化的世界。Keep pushing.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= 8. 关于我 ================= -->
+                    <div x-show="currentTab === 'about'" x-cloak>
+                        <h2 class="text-2xl font-bold mb-6">关于我</h2>
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-8">
+                            <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                                <div class="w-32 h-32 bg-slate-200 rounded-full flex items-center justify-center text-slate-400 text-4xl">
+                                    <i class="ph ph-user"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Idontgetai</h3>
+                                    <p class="text-blue-600 font-medium mb-4">CS 学习者 / 终身学习实践者</p>
+                                    <p class="text-slate-600 mb-6 leading-relaxed">
+                                        我是一名热爱技术的探索者。虽然 ID 叫 "Idontgetai" (I don't get AI)，但这正是我想要攻克的方向。
+                                        我喜欢简约的设计、干净的代码以及那些能解决实际问题的工具。
+                                        <br><br>
+                                        如果不写代码，我可能在读书，或者在发呆思考人生。
+                                    </p>
+                                    
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <a href="mailto:your-email@example.com" class="flex items-center justify-center gap-2 px-6 py-2 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                                            <i class="ph ph-envelope-simple"></i>
+                                            <span>Email Me</span>
+                                        </a>
+                                        <a href="https://github.com/idontgetai" target="_blank" class="flex items-center justify-center gap-2 px-6 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-colors">
+                                            <i class="ph ph-github-logo"></i>
+                                            <span>GitHub</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= 9. 友情链接 ================= -->
+                    <div x-show="currentTab === 'links'" x-cloak>
+                        <h2 class="text-2xl font-bold mb-6">友情链接</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <!-- 友链卡片 -->
+                            <a href="#" class="block bg-white p-6 rounded-lg border border-slate-100 hover:border-blue-400 hover:shadow-md transition-all group">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="ph ph-link text-blue-500"></i>
+                                    <h4 class="font-bold text-slate-800 group-hover:text-blue-600">酷壳 CoolShell</h4>
+                                </div>
+                                <p class="text-xs text-slate-400">陈皓老师的博客，技术人的灯塔。</p>
+                            </a>
+                            <a href="#" class="block bg-white p-6 rounded-lg border border-slate-100 hover:border-blue-400 hover:shadow-md transition-all group">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="ph ph-link text-blue-500"></i>
+                                    <h4 class="font-bold text-slate-800 group-hover:text-blue-600">阮一峰的网络日志</h4>
+                                </div>
+                                <p class="text-xs text-slate-400">Web 技术入门的绝佳资源。</p>
+                            </a>
+                             <!-- 待添加 -->
+                             <div class="border-2 border-dashed border-slate-200 rounded-lg p-6 flex items-center justify-center text-slate-400 text-sm">
+                                虚位以待...
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
