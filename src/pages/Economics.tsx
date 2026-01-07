@@ -122,27 +122,27 @@ const resources: ContentData<ResourceItem> = [
         title: "Microeconomic Theory (Mas-Colell, Whinston, Green)",
         content: "MWG，微观经济学的终极圣经，数学要求极高。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Economics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Economics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Economics", type: "Database" }
         ]
       },
       {
         title: "Macroeconomics (Mankiw)",
         content: "曼昆的中级宏观教材，直观清晰。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Economics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Economics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Economics", type: "Database" }
         ]
       },
       {
         title: "Econometric Analysis (Greene)",
         content: "计量经济学的百科全书。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Economics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Economics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Economics", type: "Database" }
         ]
       }
     ]
@@ -154,18 +154,18 @@ const resources: ContentData<ResourceItem> = [
         title: "Game Theory (Fudenberg & Tirole)",
         content: "博弈论领域的经典参考书。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Economics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Economics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Economics", type: "Database" }
         ]
       },
       {
         title: "Optimization in Economic Theory (Dixit)",
         content: "迪克西特关于经济中最优化方法的精彩讲解。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Economics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Economics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Economics", type: "Database" }
         ]
       }
     ]

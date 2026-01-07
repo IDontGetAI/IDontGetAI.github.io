@@ -53,16 +53,7 @@ function AppRouter() {
                 </div>
             )}
           </Route>
-          <Route path="/refs/:subject/:topic">
-            {(params) => (
-                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
-                    <h1 className="text-2xl font-display text-secondary">Resources Under Construction</h1>
-                    <p className="text-muted-foreground font-mono">
-                        Target: <span className="text-white">src/pages/refs/{params.subject}/{params.topic}.tsx</span>
-                    </p>
-                </div>
-            )}
-          </Route>
+
           <Route path="/logs/:subject/:topic">
             {(params) => (
                 <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">

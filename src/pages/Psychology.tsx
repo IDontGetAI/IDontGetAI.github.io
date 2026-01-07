@@ -47,27 +47,27 @@ const resources: ContentData<ResourceItem> = [
         title: "Cognitive Biases: System 1 & 2",
         content: "Thinking, Fast and Slow (Kahneman).",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Psychology+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Psychology+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Psychology", type: "Database" }
         ]
       },
       {
         title: "Evolutionary Psychology",
         content: "The Selfish Gene (Dawkins), Evolutionary Psychology (Buss).",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Psychology+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Psychology+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Psychology", type: "Database" }
         ]
       },
       {
         title: "Neuroscience: Plasticity",
         content: "The Brain that Changes Itself, Huberman Lab.",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Psychology+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Psychology+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Psychology", type: "Database" }
         ]
       }
     ]

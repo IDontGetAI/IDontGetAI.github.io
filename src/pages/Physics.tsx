@@ -157,45 +157,45 @@ const resources: ContentData<ResourceItem> = [
         title: "力学 (Mechanics)",
         content: "Feynman Lectures Vol 1, Kleppner & Kolenkow。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "热学 (Thermal Physics)",
         content: "Schroeder, Kittel & Kroemer。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "电磁学 (Electromagnetism)",
         content: "Purcell, Griffiths。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "光学 (Optics)",
         content: "Hecht。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "近代物理 (Modern Physics)",
         content: "Beiser。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       }
     ]
@@ -207,36 +207,36 @@ const resources: ContentData<ResourceItem> = [
         title: "理论力学 (Analytical Mechanics)",
         content: "Landau Vol 1, Goldstein。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "电动力学 (Electrodynamics)",
         content: "Jackson, Landau Vol 2。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "量子力学 (Quantum Mechanics)",
         content: "Shankar, Griffiths, Sakurai。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "统计力学 (Statistical Mechanics)",
         content: "Pathria, Landau Vol 5。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       }
     ]
@@ -248,36 +248,36 @@ const resources: ContentData<ResourceItem> = [
         title: "复变函数 (Complex Variables)",
         content: "Arfken & Weber。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "数学物理方程 (Math Physics Eqs)",
         content: "Courant & Hilbert。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "群论 (Group Theory)",
         content: "Zee, Georgi。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "微分几何与拓扑 (Diff Geometry)",
         content: "Nakahara, Schutz。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       }
     ]

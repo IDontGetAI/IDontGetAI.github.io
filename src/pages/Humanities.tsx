@@ -57,36 +57,36 @@ const resources: ContentData<ResourceItem> = [
         title: "Sociology: The Iron Cage",
         content: "韦伯著作选读。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Humanities+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Humanities+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Humanities", type: "Database" }
         ]
       },
       {
         title: "History: The Thucydides Trap",
         content: "修昔底德与阿里森。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Humanities+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Humanities+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Humanities", type: "Database" }
         ]
       },
       {
         title: "Anthropology: Structuralism",
         content: "列维-斯特劳斯。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Humanities+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Humanities+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Humanities", type: "Database" }
         ]
       },
       {
         title: "Political Science: The Leviathan",
         content: "霍布斯。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Humanities+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Humanities+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Humanities", type: "Database" }
         ]
       }
     ]

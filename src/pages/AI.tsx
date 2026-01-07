@@ -126,36 +126,36 @@ const resources: ContentData<ResourceItem> = [
         title: "微积分 (Calculus)",
         content: "MIT 18.01, Stewart Calculus。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "线性代数 (Linear Algebra)",
         content: "MIT 18.06 (Gilbert Strang)。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "概率论与数理统计 (Probability & Stats)",
         content: "Harvard 6.041, Sheldon Ross。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "最优化方法 (Optimization)",
         content: "Boyd Convex Optimization。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       }
     ]
@@ -167,27 +167,27 @@ const resources: ContentData<ResourceItem> = [
         title: "数据结构与算法分析 (Data Structures & Algo)",
         content: "CLRS (算法导论), LeetCode。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "操作系统 (Operating Systems)",
         content: "OSTEP, MIT 6.828。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "计算机体系结构 (Computer Architecture)",
         content: "CSAPP, Hennessy & Patterson。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       }
     ]
@@ -199,27 +199,27 @@ const resources: ContentData<ResourceItem> = [
         title: "人工智能导论 (Intro to AI)",
         content: "Russell & Norvig (AIMA)。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "机器学习基础 (Machine Learning)",
         content: "Andrew Ng CS229, 西瓜书。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "模式识别 (Pattern Recognition)",
         content: "Bishop (PRML)。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       }
     ]
@@ -231,27 +231,27 @@ const resources: ContentData<ResourceItem> = [
         title: "深度学习 (Deep Learning)",
         content: "Goodfellow (花书), CS231n。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "强化学习 (Reinforcement Learning)",
         content: "Sutton & Barto, David Silver。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       },
       {
         title: "类脑计算 (Neuromorphic Computing)",
         content: "Computational Neuroscience。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Artificial+Intelligence+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Artificial+Intelligence+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Artificial+Intelligence", type: "Database" }
         ]
       }
     ]

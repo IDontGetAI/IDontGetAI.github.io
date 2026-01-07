@@ -123,7 +123,6 @@ export function SubjectPageLayout({
             <Card key={i} className="bg-black/60 border-secondary/20 hover:border-secondary/60 transition-all backdrop-blur-md group flex flex-col h-full">
                 <CardHeader className="pb-2">
                     <div className="flex items-center gap-3">
-                        {/* REMOVED: Left-side icon container */}
                         <CardTitle className="text-base font-mono text-secondary group-hover:text-white transition-colors">
                             {item.title}
                         </CardTitle>
@@ -137,12 +136,22 @@ export function SubjectPageLayout({
                     <div className="mt-auto space-y-1">
                         {resourceItem.links?.map((link, idx) => {
                             const Icon = link.type ? ResourceIcon[link.type] : LinkIcon;
-                            return (
+                            const isExternal = link.url.startsWith('http') || link.url.startsWith('//');
+                            
+                            const ButtonContent = (
+                                <Button variant="ghost" size="sm" className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono">
+                                    <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
+                                    <span className="truncate">{link.title}</span>
+                                </Button>
+                            );
+
+                            return isExternal ? (
+                                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                    {ButtonContent}
+                                </a>
+                            ) : (
                                 <Link key={idx} href={link.url}>
-                                    <Button variant="ghost" size="sm" className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono">
-                                        <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
-                                        <span className="truncate">{link.title}</span>
-                                    </Button>
+                                    {ButtonContent}
                                 </Link>
                             );
                         })}
@@ -176,8 +185,10 @@ export function SubjectPageLayout({
                       </Button>
                   </Link>
               )}
-              {noteItem.links?.map((link, idx) => (
-                  <Link key={idx} href={link.url}>
+              {noteItem.links?.map((link, idx) => {
+                  const isExternal = link.url.startsWith('http') || link.url.startsWith('//');
+                  
+                  const ButtonContent = (
                       <Button variant="outline" size="sm" className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1 px-2">
                           <div className="flex items-center overflow-hidden">
                               <FileText className="w-3 h-3 mr-2 flex-shrink-0 opacity-70" />
@@ -185,8 +196,18 @@ export function SubjectPageLayout({
                           </div>
                           <ArrowRight className="w-3 h-3 ml-2 opacity-50 flex-shrink-0" />
                       </Button>
-                  </Link>
-              ))}
+                  );
+
+                  return isExternal ? (
+                      <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+                          {ButtonContent}
+                      </a>
+                  ) : (
+                      <Link key={idx} href={link.url}>
+                          {ButtonContent}
+                      </Link>
+                  );
+              })}
           </div>
 
           {noteItem.tags && (

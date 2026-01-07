@@ -102,36 +102,36 @@ const resources: ContentData<ResourceItem> = [
         title: "实分析 (Real Analysis)",
         content: "Stein, Folland 等教材。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Mathematical+Analysis+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Mathematical+Analysis+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Mathematical+Analysis", type: "Database" }
         ]
       },
       {
         title: "复分析 (Complex Analysis)",
         content: "Ahlfors, Needham 可视化。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Mathematical+Analysis+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Mathematical+Analysis+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Mathematical+Analysis", type: "Database" }
         ]
       },
       {
         title: "泛函分析 (Functional Analysis)",
         content: "Lax, Brezis。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Mathematical+Analysis+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Mathematical+Analysis+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Mathematical+Analysis", type: "Database" }
         ]
       },
       {
         title: "微分方程 (Differential Equations)",
         content: "Arnold, Evans。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Mathematical+Analysis+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Mathematical+Analysis+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Mathematical+Analysis", type: "Database" }
         ]
       }
     ]
@@ -143,18 +143,18 @@ const resources: ContentData<ResourceItem> = [
         title: "线性代数 (Linear Algebra)",
         content: "Strang, Axler。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Mathematical+Analysis+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Mathematical+Analysis+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Mathematical+Analysis", type: "Database" }
         ]
       },
       {
         title: "抽象代数 (Abstract Algebra)",
         content: "Artin, Dummit & Foote。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Mathematical+Analysis+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Mathematical+Analysis+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Mathematical+Analysis", type: "Database" }
         ]
       }
     ]
@@ -166,18 +166,18 @@ const resources: ContentData<ResourceItem> = [
         title: "拓扑学 (Topology)",
         content: "Munkres。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Mathematical+Analysis+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Mathematical+Analysis+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Mathematical+Analysis", type: "Database" }
         ]
       },
       {
         title: "微分几何 (Differential Geometry)",
         content: "do Carmo, Tu。",
         links: [
-            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
-            { title: "Recommended Books", url: "#", type: "Book" },
-            { title: "Academic Search", url: "#", type: "Database" }
+            { title: "Search Online Courses", url: "https://www.google.com/search?q=Mathematical+Analysis+Online+Course", type: "Video" },
+            { title: "Search Books", url: "https://www.google.com/search?q=Mathematical+Analysis+Books", type: "Book" },
+            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Mathematical+Analysis", type: "Database" }
         ]
       }
     ]
