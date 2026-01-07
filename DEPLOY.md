@@ -45,16 +45,16 @@
     ```bash
     # 1. 初始化 Git
     git init
-
+    
     # 2. 添加所有文件
     git add .
-
+    
     # 3. 提交存档
     git commit -m "Initial commit"
-
+    
     # 4. 关联远程仓库 (⚠️ 把下面的地址换成你刚才复制的！)
     git remote add origin https://github.com/你的用户名/你的仓库名.git
-
+    
     # 5. 推送代码 (强制覆盖，避免冲突)
     git branch -M main
     git push -u origin main -f
@@ -97,7 +97,7 @@ npm run deploy
 1.  **保存代码** (可选，为了存档):
     ```bash
     git add .
-    git commit -m "更新了内容"
+    git commit -m "back"
     git push
     ```
 
