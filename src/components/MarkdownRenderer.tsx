@@ -37,10 +37,10 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
     // Use texmath with katex engine, supporting dollar delimiters
     instance.use(tm, { engine: katex, delimiters: 'dollars' });
 
-    // Use anchor plugin for header links
+    // Use anchor plugin for header links (TOC support, but no visual links)
     instance.use(anchor, {
       slugify: slugify,
-      permalink: anchor.permalink.headerLink()
+      // permalink: anchor.permalink.headerLink() // Disabled to prevent clickable headers
     });
 
     // Custom image rule to handle baseUrl
