@@ -2,7 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, Lightbulb, Link as LinkIcon, FileText, History, Layers, ArrowRight } from "lucide-react";
+import { BookOpen, Lightbulb, Link as LinkIcon, FileText, History, Layers, ArrowRight, Video, Database } from "lucide-react";
 import { Link } from "wouter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,7 @@ export interface NoteItem {
 export interface ResourceLink {
   title: string;
   url: string;
+  type?: "Video" | "Book" | "Database"; // Added type
 }
 
 export interface ResourceItem {
@@ -64,6 +65,12 @@ interface SubjectPageLayoutProps {
 function isGrouped<T extends object>(data: ContentData<T>): data is CategoryGroup<T>[] {
   return data.length > 0 && "category" in data[0];
 }
+
+const ResourceIcon: Record<string, any> = {
+  Video: Video,
+  Book: BookOpen,
+  Database: Database
+};
 
 export function SubjectPageLayout({
   title,
@@ -116,27 +123,29 @@ export function SubjectPageLayout({
             <Card key={i} className="bg-black/60 border-secondary/20 hover:border-secondary/60 transition-all backdrop-blur-md group flex flex-col h-full">
                 <CardHeader className="pb-2">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 bg-secondary/10 rounded-full border border-secondary/20">
-                            <BookOpen className="w-4 h-4 text-secondary" />
-                        </div>
+                        {/* REMOVED: Left-side icon container */}
                         <CardTitle className="text-base font-mono text-secondary group-hover:text-white transition-colors">
                             {item.title}
                         </CardTitle>
                     </div>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col">
-                    <p className="text-muted-foreground text-xs leading-relaxed mb-4 pl-1">
+                    <p className="text-muted-foreground text-xs leading-relaxed mb-4">
                         {item.content}
                     </p>
-                    {/* Resource Links */}
+                    {/* Resource Links with Icons */}
                     <div className="mt-auto space-y-1">
-                        {resourceItem.links?.map((link, idx) => (
-                            <Link key={idx} href={link.url}>
-                                <Button variant="outline" size="sm" className="w-full justify-between border-secondary/20 text-secondary/80 hover:text-secondary hover:bg-secondary/10 h-8 text-xs font-mono">
-                                    {link.title} <ArrowRight className="w-3 h-3 ml-2 opacity-50" />
-                                </Button>
-                            </Link>
-                        ))}
+                        {resourceItem.links?.map((link, idx) => {
+                            const Icon = link.type ? ResourceIcon[link.type] : LinkIcon;
+                            return (
+                                <Link key={idx} href={link.url}>
+                                    <Button variant="ghost" size="sm" className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono">
+                                        <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
+                                        <span className="truncate">{link.title}</span>
+                                    </Button>
+                                </Link>
+                            );
+                        })}
                     </div>
                 </CardContent>
             </Card>
@@ -169,8 +178,12 @@ export function SubjectPageLayout({
               )}
               {noteItem.links?.map((link, idx) => (
                   <Link key={idx} href={link.url}>
-                      <Button variant="outline" size="sm" className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1">
-                          {link.title} <ArrowRight className="w-3 h-3 ml-2 opacity-50" />
+                      <Button variant="outline" size="sm" className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1 px-2">
+                          <div className="flex items-center overflow-hidden">
+                              <FileText className="w-3 h-3 mr-2 flex-shrink-0 opacity-70" />
+                              <span className="truncate">{link.title}</span>
+                          </div>
+                          <ArrowRight className="w-3 h-3 ml-2 opacity-50 flex-shrink-0" />
                       </Button>
                   </Link>
               ))}
@@ -256,7 +269,6 @@ export function SubjectPageLayout({
                             <p className="text-gray-300 leading-relaxed whitespace-pre-line text-sm line-clamp-3 mb-6">
                                 {insight.content}
                             </p>
-                            {/* Read More at Bottom Left */}
                             {insight.link && (
                                 <div className="mt-auto self-start">
                                     <Link href={insight.link}>

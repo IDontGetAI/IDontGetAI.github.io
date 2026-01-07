@@ -46,17 +46,29 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "Cognitive Biases: System 1 & 2",
         content: "Thinking, Fast and Slow (Kahneman).",
-        links: [{ title: "资源列表", url: "/refs/psychology/cognitive" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "Evolutionary Psychology",
         content: "The Selfish Gene (Dawkins), Evolutionary Psychology (Buss).",
-        links: [{ title: "资源列表", url: "/refs/psychology/evolutionary" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "Neuroscience: Plasticity",
         content: "The Brain that Changes Itself, Huberman Lab.",
-        links: [{ title: "资源列表", url: "/refs/psychology/neuroscience" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   }

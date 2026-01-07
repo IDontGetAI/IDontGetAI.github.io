@@ -92,27 +92,47 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "数学分析 (Mathematical Analysis)",
         content: "Rudin, Zorich 等经典教材与公开课。",
-        links: [{ title: "资源列表", url: "/refs/math/analysis" }]
+        links: [
+            { title: "MIT 18.01 Single Variable Calculus", url: "https://www.youtube.com/watch?v=7K1sB05pE0A&list=PL590CCC2BC5AF3BC1&pp=iAQB", type: "Video" },
+            { title: "Lecture Notes (MIT 18.01)", url: "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lec1/", type: "Book" },
+            { title: "Mathematical Analysis (Scholar)", url: "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=mathematical+analysis&btnG=", type: "Database" }
+        ]
       },
       {
         title: "实分析 (Real Analysis)",
         content: "Stein, Folland 等教材。",
-        links: [{ title: "资源列表", url: "/refs/math/real" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "复分析 (Complex Analysis)",
         content: "Ahlfors, Needham 可视化。",
-        links: [{ title: "资源列表", url: "/refs/math/complex" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "泛函分析 (Functional Analysis)",
         content: "Lax, Brezis。",
-        links: [{ title: "资源列表", url: "/refs/math/functional" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "微分方程 (Differential Equations)",
         content: "Arnold, Evans。",
-        links: [{ title: "资源列表", url: "/refs/math/de" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   },
@@ -122,12 +142,20 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "线性代数 (Linear Algebra)",
         content: "Strang, Axler。",
-        links: [{ title: "资源列表", url: "/refs/math/linear" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "抽象代数 (Abstract Algebra)",
         content: "Artin, Dummit & Foote。",
-        links: [{ title: "资源列表", url: "/refs/math/abstract" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   },
@@ -137,12 +165,20 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "拓扑学 (Topology)",
         content: "Munkres。",
-        links: [{ title: "资源列表", url: "/refs/math/topology" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "微分几何 (Differential Geometry)",
         content: "do Carmo, Tu。",
-        links: [{ title: "资源列表", url: "/refs/math/diffgeom" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   }

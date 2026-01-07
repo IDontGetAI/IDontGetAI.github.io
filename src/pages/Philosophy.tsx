@@ -91,17 +91,29 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "哲学导论 (Introduction)",
         content: "入门书籍与在线课程资源。",
-        links: [{ title: "资源列表", url: "/refs/philosophy/intro" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "哲学史 (History of Philosophy)",
         content: "通史著作与断代史研究。",
-        links: [{ title: "资源列表", url: "/refs/philosophy/history" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "基础逻辑学 (Logic)",
         content: "逻辑学教材与练习题。",
-        links: [{ title: "资源列表", url: "/refs/philosophy/logic" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   },
@@ -111,22 +123,38 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "语言哲学 (Philosophy of Language)",
         content: "经典文献与当代论文。",
-        links: [{ title: "资源列表", url: "/refs/philosophy/language" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "心灵哲学 (Philosophy of Mind)",
         content: "认知科学交叉研究资源。",
-        links: [{ title: "资源列表", url: "/refs/philosophy/mind" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "形而上学 (Metaphysics)",
         content: "核心文本与讨论。",
-        links: [{ title: "资源列表", url: "/refs/philosophy/metaphysics" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "认识论 (Epistemology)",
         content: "关于知识论证的资源。",
-        links: [{ title: "资源列表", url: "/refs/philosophy/epistemology" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   }

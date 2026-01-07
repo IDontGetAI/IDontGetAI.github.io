@@ -56,22 +56,38 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "Sociology: The Iron Cage",
         content: "韦伯著作选读。",
-        links: [{ title: "资源列表", url: "/refs/humanities/sociology" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "History: The Thucydides Trap",
         content: "修昔底德与阿里森。",
-        links: [{ title: "资源列表", url: "/refs/humanities/history" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "Anthropology: Structuralism",
         content: "列维-斯特劳斯。",
-        links: [{ title: "资源列表", url: "/refs/humanities/anthropology" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "Political Science: The Leviathan",
         content: "霍布斯。",
-        links: [{ title: "资源列表", url: "/refs/humanities/politics" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   }

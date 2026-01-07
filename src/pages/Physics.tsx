@@ -156,27 +156,47 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "力学 (Mechanics)",
         content: "Feynman Lectures Vol 1, Kleppner & Kolenkow。",
-        links: [{ title: "资源列表", url: "/refs/physics/mechanics" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "热学 (Thermal Physics)",
         content: "Schroeder, Kittel & Kroemer。",
-        links: [{ title: "资源列表", url: "/refs/physics/thermal" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "电磁学 (Electromagnetism)",
         content: "Purcell, Griffiths。",
-        links: [{ title: "资源列表", url: "/refs/physics/electromagnetism" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "光学 (Optics)",
         content: "Hecht。",
-        links: [{ title: "资源列表", url: "/refs/physics/optics" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "近代物理 (Modern Physics)",
         content: "Beiser。",
-        links: [{ title: "资源列表", url: "/refs/physics/modern" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   },
@@ -186,22 +206,38 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "理论力学 (Analytical Mechanics)",
         content: "Landau Vol 1, Goldstein。",
-        links: [{ title: "资源列表", url: "/refs/physics/analytical" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "电动力学 (Electrodynamics)",
         content: "Jackson, Landau Vol 2。",
-        links: [{ title: "资源列表", url: "/refs/physics/electrodynamics" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "量子力学 (Quantum Mechanics)",
         content: "Shankar, Griffiths, Sakurai。",
-        links: [{ title: "资源列表", url: "/refs/physics/quantum" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "统计力学 (Statistical Mechanics)",
         content: "Pathria, Landau Vol 5。",
-        links: [{ title: "资源列表", url: "/refs/physics/statistical" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   },
@@ -211,22 +247,38 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "复变函数 (Complex Variables)",
         content: "Arfken & Weber。",
-        links: [{ title: "资源列表", url: "/refs/physics/complex" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "数学物理方程 (Math Physics Eqs)",
         content: "Courant & Hilbert。",
-        links: [{ title: "资源列表", url: "/refs/physics/mmp" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "群论 (Group Theory)",
         content: "Zee, Georgi。",
-        links: [{ title: "资源列表", url: "/refs/physics/group" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "微分几何与拓扑 (Diff Geometry)",
         content: "Nakahara, Schutz。",
-        links: [{ title: "资源列表", url: "/refs/physics/diffgeom" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   }

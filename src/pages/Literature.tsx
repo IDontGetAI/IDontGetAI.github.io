@@ -106,17 +106,29 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "俄国形式主义 (Russian Formalism)",
         content: "什克洛夫斯基与雅各布森。",
-        links: [{ title: "资源列表", url: "/refs/literature/formalism" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "新批评 (New Criticism)",
         content: "瑞恰兹与燕卜荪。",
-        links: [{ title: "资源列表", url: "/refs/literature/new-criticism" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "结构主义与解构 (Structuralism & Deconstruction)",
         content: "巴特与德里达。",
-        links: [{ title: "资源列表", url: "/refs/literature/deconstruction" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   },
@@ -126,17 +138,29 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "古希腊悲剧 (Greek Tragedy)",
         content: "埃斯库罗斯、索福克勒斯、欧里庇得斯。",
-        links: [{ title: "资源列表", url: "/refs/literature/greek-tragedy" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "现代主义 (Modernism)",
         content: "尤利西斯、追忆似水年华。",
-        links: [{ title: "资源列表", url: "/refs/literature/modernism" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "魔幻现实主义 (Magical Realism)",
         content: "博尔赫斯与马尔克斯。",
-        links: [{ title: "资源列表", url: "/refs/literature/magical-realism" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   },
@@ -146,12 +170,20 @@ const resources: ContentData<ResourceItem> = [
       {
         title: "世界文学 (Weltliteratur)",
         content: "歌德谈话录。",
-        links: [{ title: "资源列表", url: "/refs/literature/world-lit" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       },
       {
         title: "影响研究与平行研究",
         content: "梵·第根。",
-        links: [{ title: "资源列表", url: "/refs/literature/comparative" }]
+        links: [
+            { title: "Online Course (Placeholder)", url: "#", type: "Video" },
+            { title: "Recommended Books", url: "#", type: "Book" },
+            { title: "Academic Search", url: "#", type: "Database" }
+        ]
       }
     ]
   }
