@@ -120,21 +120,18 @@ const resources: ContentData<ResourceItem> = [
     items: [
       {
         title: "Microeconomic Theory (Mas-Colell, Whinston, Green)",
-        url: "#",
-        type: "Book",
-        description: "MWG，微观经济学的终极圣经，数学要求极高。"
+        content: "MWG，微观经济学的终极圣经，数学要求极高。",
+        links: [{ title: "资源列表", url: "/refs/economics/micro" }]
       },
       {
         title: "Macroeconomics (Mankiw)",
-        url: "#",
-        type: "Book",
-        description: "曼昆的中级宏观教材，直观清晰。"
+        content: "曼昆的中级宏观教材，直观清晰。",
+        links: [{ title: "资源列表", url: "/refs/economics/macro" }]
       },
       {
         title: "Econometric Analysis (Greene)",
-        url: "#",
-        type: "Book",
-        description: "计量经济学的百科全书。"
+        content: "计量经济学的百科全书。",
+        links: [{ title: "资源列表", url: "/refs/economics/econometrics" }]
       }
     ]
   },
@@ -143,15 +140,13 @@ const resources: ContentData<ResourceItem> = [
     items: [
       {
         title: "Game Theory (Fudenberg & Tirole)",
-        url: "#",
-        type: "Book",
-        description: "博弈论领域的经典参考书。"
+        content: "博弈论领域的经典参考书。",
+        links: [{ title: "资源列表", url: "/refs/economics/game-theory" }]
       },
       {
         title: "Optimization in Economic Theory (Dixit)",
-        url: "#",
-        type: "Book",
-        description: "迪克西特关于经济中最优化方法的精彩讲解。"
+        content: "迪克西特关于经济中最优化方法的精彩讲解。",
+        links: [{ title: "资源列表", url: "/refs/economics/optimization" }]
       }
     ]
   }
@@ -161,17 +156,20 @@ const insights: InsightItem[] = [
   {
     title: "理性人假设的边界",
     content: "经济学建立在理性人假设之上，但这只是一个基准参照系。现实世界中，信息不对称、有限理性 (Bounded Rationality) 和认知偏差无处不在。高级模型正是为了修补这些假设。",
-    date: "2025-10-01"
+    date: "2025-10-01",
+    link: "/logs/economics/rationality"
   },
   {
     title: "均衡作为一种状态",
     content: "纳什均衡不仅仅是博弈的结果，它描述了一种稳定的社会状态：在当前制度下，没有人有动力去改变自己的行为。理解这一点，就能理解制度惯性。",
-    date: "2025-11-10"
+    date: "2025-11-10",
+    link: "/logs/economics/equilibrium"
   },
   {
     title: "计量的因果推断",
     content: "“相关不等于因果”。现代计量经济学的核心革命是因果推断 (Causal Inference)。通过寻找自然实验和工具变量，在观测数据中识别因果关系。",
-    date: "2025-12-05"
+    date: "2025-12-05",
+    link: "/logs/economics/causal"
   }
 ];
 

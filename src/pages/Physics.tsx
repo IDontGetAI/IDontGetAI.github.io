@@ -154,16 +154,29 @@ const resources: ContentData<ResourceItem> = [
     category: "I. 五小力学 (General Physics)",
     items: [
       {
-        title: "The Feynman Lectures on Physics",
-        url: "https://www.feynmanlectures.caltech.edu/",
-        type: "Book",
-        description: "费曼物理学讲义，物理直觉的巅峰，涵盖了从力学到量子的所有基础。"
+        title: "力学 (Mechanics)",
+        content: "Feynman Lectures Vol 1, Kleppner & Kolenkow。",
+        links: [{ title: "资源列表", url: "/refs/physics/mechanics" }]
       },
       {
-        title: "University Physics (Young & Freedman)",
-        url: "#",
-        type: "Book",
-        description: "标准的大学物理教材，习题丰富，基础扎实。"
+        title: "热学 (Thermal Physics)",
+        content: "Schroeder, Kittel & Kroemer。",
+        links: [{ title: "资源列表", url: "/refs/physics/thermal" }]
+      },
+      {
+        title: "电磁学 (Electromagnetism)",
+        content: "Purcell, Griffiths。",
+        links: [{ title: "资源列表", url: "/refs/physics/electromagnetism" }]
+      },
+      {
+        title: "光学 (Optics)",
+        content: "Hecht。",
+        links: [{ title: "资源列表", url: "/refs/physics/optics" }]
+      },
+      {
+        title: "近代物理 (Modern Physics)",
+        content: "Beiser。",
+        links: [{ title: "资源列表", url: "/refs/physics/modern" }]
       }
     ]
   },
@@ -171,27 +184,49 @@ const resources: ContentData<ResourceItem> = [
     category: "II. 四大力学 (Theoretical Physics)",
     items: [
       {
-        title: "Landau & Lifshitz Course of Theoretical Physics",
-        url: "#",
-        type: "Book",
-        description: "朗道十卷。理论物理的百科全书，风格简练深刻，被称为“物理学家的圣经”。"
+        title: "理论力学 (Analytical Mechanics)",
+        content: "Landau Vol 1, Goldstein。",
+        links: [{ title: "资源列表", url: "/refs/physics/analytical" }]
       },
       {
-        title: "Principles of Quantum Mechanics (Shankar)",
-        url: "#",
-        type: "Book",
-        description: "非常清晰的量子力学教材，特别是对狄拉克符号的讲解。"
+        title: "电动力学 (Electrodynamics)",
+        content: "Jackson, Landau Vol 2。",
+        links: [{ title: "资源列表", url: "/refs/physics/electrodynamics" }]
+      },
+      {
+        title: "量子力学 (Quantum Mechanics)",
+        content: "Shankar, Griffiths, Sakurai。",
+        links: [{ title: "资源列表", url: "/refs/physics/quantum" }]
+      },
+      {
+        title: "统计力学 (Statistical Mechanics)",
+        content: "Pathria, Landau Vol 5。",
+        links: [{ title: "资源列表", url: "/refs/physics/statistical" }]
       }
     ]
   },
   {
-    category: "III. 数学物理 (Math Physics)",
+    category: "III. 数学物理 (Mathematical Physics)",
     items: [
       {
-        title: "Geometry, Topology and Physics (Nakahara)",
-        url: "#",
-        type: "Book",
-        description: "理论物理研究生必读，连接现代数学与物理的桥梁。"
+        title: "复变函数 (Complex Variables)",
+        content: "Arfken & Weber。",
+        links: [{ title: "资源列表", url: "/refs/physics/complex" }]
+      },
+      {
+        title: "数学物理方程 (Math Physics Eqs)",
+        content: "Courant & Hilbert。",
+        links: [{ title: "资源列表", url: "/refs/physics/mmp" }]
+      },
+      {
+        title: "群论 (Group Theory)",
+        content: "Zee, Georgi。",
+        links: [{ title: "资源列表", url: "/refs/physics/group" }]
+      },
+      {
+        title: "微分几何与拓扑 (Diff Geometry)",
+        content: "Nakahara, Schutz。",
+        links: [{ title: "资源列表", url: "/refs/physics/diffgeom" }]
       }
     ]
   }
@@ -201,17 +236,20 @@ const insights: InsightItem[] = [
   {
     title: "决定论的终结",
     content: "牛顿力学让我们相信如果知道所有粒子的位置和动量，就能预测未来。但海森堡不确定性原理打破了这个幻梦。微观世界本质上是概率的，上帝确实在掷骰子。",
-    date: "2025-11-30"
+    date: "2025-11-30",
+    link: "/logs/physics/uncertainty"
   },
   {
     title: "对称性指引物理定律",
     content: "诺特定理 (Noether's Theorem) 告诉我们，每一个连续对称性都对应一个守恒量。时间平移对称对应能量守恒，空间平移对应动量守恒。物理学的终极目标就是寻找对称性。",
-    date: "2026-01-10"
+    date: "2026-01-10",
+    link: "/logs/physics/symmetry"
   },
   {
     title: "最小作用量原理",
     content: "大自然是一个精明的会计师。光走最短时间路径，粒子走作用量极值路径。费曼路径积分表明，量子粒子实际上“尝试”了所有可能的路径。",
-    date: "2026-02-05"
+    date: "2026-02-05",
+    link: "/logs/physics/action"
   }
 ];
 

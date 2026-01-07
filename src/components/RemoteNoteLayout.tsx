@@ -28,7 +28,6 @@ export function RemoteNoteLayout({
   const { content, loading, error } = useFetchMarkdown(rawUrl);
 
   // Auto-derive baseUrl from rawUrl if not provided
-  // Example: https://raw.github.../folder/note.md -> https://raw.github.../folder/
   const derivedBaseUrl = baseUrl || rawUrl.substring(0, rawUrl.lastIndexOf('/') + 1);
 
   return (
@@ -44,7 +43,8 @@ export function RemoteNoteLayout({
           </Button>
         </Link>
         
-        <div className="bg-black/80 backdrop-blur-xl p-8 md:p-12 rounded-xl border border-white/10 shadow-2xl min-h-[500px]">
+        {/* Updated Container Style: Match v6.0 Glassmorphism (bg-black/60) instead of v6.1 (bg-black/80) */}
+        <div className="bg-black/60 backdrop-blur-md p-8 md:p-12 rounded-xl border border-white/10 shadow-2xl min-h-[500px]">
             {loading && (
                 <div className="flex flex-col items-center justify-center h-full py-20 text-muted-foreground">
                     <Loader2 className="w-10 h-10 animate-spin mb-4 text-primary" />

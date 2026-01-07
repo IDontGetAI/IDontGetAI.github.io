@@ -101,36 +101,57 @@ const notes: ContentData<NoteItem> = [
 
 const resources: ContentData<ResourceItem> = [
   {
-    category: "I. 经典文本 (Classics)",
+    category: "I. 文学理论 (Literary Theory)",
     items: [
       {
-        title: "The Norton Anthology of World Literature",
-        url: "#",
-        type: "Book",
-        description: "诺顿世界文学选集，涵盖了从吉尔伽美什到当代的最重要文本。"
+        title: "俄国形式主义 (Russian Formalism)",
+        content: "什克洛夫斯基与雅各布森。",
+        links: [{ title: "资源列表", url: "/refs/literature/formalism" }]
       },
       {
-        title: "Ulysses (James Joyce)",
-        url: "#",
-        type: "Book",
-        description: "现代主义的巅峰，也是最难读的天书之一。一天之内的奥德赛。"
+        title: "新批评 (New Criticism)",
+        content: "瑞恰兹与燕卜荪。",
+        links: [{ title: "资源列表", url: "/refs/literature/new-criticism" }]
+      },
+      {
+        title: "结构主义与解构 (Structuralism & Deconstruction)",
+        content: "巴特与德里达。",
+        links: [{ title: "资源列表", url: "/refs/literature/deconstruction" }]
       }
     ]
   },
   {
-    category: "II. 理论导读 (Theory)",
+    category: "II. 文学史 (Literary History)",
     items: [
       {
-        title: "Literary Theory: An Introduction (Terry Eagleton)",
-        url: "#",
-        type: "Book",
-        description: "伊格尔顿的经典入门，用马克思主义视角犀利点评各路学派。"
+        title: "古希腊悲剧 (Greek Tragedy)",
+        content: "埃斯库罗斯、索福克勒斯、欧里庇得斯。",
+        links: [{ title: "资源列表", url: "/refs/literature/greek-tragedy" }]
       },
       {
-        title: "Yale: The Modern Novel",
-        url: "https://oyc.yale.edu/english/engl-291",
-        type: "Course",
-        description: "耶鲁公开课，深入剖析现代小说形式的演变。"
+        title: "现代主义 (Modernism)",
+        content: "尤利西斯、追忆似水年华。",
+        links: [{ title: "资源列表", url: "/refs/literature/modernism" }]
+      },
+      {
+        title: "魔幻现实主义 (Magical Realism)",
+        content: "博尔赫斯与马尔克斯。",
+        links: [{ title: "资源列表", url: "/refs/literature/magical-realism" }]
+      }
+    ]
+  },
+  {
+    category: "III. 比较文学 (Comparative Literature)",
+    items: [
+      {
+        title: "世界文学 (Weltliteratur)",
+        content: "歌德谈话录。",
+        links: [{ title: "资源列表", url: "/refs/literature/world-lit" }]
+      },
+      {
+        title: "影响研究与平行研究",
+        content: "梵·第根。",
+        links: [{ title: "资源列表", url: "/refs/literature/comparative" }]
       }
     ]
   }
@@ -140,17 +161,20 @@ const insights: InsightItem[] = [
   {
     title: "文学即新闻",
     content: "庞德说：“文学是那种以此为新闻的新闻 (Literature is news that stays news)。” 真正伟大的作品，无论过多少个世纪，读来依然振聋发聩，仿佛就在写当下的我们。",
-    date: "2025-11-01"
+    date: "2025-11-01",
+    link: "/logs/literature/news"
   },
   {
     title: "虚构的真实性",
     content: "历史记录发生了什么，而文学记录可能发生什么。亚里士多德认为诗比历史更具哲学性，因为它描述的是普遍的真理，而非偶然的事实。",
-    date: "2025-12-10"
+    date: "2025-12-10",
+    link: "/logs/literature/truth"
   },
   {
     title: "作为他者的读者",
     content: "阅读是唯一的“灵魂附体”技术。我们在阅读中暂时放弃自我，进入他人的意识，体验从未经历过的人生。这是对抗偏见与狭隘的最强解药。",
-    date: "2026-01-05"
+    date: "2026-01-05",
+    link: "/logs/literature/empathy"
   }
 ];
 

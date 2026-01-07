@@ -10,6 +10,7 @@ import Home from "@/pages/Home";
 import AI from "@/pages/AI";
 import Math from "@/pages/Math";
 import MathAnalysisNote from "@/pages/notes/math/MathAnalysisNote";
+import LogicLog from "@/pages/logs/philosophy/LogicLog";
 import RemoteNoteDemo from "@/pages/notes/RemoteNoteDemo";
 import Physics from "@/pages/Physics";
 import Philosophy from "@/pages/Philosophy";
@@ -28,8 +29,6 @@ function AppRouter() {
           <Route path="/" component={Home} />
           <Route path="/ai" component={AI} />
           <Route path="/math" component={Math} />
-          <Route path="/math/analysis-note" component={MathAnalysisNote} />
-          <Route path="/remote-demo" component={RemoteNoteDemo} />
           <Route path="/physics" component={Physics} />
           <Route path="/philosophy" component={Philosophy} />
           <Route path="/psychology" component={Psychology} />
@@ -37,6 +36,44 @@ function AppRouter() {
           <Route path="/literature" component={Literature} />
           <Route path="/humanities" component={Humanities} />
           <Route path="/tools" component={Tools} />
+          
+          {/* Specific Notes & Logs */}
+          <Route path="/notes/math/analysis-note" component={MathAnalysisNote} />
+          <Route path="/logs/philosophy/logic-log" component={LogicLog} />
+          <Route path="/remote-demo" component={RemoteNoteDemo} />
+
+          {/* Placeholder Fallbacks */}
+          <Route path="/notes/:subject/:topic">
+            {(params) => (
+                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
+                    <h1 className="text-2xl font-display text-primary">Note Under Construction</h1>
+                    <p className="text-muted-foreground font-mono">
+                        Target: <span className="text-white">src/pages/notes/{params.subject}/{params.topic}.tsx</span>
+                    </p>
+                </div>
+            )}
+          </Route>
+          <Route path="/refs/:subject/:topic">
+            {(params) => (
+                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
+                    <h1 className="text-2xl font-display text-secondary">Resources Under Construction</h1>
+                    <p className="text-muted-foreground font-mono">
+                        Target: <span className="text-white">src/pages/refs/{params.subject}/{params.topic}.tsx</span>
+                    </p>
+                </div>
+            )}
+          </Route>
+          <Route path="/logs/:subject/:topic">
+            {(params) => (
+                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
+                    <h1 className="text-2xl font-display text-white">Log Under Construction</h1>
+                    <p className="text-muted-foreground font-mono">
+                        Target: <span className="text-white">src/pages/logs/{params.subject}/{params.topic}.tsx</span>
+                    </p>
+                </div>
+            )}
+          </Route>
+
           <Route component={NotFound} />
         </Switch>
       </Layout>

@@ -2,7 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, Lightbulb, Link as LinkIcon, FileText, History, Layers, ArrowRight, ExternalLink } from "lucide-react";
+import { BookOpen, Lightbulb, Link as LinkIcon, FileText, History, Layers, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -18,21 +18,25 @@ export interface NoteItem {
   date?: string;
   tags?: string[];
   links?: NoteLink[];
-  // Deprecated: single link field, kept for backward compatibility if needed, but we will migrate away
   link?: string; 
+}
+
+export interface ResourceLink {
+  title: string;
+  url: string;
 }
 
 export interface ResourceItem {
   title: string;
-  url?: string;
-  type?: "Book" | "Course" | "Article" | "Tool" | "Paper";
-  description?: string;
+  content: string; // Description
+  links?: ResourceLink[];
 }
 
 export interface InsightItem {
   title: string;
   content: string;
   date: string;
+  link?: string;
 }
 
 export interface HistoryItem {
@@ -102,90 +106,93 @@ export function SubjectPageLayout({
   };
 
   const renderCard = (item: any, i: number, type: 'note' | 'resource') => {
-    if (type === 'note') {
-      const noteItem = item as NoteItem;
-      return (
-        <Card key={i} className="bg-black/60 border-white/10 hover:border-primary/50 transition-all backdrop-blur-md group flex flex-col h-full">
-          <CardHeader>
-            <div className="flex justify-between items-start">
-              <CardTitle className="text-base font-mono text-primary group-hover:text-white transition-colors">
-                  {noteItem.title}
-              </CardTitle>
-              {noteItem.date && <span className="text-[10px] font-mono text-muted-foreground">{noteItem.date}</span>}
-            </div>
-          </CardHeader>
-          <CardContent className="flex-1 flex flex-col">
-            <p className="text-muted-foreground text-xs leading-relaxed mb-4">
-              {noteItem.content}
-            </p>
-            
-            {/* New Links Section */}
-            {(noteItem.links && noteItem.links.length > 0) || noteItem.link ? (
-                <div className="mt-auto space-y-2">
-                    {/* Support legacy single link */}
-                    {noteItem.link && !noteItem.links && (
-                         <Link href={noteItem.link}>
-                            <Button variant="outline" size="sm" className="w-full justify-between border-primary/20 text-primary hover:bg-primary/10 h-8 text-xs font-mono">
-                                Read Note <ArrowRight className="w-3 h-3 ml-2" />
-                            </Button>
-                        </Link>
-                    )}
-                    {/* Support new multiple links */}
-                    {noteItem.links?.map((link, idx) => (
-                        <Link key={idx} href={link.url}>
-                            <Button variant="outline" size="sm" className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1">
-                                {link.title} <ArrowRight className="w-3 h-3 ml-2 opacity-50" />
-                            </Button>
-                        </Link>
-                    ))}
-                </div>
-            ) : null}
+    const noteItem = item as NoteItem; 
+    const resourceItem = item as ResourceItem;
+    const isNote = type === 'note';
 
-            {/* Footer Tags */}
-            {noteItem.tags && (
-              <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-white/5">
-                {noteItem.tags.map((tag: string) => (
-                  <Badge key={tag} variant="outline" className="text-[9px] border-primary/30 text-primary/70">
-                    #{tag}
-                  </Badge>
-                ))}
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      );
-    } else {
-      return (
-        <div key={i} className="flex items-center justify-between p-3 bg-black/60 border border-white/10 rounded-lg hover:bg-white/5 transition-colors group">
-          <div className="flex items-center gap-3 overflow-hidden">
-            <div className="p-2 bg-secondary/10 rounded-full flex-shrink-0">
-              <BookOpen className="w-4 h-4 text-secondary" />
-            </div>
-            <div className="min-w-0">
-              <h4 className="font-bold text-sm text-secondary group-hover:underline cursor-pointer truncate">
-                {item.url ? (
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                ) : (
-                  item.title
-                )}
-              </h4>
-              {item.description && <p className="text-xs text-muted-foreground truncate">{item.description}</p>}
-            </div>
-          </div>
-          {item.type && (
-            <Badge className="bg-secondary/20 text-secondary hover:bg-secondary/30 ml-2 whitespace-nowrap text-[10px]">
-              {item.type}
-            </Badge>
-          )}
-        </div>
-      );
+    // Resource Card Style (Blue Theme)
+    if (!isNote) {
+        return (
+            <Card key={i} className="bg-black/60 border-secondary/20 hover:border-secondary/60 transition-all backdrop-blur-md group flex flex-col h-full">
+                <CardHeader className="pb-2">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 bg-secondary/10 rounded-full border border-secondary/20">
+                            <BookOpen className="w-4 h-4 text-secondary" />
+                        </div>
+                        <CardTitle className="text-base font-mono text-secondary group-hover:text-white transition-colors">
+                            {item.title}
+                        </CardTitle>
+                    </div>
+                </CardHeader>
+                <CardContent className="flex-1 flex flex-col">
+                    <p className="text-muted-foreground text-xs leading-relaxed mb-4 pl-1">
+                        {item.content}
+                    </p>
+                    {/* Resource Links */}
+                    <div className="mt-auto space-y-1">
+                        {resourceItem.links?.map((link, idx) => (
+                            <Link key={idx} href={link.url}>
+                                <Button variant="outline" size="sm" className="w-full justify-between border-secondary/20 text-secondary/80 hover:text-secondary hover:bg-secondary/10 h-8 text-xs font-mono">
+                                    {link.title} <ArrowRight className="w-3 h-3 ml-2 opacity-50" />
+                                </Button>
+                            </Link>
+                        ))}
+                    </div>
+                </CardContent>
+            </Card>
+        );
     }
+
+    // Note Card Style (Green/Primary Theme)
+    return (
+      <Card key={i} className="bg-black/60 border-white/10 hover:border-primary/50 transition-all backdrop-blur-md group flex flex-col h-full">
+        <CardHeader>
+          <div className="flex justify-between items-start">
+            <CardTitle className="text-base font-mono text-primary group-hover:text-white transition-colors">
+                {item.title}
+            </CardTitle>
+            {noteItem.date && <span className="text-[10px] font-mono text-muted-foreground">{noteItem.date}</span>}
+          </div>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col">
+          <p className="text-muted-foreground text-xs leading-relaxed mb-4">
+            {item.content}
+          </p>
+          
+          <div className="mt-auto space-y-2">
+              {noteItem.link && !noteItem.links && (
+                   <Link href={noteItem.link}>
+                      <Button variant="outline" size="sm" className="w-full justify-between border-primary/20 text-primary hover:bg-primary/10 h-8 text-xs font-mono">
+                          Read Note <ArrowRight className="w-3 h-3 ml-2" />
+                      </Button>
+                  </Link>
+              )}
+              {noteItem.links?.map((link, idx) => (
+                  <Link key={idx} href={link.url}>
+                      <Button variant="outline" size="sm" className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1">
+                          {link.title} <ArrowRight className="w-3 h-3 ml-2 opacity-50" />
+                      </Button>
+                  </Link>
+              ))}
+          </div>
+
+          {noteItem.tags && (
+            <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-white/5">
+              {noteItem.tags.map((tag: string) => (
+                <Badge key={tag} variant="outline" className="text-[9px] border-primary/30 text-primary/70">
+                  #{tag}
+                </Badge>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    );
   };
 
   return (
     <PageLayout title={title} subtitle={subtitle} backgroundImage={backgroundImage}>
       
-      {/* History Timeline */}
       {history && (
         <div className="mb-8">
           <Card className="bg-black/60 border-primary/30 backdrop-blur-sm">
@@ -215,7 +222,6 @@ export function SubjectPageLayout({
         </div>
       )}
 
-      {/* Main Content Tabs */}
       <Tabs defaultValue="notes" className="w-full">
         <TabsList className="bg-black/50 border border-border w-full justify-start overflow-x-auto mb-6 p-1">
           <TabsTrigger value="notes" className="font-mono min-w-[100px] gap-2 data-[state=active]:bg-primary data-[state=active]:text-black">
@@ -242,14 +248,24 @@ export function SubjectPageLayout({
                 {insights.map((insight, i) => (
                     <div key={i} className="relative pl-8 border-l-2 border-white/20 pb-8 last:pb-0">
                         <div className="absolute -left-[9px] top-0 w-4 h-4 bg-background border-2 border-white rounded-full" />
-                        <div className="bg-black/40 border border-white/10 p-6 rounded-lg backdrop-blur-sm">
+                        <div className="bg-black/60 border border-white/10 p-6 rounded-lg backdrop-blur-sm group hover:border-white/30 transition-colors flex flex-col">
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-xl font-display text-white">{insight.title}</h3>
                                 <span className="text-xs font-mono text-muted-foreground">{insight.date}</span>
                             </div>
-                            <p className="text-gray-300 leading-relaxed whitespace-pre-line text-sm">
+                            <p className="text-gray-300 leading-relaxed whitespace-pre-line text-sm line-clamp-3 mb-6">
                                 {insight.content}
                             </p>
+                            {/* Read More at Bottom Left */}
+                            {insight.link && (
+                                <div className="mt-auto self-start">
+                                    <Link href={insight.link}>
+                                        <Button variant="link" className="p-0 h-auto text-primary hover:text-white font-mono text-xs flex items-center">
+                                            Read More <ArrowRight className="w-3 h-3 ml-1" />
+                                        </Button>
+                                    </Link>
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}

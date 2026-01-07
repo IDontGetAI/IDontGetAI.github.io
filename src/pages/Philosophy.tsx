@@ -11,13 +11,13 @@ const notes: ContentData<NoteItem> = [
         date: "2025-06-01",
         tags: ["Intro", "Socrates"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/philosophy/introduction-1" },
-            { title: "笔记2 (待添加)", url: "/notes/philosophy/introduction-2" }
+            { title: "笔记1 (待添加)", url: "/notes/philosophy/intro-1" },
+            { title: "笔记2 (待添加)", url: "/notes/philosophy/intro-2" }
         ]
       },
       {
         title: "哲学史 (History of Philosophy)",
-        content: "从前苏格拉底学派（泰勒斯、赫拉克利特）到希腊三贤。中世纪经院哲学。近代唯理主义（笛卡尔）与经验主义（休谟）。康德的哥白尼式革命。",
+        content: "从前苏格拉底学派到希腊三贤。中世纪经院哲学。近代唯理主义与经验主义。康德的哥白尼式革命。",
         date: "2025-06-15",
         tags: ["History", "Kant"],
         links: [
@@ -27,7 +27,7 @@ const notes: ContentData<NoteItem> = [
       },
       {
         title: "基础逻辑学 (Logic)",
-        content: "命题逻辑与谓词逻辑。三段论。有效性与可靠性。逻辑谬误（稻草人、人身攻击）。弗雷格与现代逻辑的诞生。",
+        content: "命题逻辑与谓词逻辑。三段论。有效性与可靠性。逻辑谬误。弗雷格与现代逻辑的诞生。",
         date: "2025-07-01",
         tags: ["Logic", "Frege"],
         links: [
@@ -42,7 +42,7 @@ const notes: ContentData<NoteItem> = [
     items: [
       {
         title: "语言哲学 (Philosophy of Language)",
-        content: "弗雷格的含义与指称 (Sense and Reference)。罗素的摹状词理论。维特根斯坦的前期（图象论）与后期（语言游戏）。奥斯汀的言语行为理论。",
+        content: "弗雷格的含义与指称。罗素的摹状词理论。维特根斯坦的前期与后期。言语行为理论。",
         date: "2025-08-01",
         tags: ["Language", "Wittgenstein"],
         links: [
@@ -52,7 +52,7 @@ const notes: ContentData<NoteItem> = [
       },
       {
         title: "心灵哲学 (Philosophy of Mind)",
-        content: "身心问题 (Mind-Body Problem)：二元论 vs 物理主义。图灵测试与中文屋论证。功能主义。意识的困难问题 (Hard Problem of Consciousness)。",
+        content: "身心问题：二元论 vs 物理主义。图灵测试与中文屋。功能主义。意识的困难问题。",
         date: "2025-08-20",
         tags: ["Mind", "Consciousness"],
         links: [
@@ -62,7 +62,7 @@ const notes: ContentData<NoteItem> = [
       },
       {
         title: "形而上学 (Metaphysics)",
-        content: "存在是什么？共相与殊相。可能世界模态实在论（刘易斯）。时间与空间的本质。自由意志与决定论的相容性问题。",
+        content: "存在是什么？共相与殊相。可能世界模态实在论。时间与空间。自由意志与决定论。",
         date: "2025-09-10",
         tags: ["Metaphysics", "Being"],
         links: [
@@ -72,7 +72,7 @@ const notes: ContentData<NoteItem> = [
       },
       {
         title: "认识论 (Epistemology)",
-        content: "JTB 理论：知识是证成的真信念。盖梯尔反例。基础主义 vs 融贯主义。怀疑论的挑战（缸中之脑）。",
+        content: "JTB 理论。盖梯尔反例。基础主义 vs 融贯主义。怀疑论的挑战（缸中之脑）。",
         date: "2025-09-30",
         tags: ["Knowledge", "Gettier"],
         links: [
@@ -89,16 +89,19 @@ const resources: ContentData<ResourceItem> = [
     category: "I. 哲学基础 (Foundations)",
     items: [
       {
-        title: "A History of Western Philosophy (Russell)",
-        url: "#",
-        type: "Book",
-        description: "罗素的《西方哲学史》，文笔优美，观点鲜明，虽有主观偏见但不可错过。"
+        title: "哲学导论 (Introduction)",
+        content: "入门书籍与在线课程资源。",
+        links: [{ title: "资源列表", url: "/refs/philosophy/intro" }]
       },
       {
-        title: "Think (Simon Blackburn)",
-        url: "#",
-        type: "Book",
-        description: "极好的哲学导论，围绕核心大问题展开。"
+        title: "哲学史 (History of Philosophy)",
+        content: "通史著作与断代史研究。",
+        links: [{ title: "资源列表", url: "/refs/philosophy/history" }]
+      },
+      {
+        title: "基础逻辑学 (Logic)",
+        content: "逻辑学教材与练习题。",
+        links: [{ title: "资源列表", url: "/refs/philosophy/logic" }]
       }
     ]
   },
@@ -106,22 +109,24 @@ const resources: ContentData<ResourceItem> = [
     category: "II. 分析哲学核心 (Analytic Philosophy)",
     items: [
       {
-        title: "Philosophical Investigations (Wittgenstein)",
-        url: "#",
-        type: "Book",
-        description: "《哲学研究》。语言的界限就是世界的界限。治疗型哲学的巅峰。"
+        title: "语言哲学 (Philosophy of Language)",
+        content: "经典文献与当代论文。",
+        links: [{ title: "资源列表", url: "/refs/philosophy/language" }]
       },
       {
-        title: "Naming and Necessity (Kripke)",
-        url: "#",
-        type: "Book",
-        description: "克里普克的《命名与必然性》，模态逻辑与形而上学的经典。"
+        title: "心灵哲学 (Philosophy of Mind)",
+        content: "认知科学交叉研究资源。",
+        links: [{ title: "资源列表", url: "/refs/philosophy/mind" }]
       },
       {
-        title: "Stanford Encyclopedia of Philosophy (SEP)",
-        url: "https://plato.stanford.edu/",
-        type: "Article",
-        description: "斯坦福哲学百科，学术界最权威的在线资源。"
+        title: "形而上学 (Metaphysics)",
+        content: "核心文本与讨论。",
+        links: [{ title: "资源列表", url: "/refs/philosophy/metaphysics" }]
+      },
+      {
+        title: "认识论 (Epistemology)",
+        content: "关于知识论证的资源。",
+        links: [{ title: "资源列表", url: "/refs/philosophy/epistemology" }]
       }
     ]
   }
@@ -129,19 +134,21 @@ const resources: ContentData<ResourceItem> = [
 
 const insights: InsightItem[] = [
   {
+    title: "简明逻辑学导论 (Introduction to Logic)",
+    content: "逻辑学是哲学的工具。论证的有效性与可靠性。形式谬误与非形式谬误。",
+    date: "2026-01-07",
+    link: "/logs/philosophy/logic-log"
+  },
+  {
     title: "语言的牢笼",
-    content: "维特根斯坦告诉我们，许多哲学问题（如“什么是美？”）实际上是语言的误用。我们像苍蝇被困在捕蝇瓶里一样被困在语言游戏中。哲学的任务是向苍蝇展示飞出瓶子的路。",
-    date: "2025-10-15"
+    content: "维特根斯坦告诉我们，许多哲学问题（如“什么是美？”）实际上是语言的误用。我们像苍蝇被困在捕蝇瓶里一样被困在语言游戏中。",
+    date: "2025-10-15",
+    link: "/logs/philosophy/language-prison"
   },
   {
     title: "缸中之脑的不可证伪性",
-    content: "我们无法证明自己不是缸中之脑，但这并不意味着我们要陷入虚无。普特南试图用语义外在论（Putnam's externalism）来反驳它，但这依然是一个令人不安的思想实验。",
+    content: "我们无法证明自己不是缸中之脑，但这并不意味着我们要陷入虚无。普特南试图用语义外在论来反驳它。",
     date: "2025-11-20"
-  },
-  {
-    title: "感受质 (Qualia) 的鸿沟",
-    content: "即使玛丽知道关于红色的所有物理知识，当她第一次走出黑白房间看到红色时，她学到了新东西吗？如果是，那么物理主义就是错的。主观体验似乎无法完全还原为物理过程。",
-    date: "2025-12-10"
   }
 ];
 
@@ -151,7 +158,6 @@ export default function Philosophy() {
       title="Philosophy"
       subtitle="在无意义的宇宙中寻找意义"
       backgroundImage={abstractBg}
-      
       notes={notes}
       resources={resources}
       insights={insights}

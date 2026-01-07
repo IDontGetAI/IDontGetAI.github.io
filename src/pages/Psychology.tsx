@@ -41,24 +41,22 @@ const notes: ContentData<NoteItem> = [
 
 const resources: ContentData<ResourceItem> = [
   {
-    category: "I. 书籍 (Books)",
+    category: "I. 心理学 (Psychology)",
     items: [
       {
-        title: "Thinking, Fast and Slow",
-        url: "#",
-        type: "Book",
-        description: "丹尼尔·卡尼曼。行为经济学和认知心理学的基石。"
-      }
-    ]
-  },
-  {
-    category: "II. 播客 (Podcasts)",
-    items: [
+        title: "Cognitive Biases: System 1 & 2",
+        content: "Thinking, Fast and Slow (Kahneman).",
+        links: [{ title: "资源列表", url: "/refs/psychology/cognitive" }]
+      },
       {
-        title: "Huberman Lab Podcast",
-        url: "https://www.hubermanlab.com/",
-        type: "Article",
-        description: "斯坦福教授主讲，基于神经科学的日常效能提升指南。"
+        title: "Evolutionary Psychology",
+        content: "The Selfish Gene (Dawkins), Evolutionary Psychology (Buss).",
+        links: [{ title: "资源列表", url: "/refs/psychology/evolutionary" }]
+      },
+      {
+        title: "Neuroscience: Plasticity",
+        content: "The Brain that Changes Itself, Huberman Lab.",
+        links: [{ title: "资源列表", url: "/refs/psychology/neuroscience" }]
       }
     ]
   }
@@ -68,12 +66,14 @@ const insights: InsightItem[] = [
   {
     title: "自由意志是幻觉吗？",
     content: "Libet 实验显示，在意识到决定之前，大脑已经产生了行动电位。如果你无法控制下一个念头是什么，你是自由的吗？或许我们只是生化算法的旁观者。",
-    date: "2025-10-31"
+    date: "2025-10-31",
+    link: "/logs/psychology/free-will"
   },
   {
     title: "叙事自我 (The Narrative Self)",
     content: "左脑是一个解释器 (The Interpreter)。它不断编造故事来合理化我们的行为，即使这些行为由分裂的右脑或潜意识驱动。我们活在自己编织的连贯故事中。",
-    date: "2025-12-08"
+    date: "2025-12-08",
+    link: "/logs/psychology/narrative-self"
   }
 ];
 

@@ -51,30 +51,27 @@ const notes: ContentData<NoteItem> = [
 
 const resources: ContentData<ResourceItem> = [
   {
-    category: "I. 书籍 (Books)",
+    category: "I. 人文社科 (Humanities)",
     items: [
       {
-        title: "Guns, Germs, and Steel",
-        url: "#",
-        type: "Book",
-        description: "贾雷德·戴蒙德。地理环境决定论。为什么欧亚大陆征服了世界，而不是相反？"
+        title: "Sociology: The Iron Cage",
+        content: "韦伯著作选读。",
+        links: [{ title: "资源列表", url: "/refs/humanities/sociology" }]
       },
       {
-        title: "Sapiens: A Brief History of Humankind",
-        url: "#",
-        type: "Book",
-        description: "尤瓦尔·赫拉利。虚构故事（宗教、国家、货币）是智人合作并统治地球的超能力。"
-      }
-    ]
-  },
-  {
-    category: "II. 课程 (Courses)",
-    items: [
+        title: "History: The Thucydides Trap",
+        content: "修昔底德与阿里森。",
+        links: [{ title: "资源列表", url: "/refs/humanities/history" }]
+      },
       {
-        title: "Crash Course: Sociology",
-        url: "https://thecrashcourse.com/topic/sociology/",
-        type: "Course",
-        description: "快速建立社会学思维框架，从社会化到分层。"
+        title: "Anthropology: Structuralism",
+        content: "列维-斯特劳斯。",
+        links: [{ title: "资源列表", url: "/refs/humanities/anthropology" }]
+      },
+      {
+        title: "Political Science: The Leviathan",
+        content: "霍布斯。",
+        links: [{ title: "资源列表", url: "/refs/humanities/politics" }]
       }
     ]
   }
@@ -84,12 +81,14 @@ const insights: InsightItem[] = [
   {
     title: "想象的共同体",
     content: "民族国家本质上是一个“想象的共同体” (Benedict Anderson)。我们与从未谋面的同胞建立联系，仅仅因为我们共享同一套叙事和符号系统。印刷资本主义是其催化剂。",
-    date: "2025-10-05"
+    date: "2025-10-05",
+    link: "/logs/humanities/imagined-communities"
   },
   {
     title: "文明的脆弱性",
     content: "任何文明离野蛮状态只有三顿饭的距离。社会秩序并非理所当然，它建立在复杂的信任网络和资源分配之上。当供应链断裂，社会契约也会随之崩塌。",
-    date: "2025-11-20"
+    date: "2025-11-20",
+    link: "/logs/humanities/fragility"
   }
 ];
 
