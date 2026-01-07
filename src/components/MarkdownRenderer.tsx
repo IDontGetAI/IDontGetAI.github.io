@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 import MarkdownIt from 'markdown-it';
 import tm from 'markdown-it-texmath';
+import anchor from 'markdown-it-anchor';
 import katex from 'katex';
 import hljs from 'highlight.js';
 import 'katex/dist/katex.min.css';
 import 'highlight.js/styles/github.css';
 import '@/styles/cogito.css';
+import { slugify } from '@/lib/slugify';
 
 interface MarkdownRendererProps {
   content: string;
@@ -34,6 +36,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
 
     // Use texmath with katex engine, supporting dollar delimiters
     instance.use(tm, { engine: katex, delimiters: 'dollars' });
+
+    // Use anchor plugin for header links
+    instance.use(anchor, {
+      slugify: slugify,
+      permalink: anchor.permalink.headerLink()
+    });
 
     // Custom image rule to handle baseUrl
     const defaultRender = instance.renderer.rules.image || function(tokens, idx, options, env, self) {
