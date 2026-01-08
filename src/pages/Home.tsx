@@ -143,7 +143,8 @@ export default function Home() {
 
         {/* Right Column: Dashboard & Navigation (8 cols) */}
         <div className="lg:col-span-7 space-y-6">
-            <div className="visualizer-container">
+            <div className="visualizer-container group">
+                <div className="visualizer-topline" />
                 <NeuralTopologyCanvas className="neural-canvas" />
                 <div className="visualizer-overlay">
                     <div className="overlay-header">

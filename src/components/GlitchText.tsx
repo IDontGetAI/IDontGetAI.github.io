@@ -18,9 +18,6 @@ export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
 
   useEffect(() => {
     if (textRef.current) {
-      const computedStyle = window.getComputedStyle(textRef.current);
-      const lineHeight = parseFloat(computedStyle.lineHeight) || 20;
-      const lines = Math.ceil(textRef.current.offsetWidth / (parseFloat(computedStyle.fontSize) || 14));
       setTextWidth(textRef.current.offsetWidth);
     }
   }, [text]);
@@ -56,8 +53,12 @@ export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
 
   useEffect(() => {
     if (!hover) {
-      setIsReady(true);
+      const readyTimeout = setTimeout(() => setIsReady(true), 0);
       scramble();
+      return () => {
+        clearTimeout(readyTimeout);
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      };
     }
     return () => {
         if (intervalRef.current) clearInterval(intervalRef.current);
