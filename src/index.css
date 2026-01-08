@@ -365,7 +365,7 @@
   .overlay-header {
     display: flex;
     align-items: center;
-    color: var(--primary);
+    color: var(--secondary);
     font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -374,8 +374,8 @@
 
   .icon-glow {
     margin-right: 10px;
-    color: var(--primary);
-    text-shadow: 0 0 12px color-mix(in oklch, var(--primary) 45%, transparent);
+    color: var(--secondary);
+    text-shadow: 0 0 12px color-mix(in oklch, var(--secondary) 45%, transparent);
   }
 
   .visualizer-overlay small {
