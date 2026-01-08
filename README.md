@@ -90,3 +90,20 @@ idontgetai-website/
 
 4.  **沉浸式阅读体验**:
     *   笔记详情页采用磨砂玻璃风格 + 极简暗色背景，提供专注的阅读环境。
+
+
+
+
+## Copyright / 版权声明
+
+**Copyright (c) 2026 IDontGetAI. All Rights Reserved.**
+
+The source code, design, and content in this repository are the intellectual property of the owner.
+* **Permitted Use:** You may view this code for educational or personal evaluation purposes only.
+* **Prohibited Use:** Reproduction, modification, distribution, or use of this code for commercial purposes without prior written permission is strictly prohibited.
+
+**版权所有 (c) 2026 IDontGetAI。保留所有权利。**
+
+本仓库的源代码、设计及内容均为作者的知识产权。
+* **允许用途：** 仅允许出于教育或个人评估目的查看本代码。
+* **禁止用途：** 未经作者书面许可，严禁将本代码进行复制、修改、分发或用于任何商业用途。
