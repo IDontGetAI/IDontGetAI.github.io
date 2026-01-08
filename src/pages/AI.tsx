@@ -1,4 +1,4 @@
-import { SubjectPageLayout, type ContentData, type NoteItem, type ResourceItem, type InsightItem, type HistoryItem } from "@/components/SubjectPageLayout";
+import { SubjectPageLayout, type ContentData, type NoteItem, type ResourceItem, type InsightItem } from "@/components/SubjectPageLayout";
 import techBg from "@/assets/tech.jpeg";
 
 const notes: ContentData<NoteItem> = [

@@ -5,6 +5,7 @@ import { ArrowLeft, BookOpen, Video, Globe, FileText, ExternalLink, GraduationCa
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import readingBg from "@/assets/reading.jpeg";
+import type { ComponentType } from "react";
 
 export interface ResourceDetailItem {
   title: string;
@@ -23,7 +24,9 @@ interface ResourceDetailLayoutProps {
   backgroundImage?: string;
 }
 
-const TypeIcon: Record<string, any> = {
+type IconComponent = ComponentType<{ className?: string }>;
+
+const TypeIcon: Record<ResourceDetailItem["type"], IconComponent> = {
   Book: BookOpen,
   Video: Video,
   Course: GraduationCap,

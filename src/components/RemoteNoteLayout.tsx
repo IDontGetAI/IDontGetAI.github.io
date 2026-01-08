@@ -6,7 +6,7 @@ import { Link } from "wouter";
 import { ArrowLeft, Loader2, AlertCircle, List } from "lucide-react";
 import readingBg from "@/assets/reading.jpeg";
 import { slugify } from "@/lib/slugify";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface RemoteNoteLayoutProps {
@@ -35,42 +35,36 @@ export function RemoteNoteLayout({
   baseUrl,
 }: RemoteNoteLayoutProps) {
   const { content, loading, error } = useFetchMarkdown(rawUrl);
-  const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
 
   // Auto-derive baseUrl from rawUrl if not provided
   const derivedBaseUrl = baseUrl || rawUrl.substring(0, rawUrl.lastIndexOf('/') + 1);
 
-  // Parse TOC from markdown content
-  useEffect(() => {
-    if (!content) return;
-    
-    const lines = content.split('\n');
-    const items: TocItem[] = [];
-    
-    // Regex to match headers: # Header, ## Header, etc.
-    // Also ignore headers inside code blocks (simple heuristic)
-    let inCodeBlock = false;
-    
-    lines.forEach(line => {
-        if (line.trim().startsWith('```')) {
-            inCodeBlock = !inCodeBlock;
-            return;
-        }
-        if (inCodeBlock) return;
+  const toc = useMemo<TocItem[]>(() => {
+    if (!content) return [];
 
-        const match = line.match(/^(#{1,3})\s+(.+)$/);
-        if (match) {
-            const level = match[1].length;
-            const text = match[2].trim();
-            // Remove markdown syntax links/bold/italic from text if any, for cleaner TOC display
-            // This is a basic cleanup
-            const cleanText = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`]/g, '');
-            const id = slugify(cleanText);
-            items.push({ id, text: cleanText, level });
-        }
-    });
-    setToc(items);
+    const lines = content.split("\n");
+    const items: TocItem[] = [];
+    let inCodeBlock = false;
+
+    for (const line of lines) {
+      if (line.trim().startsWith("```")) {
+        inCodeBlock = !inCodeBlock;
+        continue;
+      }
+      if (inCodeBlock) continue;
+
+      const match = line.match(/^(#{1,3})\s+(.+)$/);
+      if (!match) continue;
+
+      const level = match[1].length;
+      const text = match[2].trim();
+      const cleanText = text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[*_`]/g, "");
+      const id = slugify(cleanText);
+      items.push({ id, text: cleanText, level });
+    }
+
+    return items;
   }, [content]);
 
   // Scroll spy to highlight active TOC item

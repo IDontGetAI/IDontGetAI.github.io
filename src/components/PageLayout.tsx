@@ -44,8 +44,8 @@ export function PageLayout({
       {/* Content Layer */}
       <div className="relative z-30 container mx-auto px-4 md:px-6 py-8">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-10 space-y-2 border-l-4 border-primary pl-6"
         >
@@ -60,8 +60,8 @@ export function PageLayout({
         </motion.div>
 
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
         >
             {children}

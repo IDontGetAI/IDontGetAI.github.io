@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface GlitchTextProps {
@@ -25,7 +25,7 @@ export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
     }
   }, [text]);
 
-  const scramble = () => {
+  const scramble = useCallback(() => {
     let iteration = 0;
 
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -38,6 +38,9 @@ export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
             if (index < iteration) {
               return text[index];
             }
+            if (char === " " || char === "\n" || char === "\t") {
+              return char;
+            }
             return CHARS[Math.floor(Math.random() * CHARS.length)];
           })
           .join("")
@@ -49,7 +52,7 @@ export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
 
       iteration += 1 / 3;
     }, 30);
-  };
+  }, [text]);
 
   useEffect(() => {
     if (!hover) {
@@ -59,7 +62,7 @@ export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
     return () => {
         if (intervalRef.current) clearInterval(intervalRef.current);
     }
-  }, []);
+  }, [hover, scramble]);
 
   return (
     <span

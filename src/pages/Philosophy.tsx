@@ -1,5 +1,5 @@
-import { SubjectPageLayout, type ContentData, type NoteItem, type ResourceItem, type InsightItem, type HistoryItem } from "@/components/SubjectPageLayout";
-import abstractBg from "@/assets/abstract.jpeg";
+import { SubjectPageLayout, type ContentData, type NoteItem, type ResourceItem, type InsightItem } from "@/components/SubjectPageLayout";
+import philBg from "@/assets/abstract.jpeg";
 
 const notes: ContentData<NoteItem> = [
   {
@@ -185,7 +185,7 @@ export default function Philosophy() {
     <SubjectPageLayout
       title="Philosophy"
       subtitle="在无意义的宇宙中寻找意义"
-      backgroundImage={abstractBg}
+      backgroundImage={philBg}
       notes={notes}
       resources={resources}
       insights={insights}

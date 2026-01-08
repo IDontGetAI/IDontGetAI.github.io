@@ -28,7 +28,9 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
             return '<pre class="hljs"><code>' +
                    hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
                    '</code></pre>';
-          } catch (__) {}
+          } catch {
+            return '<pre class="hljs"><code>' + instance.utils.escapeHtml(str) + '</code></pre>';
+          }
         }
         return '<pre class="hljs"><code>' + instance.utils.escapeHtml(str) + '</code></pre>';
       }
@@ -52,7 +54,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       const token = tokens[idx];
       const srcIndex = token.attrIndex('src');
       if (srcIndex >= 0) {
-        let src = token.attrs[srcIndex][1];
+        const src = token.attrs[srcIndex][1];
         
         // Logic:
         // 1. If baseUrl is provided and src is relative (not http/https/absolute), prepend baseUrl

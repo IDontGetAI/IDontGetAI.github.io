@@ -42,23 +42,17 @@ function AppRouter() {
 
           {/* Placeholder Fallbacks */}
           <Route path="/notes/:subject/:topic">
-            {(params) => (
+            {() => (
                 <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
                     <h1 className="text-2xl font-display text-primary">Note Under Construction</h1>
-                    <p className="text-muted-foreground font-mono">
-                        Target: <span className="text-white">src/pages/notes/{params.subject}/{params.topic}.tsx</span>
-                    </p>
                 </div>
             )}
           </Route>
 
           <Route path="/logs/:subject/:topic">
-            {(params) => (
+            {() => (
                 <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
                     <h1 className="text-2xl font-display text-white">Log Under Construction</h1>
-                    <p className="text-muted-foreground font-mono">
-                        Target: <span className="text-white">src/pages/logs/{params.subject}/{params.topic}.tsx</span>
-                    </p>
                 </div>
             )}
           </Route>

@@ -14,7 +14,7 @@ interface ToolItem {
   name: string;
   desc: string;
   url: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   category: CategoryType;
   featured?: boolean;
 }
@@ -319,7 +319,7 @@ export default function Tools() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {filteredTools.map((tool, i) => (
+            {filteredTools.map((tool) => (
                 <Card key={tool.name} className={cn(
                     "bg-black/40 border-primary/20 hover:border-primary/60 transition-all backdrop-blur-sm group relative overflow-hidden h-full flex flex-col",
                     tool.featured ? "border-l-4 border-l-primary shadow-[inset_10px_0_20px_-10px_rgba(var(--primary),0.1)]" : ""

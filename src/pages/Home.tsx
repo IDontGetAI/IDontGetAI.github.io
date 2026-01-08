@@ -1,15 +1,29 @@
 import { PageLayout } from "@/components/PageLayout";
 import heroBg from "@/assets/hero.jpeg";
-import { Button } from "@/components/ui/button";
+import descartesProfile from "@/assets/Descartes profile.png";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, Terminal, User, Code, Database, Cpu, Activity, Globe, Users, Wrench, Feather } from "lucide-react";
+import { ArrowRight, User, Code, Database, Cpu, Activity, Globe, Users, Wrench, Feather } from "lucide-react";
 import { GlitchText } from "@/components/GlitchText";
 import { TypingAnimation } from "@/components/TypingAnimation";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { NeuralTopologyCanvas } from "@/components/NeuralTopologyCanvas";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Home() {
+  const [terminalStage, setTerminalStage] = useState<"cmd1" | "out1" | "cmd2" | "out2">("cmd1");
+  const [statusDots, setStatusDots] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setStatusDots((d) => (d + 1) % 4);
+    }, 450);
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const dots = ".".repeat(statusDots).padEnd(3, " ");
+
   return (
     <PageLayout
       title="IDENTITY_CONFIRMED"
@@ -24,19 +38,35 @@ export default function Home() {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
                 <CardContent className="pt-8 text-center space-y-4 min-h-[280px] flex flex-col justify-center">
                     <div className="relative mx-auto w-32 h-32 rounded-full border-2 border-primary/50 flex items-center justify-center bg-black overflow-hidden group-hover:border-primary transition-colors flex-shrink-0">
-                        <User className="w-16 h-16 text-primary/80" />
-                        <div className="absolute inset-0 bg-primary/10 animate-pulse" />
+                        <div className="absolute inset-0 holo-glitch">
+                            <img className="holo-glitch-layer holo-glitch-base" src={descartesProfile} alt="Descartes profile" />
+                            <img aria-hidden className="holo-glitch-layer holo-glitch-r" src={descartesProfile} alt="" />
+                            <img aria-hidden className="holo-glitch-layer holo-glitch-g" src={descartesProfile} alt="" />
+                            <img aria-hidden className="holo-glitch-layer holo-glitch-b" src={descartesProfile} alt="" />
+                        </div>
                     </div>
                     <div className="flex-shrink-0">
-                        <h2 className="text-3xl font-display text-white"><GlitchText text="idontgetai" /></h2>
+                        <h2 className="text-3xl font-display text-white">
+                          <a
+                            href="https://github.com/IDontGetAI"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block hover:underline underline-offset-4"
+                            aria-label="Open GitHub profile"
+                          >
+                            <GlitchText text="idontgetai" />
+                          </a>
+                        </h2>
                         <p className="text-primary font-mono text-sm mt-1">
-                             LEVEL 5 OBSERVER
+                          <span className="text-muted-foreground">STATUS:</span>{" "}
+                          <span className="text-primary">COMPILING REALITY</span>
+                          <span className="whitespace-pre">{dots}</span>
                         </p>
                     </div>
                     <div className="flex flex-wrap justify-center gap-2 pt-2 flex-shrink-0">
-                        <Badge variant="outline" className="border-primary/40 text-primary font-mono text-xs">AI Researcher</Badge>
-                        <Badge variant="outline" className="border-secondary/40 text-secondary font-mono text-xs">Math Geek</Badge>
-                        <Badge variant="outline" className="border-white/20 text-muted-foreground font-mono text-xs">Philomath</Badge>
+                        <Badge variant="outline" className="border-primary/40 text-primary font-mono text-xs">[ CONSTANTS ]</Badge>
+                        <Badge variant="outline" className="border-secondary/40 text-secondary font-mono text-xs">[ VARIABLES ]</Badge>
+                        <Badge variant="outline" className="border-purple-400/40 text-purple-300 font-mono text-xs">[ ESSENCE ]</Badge>
                     </div>
                 </CardContent>
             </Card>
@@ -51,22 +81,61 @@ export default function Home() {
                 </div>
                 <ScrollArea className="flex-1 pr-2 min-h-0 px-4 pb-4">
                     <div className="space-y-4 text-primary/80">
-                        <div className="min-h-[60px]">
-                            <span className="text-secondary">$</span> <span className="text-white">whoami</span>
-                            <p className="mt-1 text-muted-foreground leading-relaxed pl-4 border-l border-primary/20">
-                                一个游走在代码与真理之间的探索者。试图通过 AI 理解智能的本质，通过数学窥探宇宙的法则，通过哲学寻找存在的意义。
-                            </p>
-                        </div>
-                         <div className="min-h-[100px]">
-                            <span className="text-secondary">$</span> <span className="text-white">cat current_mission.txt</span>
-                            <div className="mt-1 pl-4 border-l border-primary/20 text-muted-foreground">
-                                <TypingAnimation 
-                                    text={"> 建立全学科知识图谱...\n> 探索通用人工智能 (AGI) 路径...\n> 寻找经济系统的数学极值..."}
-                                    speed={30} 
-                                    delay={500} 
+                        <div>
+                            <span className="text-secondary">$</span>{" "}
+                            {terminalStage === "cmd1" ? (
+                                <TypingAnimation
+                                    text="whoami"
+                                    speed={35}
+                                    className="text-white"
+                                    hideCursorAfterComplete
+                                    onComplete={() => setTerminalStage("out1")}
                                 />
-                            </div>
+                            ) : (
+                                <span className="text-white">whoami</span>
+                            )}
+                            {terminalStage !== "cmd1" && (
+                                <p className="mt-1 text-muted-foreground leading-relaxed pl-4 border-l border-primary/20">
+                                    {terminalStage === "out1" ? (
+                                        <TypingAnimation
+                                            text="一个游走在代码与真理之间的探索者。试图通过 AI 理解智能的本质，通过数学窥探宇宙的法则，通过哲学寻找存在的意义..."
+                                            speed={10}
+                                            delay={200}
+                                            hideCursorAfterComplete
+                                            onComplete={() => setTerminalStage("cmd2")}
+                                        />
+                                    ) : (
+                                        "一个游走在代码与真理之间的探索者。试图通过 AI 理解智能的本质，通过数学窥探宇宙的法则，通过哲学寻找存在的意义..."
+                                    )}
+                                </p>
+                            )}
                         </div>
+                        {(terminalStage === "cmd2" || terminalStage === "out2") && (
+                            <div>
+                                <span className="text-secondary">$</span>{" "}
+                                {terminalStage === "cmd2" ? (
+                                    <TypingAnimation
+                                        text="cat current_mission.txt"
+                                        speed={25}
+                                        className="text-white"
+                                        delay={250}
+                                        hideCursorAfterComplete
+                                        onComplete={() => setTerminalStage("out2")}
+                                    />
+                                ) : (
+                                    <span className="text-white">cat current_mission.txt</span>
+                                )}
+                                <div className="mt-1 pl-4 border-l border-primary/20 text-muted-foreground">
+                                    {terminalStage === "out2" && (
+                                        <TypingAnimation
+                                            text={"> 建立全学科知识图谱...\n> 探索通用人工智能 (AGI) 路径...\n> 寻找经济系统的数学极值...\n> ..."}
+                                            speed={30}
+                                            delay={200}
+                                        />
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </ScrollArea>
             </div>
@@ -74,32 +143,15 @@ export default function Home() {
 
         {/* Right Column: Dashboard & Navigation (8 cols) */}
         <div className="lg:col-span-7 space-y-6">
-            {/* Status Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 <Card className="bg-black/40 border-primary/20 hover:bg-primary/5 transition-colors group min-h-[120px]">
-                    <CardHeader className="pb-2 flex-shrink-0">
-                        <CardTitle className="text-sm font-mono text-muted-foreground flex items-center gap-2">
-                            <Cpu className="w-4 h-4 text-primary" /> SYSTEM LOAD
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex flex-col justify-center flex-1">
-                        <div className="text-2xl font-display text-white">87%</div>
-                        <div className="h-1 w-full bg-primary/20 mt-2 rounded-full overflow-hidden">
-                            <div className="h-full bg-primary w-[87%] animate-pulse" />
-                        </div>
-                    </CardContent>
-                 </Card>
-                 <Card className="bg-black/40 border-secondary/20 hover:bg-secondary/5 transition-colors group min-h-[120px]">
-                    <CardHeader className="pb-2 flex-shrink-0">
-                        <CardTitle className="text-sm font-mono text-muted-foreground flex items-center gap-2">
-                            <Database className="w-4 h-4 text-secondary" /> KNOWLEDGE NODES
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex flex-col justify-center flex-1">
-                        <div className="text-2xl font-display text-white">1,024</div>
-                        <p className="text-xs text-secondary mt-1">+12 this week</p>
-                    </CardContent>
-                 </Card>
+            <div className="visualizer-container">
+                <NeuralTopologyCanvas className="neural-canvas" />
+                <div className="visualizer-overlay">
+                    <div className="overlay-header">
+                        <span className="icon-glow">⟟</span>
+                        <span>NEURAL_TOPOLOGY_V2.4.1</span>
+                    </div>
+                    <small className="typing-effect-mini">Real-time synaptic visualization running...</small>
+                </div>
             </div>
 
             {/* Quick Navigation Matrix */}

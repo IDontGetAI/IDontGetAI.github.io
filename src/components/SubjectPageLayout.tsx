@@ -6,6 +6,7 @@ import { BookOpen, Lightbulb, Link as LinkIcon, FileText, History, Layers, Arrow
 import { Link } from "wouter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import type { ComponentType } from "react";
 
 export interface NoteLink {
   title: string;
@@ -66,10 +67,12 @@ function isGrouped<T extends object>(data: ContentData<T>): data is CategoryGrou
   return data.length > 0 && "category" in data[0];
 }
 
-const ResourceIcon: Record<string, any> = {
-  Video: Video,
+type IconComponent = ComponentType<{ className?: string }>;
+
+const ResourceIcon: Record<NonNullable<ResourceLink["type"]>, IconComponent> = {
+  Video,
   Book: BookOpen,
-  Database: Database
+  Database,
 };
 
 export function SubjectPageLayout({
@@ -82,99 +85,62 @@ export function SubjectPageLayout({
   insights,
 }: SubjectPageLayoutProps) {
   
-  const renderContent = <T extends NoteItem | ResourceItem>(data: ContentData<T>, type: 'note' | 'resource') => {
-    if (!isGrouped(data)) {
-      return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {data.map((item, i) => renderCard(item, i, type))}
-        </div>
-      );
-    }
-
+  const renderResourceCard = (item: ResourceItem, i: number) => {
     return (
-      <Accordion type="multiple" defaultValue={data.map(g => g.category)} className="space-y-4">
-        {data.map((group, idx) => (
-          <AccordionItem key={idx} value={group.category} className="border border-primary/20 bg-black/40 rounded-lg px-4 backdrop-blur-sm">
-            <AccordionTrigger className="hover:no-underline hover:text-primary">
-              <span className="font-display text-lg text-secondary flex items-center gap-2">
-                <Layers className="w-4 h-4" />
-                {group.category}
-              </span>
-            </AccordionTrigger>
-            <AccordionContent className="pt-4 pb-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {group.items.map((item, i) => renderCard(item, i, type))}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+      <Card key={i} className="bg-black/60 border-secondary/20 hover:border-secondary/60 transition-all backdrop-blur-md group flex flex-col h-full">
+        <CardHeader className="pb-2">
+          <div className="flex items-center gap-3">
+            <CardTitle className="text-base font-mono text-secondary group-hover:text-white transition-colors">
+              {item.title}
+            </CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col">
+          <p className="text-muted-foreground text-xs leading-relaxed mb-4">
+            {item.content}
+          </p>
+          <div className="mt-auto space-y-1">
+            {item.links?.map((link, idx) => {
+              const Icon = link.type ? ResourceIcon[link.type] : LinkIcon;
+              const isExternal = link.url.startsWith("http") || link.url.startsWith("//");
+
+              const ButtonContent = (
+                <Button variant="ghost" size="sm" className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono">
+                  <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
+                  <span className="truncate">{link.title}</span>
+                </Button>
+              );
+
+              return isExternal ? (
+                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+                  {ButtonContent}
+                </a>
+              ) : (
+                <Link key={idx} href={link.url}>
+                  {ButtonContent}
+                </Link>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
     );
   };
 
-  const renderCard = (item: any, i: number, type: 'note' | 'resource') => {
-    const noteItem = item as NoteItem; 
-    const resourceItem = item as ResourceItem;
-    const isNote = type === 'note';
-
-    // Resource Card Style (Blue Theme)
-    if (!isNote) {
-        return (
-            <Card key={i} className="bg-black/60 border-secondary/20 hover:border-secondary/60 transition-all backdrop-blur-md group flex flex-col h-full">
-                <CardHeader className="pb-2">
-                    <div className="flex items-center gap-3">
-                        <CardTitle className="text-base font-mono text-secondary group-hover:text-white transition-colors">
-                            {item.title}
-                        </CardTitle>
-                    </div>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col">
-                    <p className="text-muted-foreground text-xs leading-relaxed mb-4">
-                        {item.content}
-                    </p>
-                    {/* Resource Links with Icons */}
-                    <div className="mt-auto space-y-1">
-                        {resourceItem.links?.map((link, idx) => {
-                            const Icon = link.type ? ResourceIcon[link.type] : LinkIcon;
-                            const isExternal = link.url.startsWith('http') || link.url.startsWith('//');
-                            
-                            const ButtonContent = (
-                                <Button variant="ghost" size="sm" className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono">
-                                    <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
-                                    <span className="truncate">{link.title}</span>
-                                </Button>
-                            );
-
-                            return isExternal ? (
-                                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
-                                    {ButtonContent}
-                                </a>
-                            ) : (
-                                <Link key={idx} href={link.url}>
-                                    {ButtonContent}
-                                </Link>
-                            );
-                        })}
-                    </div>
-                </CardContent>
-            </Card>
-        );
-    }
-
-    // Note Card Style (Green/Primary Theme)
+  const renderNoteCard = (noteItem: NoteItem, i: number) => {
     return (
       <Card key={i} className="bg-black/60 border-white/10 hover:border-primary/50 transition-all backdrop-blur-md group flex flex-col h-full">
         <CardHeader>
           <div className="flex justify-between items-start">
             <CardTitle className="text-base font-mono text-primary group-hover:text-white transition-colors">
-                {item.title}
+                {noteItem.title}
             </CardTitle>
             {noteItem.date && <span className="text-[10px] font-mono text-muted-foreground">{noteItem.date}</span>}
           </div>
         </CardHeader>
         <CardContent className="flex-1 flex flex-col">
           <p className="text-muted-foreground text-xs leading-relaxed mb-4">
-            {item.content}
+            {noteItem.content}
           </p>
           
           <div className="mt-auto space-y-2">
@@ -212,7 +178,7 @@ export function SubjectPageLayout({
 
           {noteItem.tags && (
             <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-white/5">
-              {noteItem.tags.map((tag: string) => (
+              {noteItem.tags.map((tag) => (
                 <Badge key={tag} variant="outline" className="text-[9px] border-primary/30 text-primary/70">
                   #{tag}
                 </Badge>
@@ -221,6 +187,66 @@ export function SubjectPageLayout({
           )}
         </CardContent>
       </Card>
+    );
+  };
+
+  const renderNotesContent = (data: ContentData<NoteItem>) => {
+    if (!isGrouped(data)) {
+      return (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {data.map((item, i) => renderNoteCard(item, i))}
+        </div>
+      );
+    }
+
+    return (
+      <Accordion type="multiple" defaultValue={data.map((g) => g.category)} className="space-y-4">
+        {data.map((group) => (
+          <AccordionItem key={group.category} value={group.category} className="border border-primary/20 bg-black/40 rounded-lg px-4 backdrop-blur-sm">
+            <AccordionTrigger className="hover:no-underline hover:text-primary">
+              <span className="font-display text-lg text-secondary flex items-center gap-2">
+                <Layers className="w-4 h-4" />
+                {group.category}
+              </span>
+            </AccordionTrigger>
+            <AccordionContent className="pt-4 pb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {group.items.map((item, i) => renderNoteCard(item, i))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    );
+  };
+
+  const renderResourcesContent = (data: ContentData<ResourceItem>) => {
+    if (!isGrouped(data)) {
+      return (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {data.map((item, i) => renderResourceCard(item, i))}
+        </div>
+      );
+    }
+
+    return (
+      <Accordion type="multiple" defaultValue={data.map((g) => g.category)} className="space-y-4">
+        {data.map((group) => (
+          <AccordionItem key={group.category} value={group.category} className="border border-primary/20 bg-black/40 rounded-lg px-4 backdrop-blur-sm">
+            <AccordionTrigger className="hover:no-underline hover:text-primary">
+              <span className="font-display text-lg text-secondary flex items-center gap-2">
+                <Layers className="w-4 h-4" />
+                {group.category}
+              </span>
+            </AccordionTrigger>
+            <AccordionContent className="pt-4 pb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {group.items.map((item, i) => renderResourceCard(item, i))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
     );
   };
 
@@ -270,11 +296,11 @@ export function SubjectPageLayout({
         </TabsList>
 
         <TabsContent value="notes" className="animate-in fade-in slide-in-from-bottom-4">
-            {renderContent(notes, 'note')}
+            {renderNotesContent(notes)}
         </TabsContent>
 
         <TabsContent value="resources" className="animate-in fade-in slide-in-from-bottom-4">
-            {renderContent(resources, 'resource')}
+            {renderResourcesContent(resources)}
         </TabsContent>
 
         <TabsContent value="insights" className="animate-in fade-in slide-in-from-bottom-4">
