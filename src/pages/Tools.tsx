@@ -3,12 +3,12 @@ import toolsBg from "@/assets/tools.jpeg";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Terminal, Book, Cpu, PenTool, Database, Sigma, Atom, Globe, BarChart3, Brain, FileText, Calculator, Library, Feather, Search, Layers, Activity } from "lucide-react";
+import { ExternalLink, Terminal, Book, Cpu, PenTool, Database, Sigma, Globe, BarChart3, Brain, FileText, Calculator, Library, Feather, Search, Layers, Activity } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 // Define categories for filtering
-type CategoryType = "All" | "AI & Dev" | "Math & Phys" | "Econ & Data" | "Psych & Phil" | "Lit & Human" | "General";
+type CategoryType = "All" | "AI" | "Dev" | "Math & Phys" | "Phil" | "Psych" | "Econ" | "Lit" | "Human" | "Write";
 
 interface ToolItem {
   name: string;
@@ -19,61 +19,115 @@ interface ToolItem {
   featured?: boolean;
 }
 
-const categories: CategoryType[] = ["All", "AI & Dev", "Math & Phys", "Econ & Data", "Psych & Phil", "Lit & Human", "General"];
+const categories: CategoryType[] = ["All", "AI", "Dev", "Math & Phys", "Phil", "Psych", "Econ", "Lit", "Human", "Write"];
 
 const tools: ToolItem[] = [
-  // --- AI & Dev ---
+  // --- AI ---
   {
     name: "ChatGPT",
     desc: "OpenAI 的旗舰大模型。代码生成、创意写作、知识问答的通用助手。",
     url: "https://chat.openai.com/",
     icon: Brain,
-    category: "AI & Dev",
+    category: "AI",
     featured: true
   },
   {
-    name: "Claude",
-    desc: "Anthropic 开发的 AI 助手。擅长长文本分析、逻辑推理和自然对话。",
-    url: "https://claude.ai/",
+    name: "Gemini",
+    desc: "Google 最强多模态模型。深度整合 Google 生态，长上下文处理能力惊人。",
+    url: "https://gemini.google.com/",
     icon: Brain,
-    category: "AI & Dev",
+    category: "AI",
     featured: true
+  },
+  {
+    name: "Qwen (通义千问)",
+    desc: "Alibaba 打造的通义千问。中文理解能力卓越，开源生态活跃。",
+    url: "https://tongyi.aliyun.com/",
+    icon: Brain,
+    category: "AI"
+  },
+  {
+    name: "Doubao (豆包)",
+    desc: "ByteDance 智能助手。日常对话流畅，语音交互体验优秀。",
+    url: "https://www.doubao.com/",
+    icon: Brain,
+    category: "AI"
   },
   {
     name: "Hugging Face",
     desc: "AI 领域的 GitHub。开源模型、数据集、Demo 的集散地。",
     url: "https://huggingface.co/",
     icon: Layers,
-    category: "AI & Dev",
+    category: "AI",
     featured: true
   },
   {
-    name: "Visual Studio Code",
-    desc: "地表最强代码编辑器。配合 Copilot 与插件生态，无所不能。",
-    url: "https://code.visualstudio.com/",
-    icon: Terminal,
-    category: "AI & Dev"
+    name: "LM Studio",
+    desc: "本地运行 LLM 的神器。在自己的设备上轻松跑通各种开源模型。",
+    url: "https://lmstudio.ai/",
+    icon: Cpu,
+    category: "AI"
   },
   {
-    name: "Cursor",
-    desc: "AI Native 代码编辑器。深度集成 LLM，支持代码库问答和自动补全。",
-    url: "https://cursor.sh/",
+    name: "LangChain",
+    desc: "构建 LLM 应用的框架。连接模型、向量数据库与外部工具的桥梁。",
+    url: "https://www.langchain.com/",
+    icon: Layers,
+    category: "AI"
+  },
+  {
+    name: "Kaggle",
+    desc: "数据科学竞赛平台。海量数据集、Notebook 分享与模型竞技场。",
+    url: "https://www.kaggle.com/",
+    icon: Database,
+    category: "AI"
+  },
+
+  // --- Dev ---
+  {
+    name: "Anaconda",
+    desc: "Python 数据科学全家桶。包管理、环境隔离，科学计算必备。",
+    url: "https://www.anaconda.com/",
     icon: Terminal,
-    category: "AI & Dev"
+    category: "Dev"
+  },
+  {
+    name: "Jupyter Notebook",
+    desc: "交互式计算笔记本。代码、文本、公式、图表混排，探索性编程首选。",
+    url: "https://jupyter.org/",
+    icon: Terminal,
+    category: "Dev",
+    featured: true
   },
   {
     name: "Google Colab",
     desc: "云端 Jupyter Notebook。免费 GPU 算力 (T4/V100)，快速验证模型。",
     url: "https://colab.research.google.com/",
     icon: Cpu,
-    category: "AI & Dev"
+    category: "Dev"
   },
   {
-    name: "LangChain",
-    desc: "构建 LLM 应用的框架。连接模型、向量数据库与外部工具的桥梁。",
-    url: "https://python.langchain.com/",
-    icon: Layers,
-    category: "AI & Dev"
+    name: "Visual Studio Code",
+    desc: "地表最强代码编辑器。配合 Copilot 与插件生态，无所不能。",
+    url: "https://code.visualstudio.com/",
+    icon: Terminal,
+    category: "Dev",
+    featured: true
+  },
+  {
+    name: "Trae",
+    desc: "新一代 AI 原生 IDE。重新定义编码体验，让 AI 成为真正的结对编程伙伴。",
+    url: "https://www.trae.ai/",
+    icon: Terminal,
+    category: "Dev",
+    featured: true
+  },
+  {
+    name: "Antigravity",
+    desc: "Google 打造的 Agent-first IDE。让智能体自主规划、编码与验证。",
+    url: "https://antigravity.google/",
+    icon: Terminal,
+    category: "Dev"
   },
 
   // --- Math & Phys ---
@@ -107,21 +161,6 @@ const tools: ToolItem[] = [
     category: "Math & Phys"
   },
   {
-    name: "LaTeX (Overleaf)",
-    desc: "学术排版标准。Overleaf 提供了云端协作环境，免去配置之苦。",
-    url: "https://www.overleaf.com/",
-    icon: PenTool,
-    category: "Math & Phys"
-  },
-  {
-    name: "PhET Simulations",
-    desc: "物理、化学、生物的交互式仿真。直观理解量子隧道效应等抽象概念。",
-    url: "https://phet.colorado.edu/",
-    icon: Atom,
-    category: "Math & Phys",
-    featured: true
-  },
-  {
     name: "Manim",
     desc: "3Blue1Brown 开发的数学动画引擎 (Python)。用代码绘制数学之美。",
     url: "https://www.manim.community/",
@@ -129,13 +168,88 @@ const tools: ToolItem[] = [
     category: "Math & Phys"
   },
 
-  // --- Econ & Data ---
+  // --- Phil ---
+  {
+    name: "SEP (Stanford Encyclopedia)",
+    desc: "斯坦福哲学百科全书。哲学界最权威、最高质量的在线参考书。",
+    url: "https://plato.stanford.edu/",
+    icon: Library,
+    category: "Phil",
+    featured: true
+  },
+  {
+    name: "IEP (Internet Encyclopedia)",
+    desc: "互联网哲学百科全书。学术同行评审，更通俗易懂的哲学资源。",
+    url: "https://iep.utm.edu/",
+    icon: Library,
+    category: "Phil"
+  },
+  {
+    name: "Chinese Text Project (CText)",
+    desc: "中国哲学书电子化计划。最全的先秦两汉典籍数据库。",
+    url: "https://ctext.org/",
+    icon: Book,
+    category: "Phil"
+  },
+  {
+    name: "Argdown",
+    desc: "论证可视化工具。用简单的语法绘制复杂的论证逻辑图。",
+    url: "https://argdown.org/",
+    icon: FileText,
+    category: "Phil"
+  },
+  {
+    name: "Project Gutenberg",
+    desc: "古腾堡计划。提供 70,000+ 免费电子书，聚焦公有领域经典。",
+    url: "https://www.gutenberg.org/",
+    icon: Book,
+    category: "Phil"
+  },
+
+  // --- Psych ---
+  {
+    name: "PsychoPy",
+    desc: "开源心理学实验生成器。用于神经科学和实验心理学的精确刺激呈现。",
+    url: "https://www.psychopy.org/",
+    icon: Activity,
+    category: "Psych"
+  },
+  {
+    name: "OpenSesame",
+    desc: "图形化心理实验构建工具。无需编程即可设计复杂的行为实验。",
+    url: "https://osdoc.cogsci.nl/",
+    icon: Activity,
+    category: "Psych"
+  },
+  {
+    name: "JASP",
+    desc: "免费友好的统计软件。贝叶斯统计与频率统计的现代化替代方案。",
+    url: "https://jasp-stats.org/",
+    icon: BarChart3,
+    category: "Psych"
+  },
+  {
+    name: "APA",
+    desc: "美国心理学会官网。心理学学术标准、出版物与资源中心。",
+    url: "https://www.apa.org/",
+    icon: Book,
+    category: "Psych"
+  },
+  {
+    name: "DSM-5-TR",
+    desc: "精神障碍诊断与统计手册。精神医学与临床心理学的“圣经”。",
+    url: "https://www.psychiatry.org/psychiatrists/practice/dsm",
+    icon: Book,
+    category: "Psych"
+  },
+
+  // --- Econ ---
   {
     name: "FRED",
     desc: "圣路易斯联储经济数据库。获取 CPI、GDP 等宏观数据的权威来源。",
     url: "https://fred.stlouisfed.org/",
     icon: BarChart3,
-    category: "Econ & Data",
+    category: "Econ",
     featured: true
   },
   {
@@ -143,144 +257,131 @@ const tools: ToolItem[] = [
     desc: "世界银行开放数据。全球发展指标，涵盖贫困、金融、环境等。",
     url: "https://data.worldbank.org/",
     icon: Globe,
-    category: "Econ & Data"
+    category: "Econ"
   },
   {
     name: "Our World in Data",
     desc: "用数据看世界。针对全球重大问题（气候、健康）的深度数据分析。",
     url: "https://ourworldindata.org/",
     icon: Database,
-    category: "Econ & Data"
+    category: "Econ",
+    featured: true
   },
   {
     name: "TradingView",
     desc: "金融市场分析平台。强大的图表工具和 Pine Script 策略编写。",
     url: "https://www.tradingview.com/",
     icon: BarChart3,
-    category: "Econ & Data"
+    category: "Econ"
   },
   {
-    name: "Kaggle",
-    desc: "数据科学社区。海量数据集、竞赛和 Notebook 分享。",
-    url: "https://www.kaggle.com/",
+    name: "Tushare",
+    desc: "大数据开放社区。免费提供各类金融数据，支持 Python/R 接口。",
+    url: "https://tushare.pro/",
     icon: Database,
-    category: "Econ & Data"
+    category: "Econ"
+  },
+  {
+    name: "Gapminder",
+    desc: "独立的数据可视化机构。消除对全球发展的无知，展示真实世界。",
+    url: "https://www.gapminder.org/",
+    icon: Globe,
+    category: "Econ"
+  },
+  {
+    name: "OEC",
+    desc: "经济复杂性观测台。可视化全球贸易流向与经济结构。",
+    url: "https://oec.world/",
+    icon: Globe,
+    category: "Econ"
   },
 
-  // --- Psych & Phil ---
+  // --- Lit ---
   {
-    name: "PsychoPy",
-    desc: "开源心理学实验生成器。用于神经科学和实验心理学的精确刺激呈现。",
-    url: "https://www.psychopy.org/",
-    icon: Activity,
-    category: "Psych & Phil"
+    name: "古诗文网",
+    desc: "经典传承。收录最全的古诗文、名句及赏析。",
+    url: "https://www.gushiwen.cn/",
+    icon: Feather,
+    category: "Lit"
   },
+  // Project Gutenberg is already in Phil, but can be added here too if needed. 
+  // User listed it under Lit as well. Since we filter by category string, we need a separate entry or handle multi-category (current setup is single category).
+  // I'll add a separate entry for Lit to ensure it shows up.
   {
-    name: "APA PsycNet",
-    desc: "美国心理学会数据库。查找心理学核心文献的权威平台。",
-    url: "https://psycnet.apa.org/",
-    icon: Book,
-    category: "Psych & Phil"
-  },
-  {
-    name: "SEP (Stanford Encyclopedia)",
-    desc: "斯坦福哲学百科全书。哲学界最权威、最高质量的在线参考书。",
-    url: "https://plato.stanford.edu/",
-    icon: Library,
-    category: "Psych & Phil",
-    featured: true
-  },
-  {
-    name: "PhilPapers",
-    desc: "哲学论文索引与目录。追踪哲学领域最新研究成果。",
-    url: "https://philpapers.org/",
-    icon: FileText,
-    category: "Psych & Phil"
-  },
-
-  // --- Lit & Human ---
-  {
-    name: "Project Gutenberg",
+    name: "Project Gutenberg (Lit)",
     desc: "古腾堡计划。提供 70,000+ 免费电子书，聚焦公有领域经典文学。",
     url: "https://www.gutenberg.org/",
     icon: Book,
-    category: "Lit & Human",
-    featured: true
+    category: "Lit"
   },
   {
-    name: "Google Books Ngram Viewer",
-    desc: "文化趋势分析工具。通过数百万书籍的词频统计，可视化历史变迁。",
-    url: "https://books.google.com/ngrams",
-    icon: BarChart3,
-    category: "Lit & Human"
-  },
-  {
-    name: "JSTOR",
-    desc: "学术期刊库。人文社科领域（文学、历史、社会学）的核心资源。",
-    url: "https://www.jstor.org/",
-    icon: Library,
-    category: "Lit & Human"
-  },
-  {
-    name: "Internet Archive",
-    desc: "互联网档案馆。Wayback Machine 保存网页历史，亦有海量图书。",
-    url: "https://archive.org/",
-    icon: Database,
-    category: "Lit & Human"
-  },
-  {
-    name: "Scrivener",
-    desc: "长篇写作神器。专为小说家和学术论文作者设计，强大的结构化管理。",
-    url: "https://www.literatureandlatte.com/scrivener/overview",
-    icon: Feather,
-    category: "Lit & Human"
+    name: "Voyant Tools",
+    desc: "基于 Web 的文本阅读与分析环境。数字人文领域的文本挖掘利器。",
+    url: "https://voyant-tools.org/",
+    icon: Search,
+    category: "Lit"
   },
 
-  // --- General ---
+  // --- Human ---
   {
-    name: "Z-Library",
-    desc: "全球最大数字图书馆之一。海量电子书与文献下载。",
-    url: "https://z-lib.fm/",
-    icon: Book,
-    category: "General",
-    featured: true
-  },
-  {
-    name: "Anna's Archive",
-    desc: "影子图书馆搜索引擎。聚合 Sci-Hub, LibGen 等数据源。",
-    url: "https://annas-archive.org/",
-    icon: Search,
-    category: "General",
-    featured: true
-  },
-  {
-    name: "Sci-Hub",
-    desc: "打破学术高墙。输入 DOI 即可获取论文 PDF。(Use responsibly)",
-    url: "https://sci-hub.se/",
+    name: "Google Arts & Culture",
+    desc: "谷歌艺术与文化。在线探索世界各地的博物馆珍藏与文化遗产。",
+    url: "https://artsandculture.google.com/",
     icon: Globe,
-    category: "General"
-  },
-  {
-    name: "Obsidian",
-    desc: "本地 Markdown 知识库。双向链接，卡片笔记法 (Zettelkasten) 最佳实践。",
-    url: "https://obsidian.md/",
-    icon: FileText,
-    category: "General",
+    category: "Human",
     featured: true
   },
   {
-    name: "Zotero",
-    desc: "开源文献管理工具。一键抓取元数据，自动生成引用。",
-    url: "https://www.zotero.org/",
-    icon: Book,
-    category: "General"
+    name: "CHGIS",
+    desc: "中国历史地理信息系统。哈佛大学与复旦大学合作构建的基础地理数据库。",
+    url: "https://sites.fas.harvard.edu/~chgis/",
+    icon: Globe,
+    category: "Human"
   },
   {
-    name: "Excalidraw",
-    desc: "手绘风格白板。绘制系统架构、逻辑流程图的最佳工具。",
-    url: "https://excalidraw.com/",
+    name: "Gephi",
+    desc: "开源网络可视化软件。探索数据中的关联，适用于社交网络分析等。",
+    url: "https://gephi.org/",
+    icon: Activity,
+    category: "Human"
+  },
+  {
+    name: "Flomo (浮墨)",
+    desc: "卡片笔记工具。像发推特一样记录想法，积少成多，连接知识。",
+    url: "https://flomoapp.com/",
     icon: PenTool,
-    category: "General"
+    category: "Human"
+  },
+
+  // --- Write ---
+  {
+    name: "LaTeX",
+    desc: "高质量排版系统。学术论文、科技文档写作的标准工具。",
+    url: "https://www.latex-project.org/",
+    icon: FileText,
+    category: "Write"
+  },
+  {
+    name: "Typst",
+    desc: "新一代科学排版系统。比 LaTeX 更易学、编译更快、现代化的替代品。",
+    url: "https://typst.app/",
+    icon: FileText,
+    category: "Write",
+    featured: true
+  },
+  {
+    name: "Overleaf",
+    desc: "在线 LaTeX 编辑器。云端协作，实时预览，丰富的模板库。",
+    url: "https://www.overleaf.com/",
+    icon: FileText,
+    category: "Write"
+  },
+  {
+    name: "Markdown",
+    desc: "轻量级标记语言。用纯文本编写格式化文档，专注于写作本身。",
+    url: "https://daringfireball.net/projects/markdown/",
+    icon: FileText,
+    category: "Write"
   }
 ];
 
@@ -319,8 +420,8 @@ export default function Tools() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {filteredTools.map((tool) => (
-                <Card key={tool.name} className={cn(
+            {filteredTools.map((tool, index) => (
+                <Card key={`${tool.name}-${index}`} className={cn(
                     "bg-black/40 border-primary/20 hover:border-primary/60 transition-all backdrop-blur-sm group relative overflow-hidden h-full flex flex-col",
                     tool.featured ? "border-l-4 border-l-primary shadow-[inset_10px_0_20px_-10px_rgba(var(--primary),0.1)]" : ""
                 )}>
