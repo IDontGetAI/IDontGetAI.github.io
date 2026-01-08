@@ -54,7 +54,7 @@ export function PageLayout({
           </h1>
           {subtitle && (
             <p className="text-lg md:text-xl text-primary/80 font-mono">
-              // {subtitle}
+              {subtitle}
             </p>
           )}
         </motion.div>

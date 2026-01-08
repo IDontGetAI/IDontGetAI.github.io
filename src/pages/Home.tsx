@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <PageLayout
       title="IDENTITY_CONFIRMED"
-      subtitle="欢迎访问 idontgetai 的数字思维空间"
+      subtitle="欢迎访问 IDontGetAI 的数字思维空间"
       backgroundImage={heroBg}
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
@@ -54,7 +54,7 @@ export default function Home() {
                             className="inline-block hover:underline underline-offset-4"
                             aria-label="Open GitHub profile"
                           >
-                            <GlitchText text="idontgetai" />
+                            <GlitchText text="IDontGetAI" />
                           </a>
                         </h2>
                         <p className="text-primary font-mono text-sm mt-1">
