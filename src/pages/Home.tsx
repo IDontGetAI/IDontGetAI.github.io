@@ -144,14 +144,14 @@ export default function Home() {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-40" />
                 <CardHeader className="pb-2">
                     <CardTitle className="text-xs font-mono text-muted-foreground flex items-center gap-2">
-                        <Activity className="w-3 h-3 text-secondary" /> CURRENT_FOCUS
+                        <BookOpen className="w-3 h-3 text-secondary" /> CURRENT_READING
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
                     <div className="space-y-1 text-xs font-mono text-muted-foreground">
-                        <div><span className="text-secondary">+</span> 构建跨领域知识图谱</div>
-                        <div><span className="text-secondary">+</span> 通过数学+系统探测 AGI 路径</div>
-                        <div><span className="text-secondary">+</span> 模型经济动力学与极值</div>
+                        <div><span className="text-secondary">+</span> 《沉思录》 / 笛卡尔</div>
+                        <div><span className="text-secondary">+</span> 《理想国》 / 柏拉图</div>
+                        <div><span className="text-secondary">+</span> 《存在与时间》 / 海德格尔</div>
                     </div>
                 </CardContent>
             </Card>
