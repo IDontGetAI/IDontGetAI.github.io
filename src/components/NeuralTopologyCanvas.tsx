@@ -53,29 +53,8 @@ export function NeuralTopologyCanvas({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const parseRgb = (value: string) => {
-      const match = value
-        .replace(/\s+/g, " ")
-        .match(/rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)/i);
-      if (!match) return null;
-      return { r: Number(match[1]), g: Number(match[2]), b: Number(match[3]) };
-    };
-
-    const resolvePrimaryRgb = () => {
-      const probe = document.createElement("span");
-      probe.style.color = "var(--primary)";
-      probe.style.position = "absolute";
-      probe.style.left = "-9999px";
-      probe.style.top = "-9999px";
-      document.body.appendChild(probe);
-      const rgb = parseRgb(getComputedStyle(probe).color);
-      probe.remove();
-      return rgb ?? { r: 0, g: 255, b: 136 };
-    };
-
-    const primary = resolvePrimaryRgb();
-    const particleColor = `rgba(${primary.r}, ${primary.g}, ${primary.b}, 0.65)`;
-    const lineColorPrefix = `rgba(${primary.r}, ${primary.g}, ${primary.b},`;
+    const particleColor = "rgba(189, 0, 255, 0.65)";
+    const lineColorPrefix = "rgba(189, 0, 255,";
 
     const updateCanvasSize = () => {
       const rect = canvas.getBoundingClientRect();

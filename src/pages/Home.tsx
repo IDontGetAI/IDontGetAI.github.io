@@ -7,7 +7,7 @@ import { ArrowRight, User, Code, Database, Cpu, Activity, Globe, Users, Wrench, 
 import { GlitchText } from "@/components/GlitchText";
 import { TypingAnimation } from "@/components/TypingAnimation";
 import { NeuralTopologyCanvas } from "@/components/NeuralTopologyCanvas";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -139,6 +139,22 @@ export default function Home() {
                     </div>
                 </ScrollArea>
             </div>
+
+            <Card className="bg-black/60 border-secondary/20 backdrop-blur-md overflow-hidden relative group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-40" />
+                <CardHeader className="pb-2">
+                    <CardTitle className="text-xs font-mono text-muted-foreground flex items-center gap-2">
+                        <Activity className="w-3 h-3 text-secondary" /> CURRENT_FOCUS
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0">
+                    <div className="space-y-1 text-xs font-mono text-muted-foreground">
+                        <div><span className="text-secondary">+</span> 构建跨领域知识图谱</div>
+                        <div><span className="text-secondary">+</span> 通过数学+系统探测 AGI 路径</div>
+                        <div><span className="text-secondary">+</span> 模型经济动力学与极值</div>
+                    </div>
+                </CardContent>
+            </Card>
         </div>
 
         {/* Right Column: Dashboard & Navigation (8 cols) */}
