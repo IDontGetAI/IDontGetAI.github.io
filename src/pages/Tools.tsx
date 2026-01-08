@@ -8,7 +8,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 // Define categories for filtering
-type CategoryType = "All" | "AI" | "Dev" | "Math & Phys" | "Phil" | "Psych" | "Econ" | "Lit" | "Human" | "Write";
+type CategoryType = "All" | "AI" | "Dev" | "Math & Phys" | "Phil" | "Psych" | "Econ" | "Lit" | "Human" | "Write" | "General";
 
 interface ToolItem {
   name: string;
@@ -19,7 +19,7 @@ interface ToolItem {
   featured?: boolean;
 }
 
-const categories: CategoryType[] = ["All", "AI", "Dev", "Math & Phys", "Phil", "Psych", "Econ", "Lit", "Human", "Write"];
+const categories: CategoryType[] = ["All", "AI", "Dev", "Math & Phys", "Phil", "Psych", "Econ", "Lit", "Human", "Write", "General"];
 
 const tools: ToolItem[] = [
   // --- AI ---
@@ -382,6 +382,60 @@ const tools: ToolItem[] = [
     url: "https://daringfireball.net/projects/markdown/",
     icon: FileText,
     category: "Write"
+  },
+
+  // --- General ---
+  {
+    name: "Z-Library",
+    desc: "全球最大数字图书馆之一。海量电子书与文献下载。",
+    url: "https://z-lib.fm/",
+    icon: Book,
+    category: "General",
+    featured: true
+  },
+  {
+    name: "Anna's Archive",
+    desc: "影子图书馆搜索引擎。聚合 Sci-Hub, LibGen 等数据源。",
+    url: "https://annas-archive.org/",
+    icon: Search,
+    category: "General",
+    featured: true
+  },
+  {
+    name: "Sci-Hub",
+    desc: "打破学术高墙。输入 DOI 即可获取论文 PDF。(Use responsibly)",
+    url: "https://sci-hub.se/",
+    icon: Globe,
+    category: "General"
+  },
+  {
+    name: "Obsidian",
+    desc: "本地 Markdown 知识库。双向链接，卡片笔记法 (Zettelkasten) 最佳实践。",
+    url: "https://obsidian.md/",
+    icon: FileText,
+    category: "General",
+    featured: true
+  },
+  {
+    name: "Typora",
+    desc: "所见即所得的 Markdown 编辑器。极致简洁，写作体验极佳。",
+    url: "https://typora.io/",
+    icon: FileText,
+    category: "General"
+  },
+  {
+    name: "Zotero",
+    desc: "开源文献管理工具。一键抓取元数据，自动生成引用。",
+    url: "https://www.zotero.org/",
+    icon: Book,
+    category: "General"
+  },
+  {
+    name: "Excalidraw",
+    desc: "手绘风格白板。绘制系统架构、逻辑流程图的最佳工具。",
+    url: "https://excalidraw.com/",
+    icon: PenTool,
+    category: "General"
   }
 ];
 
