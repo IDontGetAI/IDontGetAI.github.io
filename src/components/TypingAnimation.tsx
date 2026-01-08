@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface TypingAnimationProps {
@@ -12,6 +12,8 @@ interface TypingAnimationProps {
 export function TypingAnimation({ text, speed = 50, className, cursor = true, delay = 0 }: TypingAnimationProps) {
   const [displayedText, setDisplayedText] = useState("");
   const [started, setStarted] = useState(false);
+  const [estimatedHeight, setEstimatedHeight] = useState(0);
+  const containerRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const startTimeout = setTimeout(() => {
@@ -19,6 +21,15 @@ export function TypingAnimation({ text, speed = 50, className, cursor = true, de
     }, delay);
     return () => clearTimeout(startTimeout);
   }, [delay]);
+
+  useEffect(() => {
+    if (text) {
+      const lines = text.split('\n').length;
+      const lineHeight = 24;
+      const cursorHeight = cursor ? 20 : 0;
+      setEstimatedHeight(lines * lineHeight + cursorHeight);
+    }
+  }, [text, cursor]);
 
   useEffect(() => {
     if (!started) return;
@@ -40,7 +51,15 @@ export function TypingAnimation({ text, speed = 50, className, cursor = true, de
   }, [text, speed, started]);
 
   return (
-    <span className={cn("font-mono whitespace-pre-wrap", className)}>
+    <span 
+      ref={containerRef}
+      className={cn("font-mono whitespace-pre-wrap inline-block", className)}
+      style={{ 
+        minHeight: `${estimatedHeight}px`,
+        display: 'inline-block',
+        width: '100%'
+      }}
+    >
       {displayedText}
       {cursor && (
         <span className="animate-pulse inline-block w-2 h-4 bg-primary ml-1 align-middle" />

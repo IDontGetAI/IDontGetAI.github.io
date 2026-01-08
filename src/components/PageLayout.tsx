@@ -17,7 +17,7 @@ export function PageLayout({
   className,
 }: PageLayoutProps) {
   return (
-    <div className={cn("relative w-full overflow-hidden", className)}>
+    <div className={cn("relative w-full overflow-hidden min-h-screen", className)}>
       {/* Background Layer (Fixed) */}
       {backgroundImage && (
         <div className="fixed inset-0 z-0">
@@ -26,6 +26,14 @@ export function PageLayout({
             src={backgroundImage}
             alt="Background"
             className="h-full w-full object-cover opacity-60 blur-[1px]"
+            style={{ 
+              imageRendering: 'auto',
+              willChange: 'transform',
+              backfaceVisibility: 'hidden',
+              position: 'fixed',
+              top: 0,
+              left: 0
+            }}
           />
           {/* Scanline/Grid Effect */}
           <div className="absolute inset-0 z-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] pointer-events-none" />

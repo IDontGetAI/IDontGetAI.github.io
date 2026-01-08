@@ -10,7 +10,6 @@ import Home from "@/pages/Home";
 import AI from "@/pages/AI";
 import Math from "@/pages/Math";
 import MathAnalysisNote from "@/pages/notes/math/MathAnalysisNote";
-import LogicLog from "@/pages/logs/philosophy/LogicLog";
 import RemoteNoteDemo from "@/pages/notes/RemoteNoteDemo";
 import Physics from "@/pages/Physics";
 import Philosophy from "@/pages/Philosophy";
@@ -39,7 +38,6 @@ function AppRouter() {
           
           {/* Specific Notes & Logs */}
           <Route path="/notes/math/analysis-note" component={MathAnalysisNote} />
-          <Route path="/logs/philosophy/logic-log" component={LogicLog} />
           <Route path="/remote-demo" component={RemoteNoteDemo} />
 
           {/* Placeholder Fallbacks */}

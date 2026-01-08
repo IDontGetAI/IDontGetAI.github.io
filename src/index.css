@@ -101,13 +101,28 @@
 
 @layer base {
   html {
-    overflow-y: scroll; /* Force scrollbar to prevent layout shift */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
   }
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30 selection:text-primary;
+    min-height: 100vh;
+  }
+  
+  /* Prevent layout shift for images */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Prevent layout shift for animated elements */
+  .animate-pulse,
+  .animate-shine {
+    will-change: opacity, transform;
   }
   
   /* Custom Scrollbar */
@@ -124,6 +139,16 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
   }
+  
+  /* Prevent content jumping */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Ensure stable layout */
+  body, html {
+    overflow-x: hidden;
+  }
 }
 
 /* Animations */
@@ -134,4 +159,25 @@
 }
 .animate-shine {
   animation: shine 8s linear infinite;
+}
+
+/* Performance optimizations for smooth rendering */
+* {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent content jumping during font loading */
+@font-face {
+  font-display: swap;
+}
+
+/* Optimize rendering for animated content */
+.animate-pulse,
+.animate-shine,
+.group-hover\:scale-150,
+.group-hover\:translate-x-1 {
+  transform: translateZ(0);
+  will-change: transform;
 }

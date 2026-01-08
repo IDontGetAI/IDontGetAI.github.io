@@ -11,7 +11,19 @@ const CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>/?~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
 export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
   const [displayText, setDisplayText] = useState(text);
+  const [isReady, setIsReady] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [textWidth, setTextWidth] = useState(0);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const computedStyle = window.getComputedStyle(textRef.current);
+      const lineHeight = parseFloat(computedStyle.lineHeight) || 20;
+      const lines = Math.ceil(textRef.current.offsetWidth / (parseFloat(computedStyle.fontSize) || 14));
+      setTextWidth(textRef.current.offsetWidth);
+    }
+  }, [text]);
 
   const scramble = () => {
     let iteration = 0;
@@ -40,7 +52,10 @@ export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
   };
 
   useEffect(() => {
-    if (!hover) scramble();
+    if (!hover) {
+      setIsReady(true);
+      scramble();
+    }
     return () => {
         if (intervalRef.current) clearInterval(intervalRef.current);
     }
@@ -48,8 +63,15 @@ export function GlitchText({ text, className, hover = true }: GlitchTextProps) {
 
   return (
     <span
+      ref={textRef}
       className={cn("inline-block font-mono", className)}
-      onMouseEnter={hover ? scramble : undefined}
+      onMouseEnter={hover ? () => { setIsReady(true); scramble(); } : undefined}
+      style={{ 
+        minWidth: isReady ? `${textWidth}px` : 'auto',
+        display: 'inline-block',
+        verticalAlign: 'baseline',
+        lineHeight: '1.5'
+      }}
     >
       {displayText}
     </span>
