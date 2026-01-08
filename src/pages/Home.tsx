@@ -3,7 +3,7 @@ import heroBg from "@/assets/hero.jpeg";
 import descartesProfile from "@/assets/Descartes profile.png";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, User, Code, Database, Cpu, Activity, Globe, Users, Wrench, Feather } from "lucide-react";
+import { ArrowRight, Lightbulb, Brain, Calculator, TrendingUp, Atom, BookOpen, Landmark, Activity, Wrench } from "lucide-react";
 import { GlitchText } from "@/components/GlitchText";
 import { TypingAnimation } from "@/components/TypingAnimation";
 import { NeuralTopologyCanvas } from "@/components/NeuralTopologyCanvas";
@@ -174,14 +174,14 @@ export default function Home() {
             {/* Quick Navigation Matrix */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
-                    { label: "AI 核心", url: "/ai", icon: Cpu, color: "text-primary" },
-                    { label: "数学迷宫", url: "/math", icon: Code, color: "text-secondary" },
-                    { label: "物理法则", url: "/physics", icon: Globe, color: "text-blue-400" },
-                    { label: "哲学思辨", url: "/philosophy", icon: User, color: "text-purple-400" },
+                    { label: "AI 核心", url: "/ai", icon: Brain, color: "text-primary" },
+                    { label: "数学迷宫", url: "/math", icon: Calculator, color: "text-secondary" },
+                    { label: "物理法则", url: "/physics", icon: Atom, color: "text-blue-400" },
+                    { label: "哲学思辨", url: "/philosophy", icon: Lightbulb, color: "text-purple-400" },
                     { label: "心理模型", url: "/psychology", icon: Activity, color: "text-pink-400" },
-                    { label: "经济博弈", url: "/economics", icon: Database, color: "text-yellow-400" },
-                    { label: "文学殿堂", url: "/literature", icon: Feather, color: "text-orange-400" },
-                    { label: "人文社科", url: "/humanities", icon: Users, color: "text-red-400" },
+                    { label: "经济博弈", url: "/economics", icon: TrendingUp, color: "text-yellow-400" },
+                    { label: "文学殿堂", url: "/literature", icon: BookOpen, color: "text-orange-400" },
+                    { label: "人文社科", url: "/humanities", icon: Landmark, color: "text-red-400" },
                     { label: "神兵利器", url: "/tools", icon: Wrench, color: "text-green-400" },
                 ].map((nav) => (
                     <Link key={nav.url} href={nav.url}>
