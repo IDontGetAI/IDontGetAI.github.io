@@ -3,7 +3,7 @@ import heroBg from "@/assets/hero.jpeg";
 import descartesProfile from "@/assets/Descartes profile.png";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, Lightbulb, Brain, Calculator, TrendingUp, Atom, BookOpen, Landmark, Activity, Wrench } from "lucide-react";
+import { ArrowRight, Lightbulb, BrainCircuit, Sigma, TrendingUp, Atom, BookOpen, Landmark, Activity, Wrench } from "lucide-react";
 import { GlitchText } from "@/components/GlitchText";
 import { TypingAnimation } from "@/components/TypingAnimation";
 import { NeuralTopologyCanvas } from "@/components/NeuralTopologyCanvas";
@@ -174,8 +174,8 @@ export default function Home() {
             {/* Quick Navigation Matrix */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
-                    { label: "AI 核心", url: "/ai", icon: Brain, color: "text-primary" },
-                    { label: "数学迷宫", url: "/math", icon: Calculator, color: "text-secondary" },
+                    { label: "AI 核心", url: "/ai", icon: BrainCircuit, color: "text-primary" },
+                    { label: "数学迷宫", url: "/math", icon: Sigma, color: "text-secondary" },
                     { label: "物理法则", url: "/physics", icon: Atom, color: "text-blue-400" },
                     { label: "哲学思辨", url: "/philosophy", icon: Lightbulb, color: "text-purple-400" },
                     { label: "心理模型", url: "/psychology", icon: Activity, color: "text-pink-400" },
