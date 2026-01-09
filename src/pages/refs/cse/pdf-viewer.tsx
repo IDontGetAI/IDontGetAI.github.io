@@ -3,7 +3,7 @@ import readingBg from "@/assets/reading.jpeg";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getDocument, GlobalWorkerOptions, type PDFDocumentProxy } from "pdfjs-dist";
 import pdfWorkerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
@@ -205,7 +205,7 @@ function PdfCanvasViewer({ pdfUrl }: { pdfUrl: string }) {
   );
 }
 
-export default function Pdf() {
+export default function PdfViewer() {
   useLocation();
 
   const rawQueryString = (() => {
