@@ -57,6 +57,7 @@
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-texmath": "^1.0.0",
     "nanoid": "^5.1.6",
+    "pdfjs-dist": "^5.4.530",
     "react": "^19.2.0",
     "react-day-picker": "^9.13.0",
     "react-dom": "^19.2.0",

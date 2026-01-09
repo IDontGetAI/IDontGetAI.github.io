@@ -16,6 +16,7 @@ import Expression from "@/pages/notes/cse/expression.tsx";
 import Judgment from "@/pages/notes/cse/judgment";
 import Quantitative from "@/pages/notes/cse/quantitative";
 import DataAnalysis from "@/pages/notes/cse/dataAnalysis";
+import Pdf from "@/pages/pdf";
 import Physics from "@/pages/Physics";
 import Philosophy from "@/pages/Philosophy";
 import Psychology from "@/pages/Psychology";
@@ -58,6 +59,7 @@ function AppRouter() {
           <Route path="/notes/cse/judgment" component={Judgment} />
           <Route path="/notes/cse/quantitative" component={Quantitative} />
           <Route path="/notes/cse/data-analysis" component={DataAnalysis} />
+          <Route path="/pdf" component={Pdf} />
           <Route path="/remote-demo" component={RemoteNoteDemo} />
 
           {/* Placeholder Fallbacks */}

@@ -1,7 +1,7 @@
 import { RemoteNoteLayout } from "@/components/RemoteNoteLayout";
 
 const RAW_URL =
-  "https://raw.githubusercontent.com/IDontGetAI/Civil/main/04%20%20%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90/01%20%20%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90%E7%90%86%E8%AE%BA%E5%AE%9E%E6%88%98%E7%8F%AD.md";
+  "https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/04_%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90/01_%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90%E7%90%86%E8%AE%BA%E5%AE%9E%E6%88%98%E7%8F%AD.md";
 
 export default function DataAnalysis() {
   return (
