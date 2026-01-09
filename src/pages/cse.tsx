@@ -1,0 +1,192 @@
+import { SubjectPageLayout, type ContentData, type NoteItem, type ResourceItem, type InsightItem } from "@/components/SubjectPageLayout";
+import humanitiesBg from "@/assets/humanities.jpeg";
+
+const notes: ContentData<NoteItem> = [
+  {
+    category: "I. 行测",
+    items: [
+      {
+        title: "言语理解与表达",
+        content:
+          "主要测查报考者运用语言文字进行思考和交流、迅速准确地理解和把握文字材料内涵的能力。包括根据材料查找主要信息及重要细节；正确理解阅读材料中指定词语、语句的含义；概括归纳阅读材料的中心、主旨；判断新组成的语句与阅读材料原意是否一致；根据上下文内容合理推断阅读材料中的隐含信息；判断作者的态度、意图、倾向、目的；准确、得体地遣词用字等。",
+        tags: ["行测", "言语"],
+        links: [
+          {
+            title: "1.言语精讲精练",
+            url: "/notes/cse/expression"
+          }
+        ]
+      },
+      {
+        title: "判断推理",
+        content: `图形推理：每道题给出一套或两套图形，要求报考者通过观察分析找出图形排列的规律，选出符合规律的一项。
+定义判断：每道题先对相关概念进行定义，然后分别列出四种情况，要求报考者严格依据定义选出一个最符合或最不符合该定义的答案。
+类比推理：给出一组相关的词，要求通过观察分析，在备选答案中找出一组与之在逻辑关系上最为贴近或相似的词。
+逻辑判断：每道题给出一段陈述，这段陈述被假设是正确的，不容置疑的。要求报考者根据这段陈述，运用一定的逻辑推论，选择一个最恰当的答案。`,
+        tags: ["行测", "逻辑"],
+        links: [{ title: "1.判断精讲精练", url: "/notes/cse/judgment" }]
+      },
+      {
+        title: "数量关系",
+        content:
+          "主要测查报考者理解、把握事物间量化关系和解决数量关系问题的能力，主要涉及数据关系的分析、推理、判断、运算等。常用题型有数字推理和数学运算两种。",
+        tags: ["行测", "数量"],
+        links: [{ title: "1.数量关系拿分稳稳班", url: "/notes/cse/quantitative" }]
+      },
+      {
+        title: "资料分析",
+        content: "主要测查报考者对文字、数字、图表等统计性资料的综合理解与分析加工能力。",
+        tags: ["行测", "资料"],
+        links: [{ title: "1.资料分析理论实战班", url: "/notes/cse/data-analysis" }]
+      },
+      {
+        title: "常识",
+        content:
+          "主要测查报考者在经济、文化、社会、生态、法律、科技等方面应知应会的基本知识以及运用这些知识进行分析判断的基本能力。",
+        tags: ["行测", "常识"],
+        link: "/notes/xingce/common-knowledge"
+      },
+      {
+        title: "政治理论",
+        content: "主要测查报考者学习理解掌握党的创新理论及党和国家方针政策的情况。",
+        tags: ["行测", "政治"],
+        link: "/notes/xingce/politics"
+      }
+    ]
+  },
+  {
+    category: "II. 申论",
+    items: [
+      {
+        title: "单一综合公文",
+        content: "单一综合公文主要测查报考者对公文格式、内容的掌握，以及撰写常见公文的能力。",
+        tags: ["申论", "公文"],
+        link: "/notes/shenlun/document"
+      },
+      {
+        title: "作文",
+        content: "作文主要测查报考者的阅读理解能力、综合分析能力、提出和解决问题能力、文字表达能力。",
+        tags: ["申论", "作文"],
+        link: "/notes/shenlun/essay"
+      }
+    ]
+  }
+];
+
+const resources: ContentData<ResourceItem> = [
+  {
+    category: "I. 行测",
+    items: [
+      {
+        title: "言语理解与表达",
+        content: "言语理解专项训练资料。",
+        links: [
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Verbal", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Verbal+Reasoning", type: "Database" }
+        ]
+      },
+      {
+        title: "判断推理",
+        content: "判断推理与图形推理题库。",
+        links: [
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Logic", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Logical+Reasoning", type: "Database" }
+        ]
+      },
+      {
+        title: "数量关系",
+        content: "数学运算技巧与公式。",
+        links: [
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Quantitative", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Quantitative+Reasoning", type: "Database" }
+        ]
+      },
+      {
+        title: "资料分析",
+        content: "速算技巧与统计术语。",
+        links: [
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Data+Analysis", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Data+Interpretation", type: "Database" }
+        ]
+      },
+      {
+        title: "常识",
+        content: "时政热点与百科知识。",
+        links: [
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+General+Knowledge", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=General+Knowledge", type: "Database" }
+        ]
+      },
+      {
+        title: "政治理论",
+        content: "重要会议精神与理论读本。",
+        links: [
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Politics", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Political+Theory", type: "Database" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "II. 申论",
+    items: [
+      {
+        title: "单一综合公文",
+        content: "法定公文与事务文书范文。",
+        links: [
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Writing", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Official+Documents", type: "Database" }
+        ]
+      },
+      {
+        title: "作文",
+        content: "申论大作文素材与范文。",
+        links: [
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Essay", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Essay+Writing", type: "Database" }
+        ]
+      }
+    ]
+  }
+];
+
+const insights: InsightItem[] = [
+  {
+    title: "公考之路的思考",
+    content: "公考不仅仅是一场考试，更是对个人综合素质、抗压能力和未来规划的一次全面检阅。",
+    date: "2026-01-08",
+    link: "/logs/cse/thoughts"
+  }
+];
+
+export default function Cse() {
+  return (
+    <SubjectPageLayout
+      title="公考之路"
+      subtitle="行测与申论：通往体制内的必经之路"
+      backgroundImage={humanitiesBg}
+      notes={notes}
+      resources={resources}
+      insights={insights}
+      history={[
+        { year: "1987", event: "中共十三大提出建立国家公务员制度" },
+        { year: "1993", event: "国务院颁布《国家公务员暂行条例》" },
+        { year: "1994", event: "首届中央国家行政机关公务员录用考试举行" },
+        { year: "2000", event: "公共科目增加《申论》，考试模式初具雏形" },
+        { year: "2002", event: "取消公基，确立《行测》+《申论》双科模式" },
+        { year: "2006", event: "《中华人民共和国公务员法》正式实施" },
+        { year: "2009", event: "国考报名人数首次突破100万大关" },
+        { year: "2019", event: "新修订的《公务员法》实施，确立职务与职级并行" }
+      ]}
+    />
+  );
+}
+

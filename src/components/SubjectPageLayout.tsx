@@ -96,7 +96,7 @@ export function SubjectPageLayout({
           </div>
         </CardHeader>
         <CardContent className="flex-1 flex flex-col">
-          <p className="text-muted-foreground text-xs leading-relaxed mb-4">
+          <p className="text-muted-foreground text-xs leading-relaxed mb-4 whitespace-pre-line">
             {item.content}
           </p>
           <div className="mt-auto space-y-1">
@@ -139,7 +139,7 @@ export function SubjectPageLayout({
           </div>
         </CardHeader>
         <CardContent className="flex-1 flex flex-col">
-          <p className="text-muted-foreground text-xs leading-relaxed mb-4">
+          <p className="text-muted-foreground text-xs leading-relaxed mb-4 whitespace-pre-line">
             {noteItem.content}
           </p>
           

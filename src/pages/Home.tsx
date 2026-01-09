@@ -181,7 +181,7 @@ export default function Home() {
                     { label: "心理模型", url: "/psychology", icon: Activity, color: "text-pink-400" },
                     { label: "经济博弈", url: "/economics", icon: TrendingUp, color: "text-yellow-400" },
                     { label: "文学殿堂", url: "/literature", icon: BookOpen, color: "text-orange-400" },
-                    { label: "人文社科", url: "/humanities", icon: Landmark, color: "text-red-400" },
+                    { label: "公考之路", url: "/cse", icon: Landmark, color: "text-red-400" },
                     { label: "神兵利器", url: "/tools", icon: Wrench, color: "text-green-400" },
                 ].map((nav) => (
                     <Link key={nav.url} href={nav.url}>

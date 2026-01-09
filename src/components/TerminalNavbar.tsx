@@ -12,7 +12,7 @@ const navItems = [
   { path: "/psychology", cmd: "cd /psych", label: "心理" },
   { path: "/economics", cmd: "cd /econ", label: "经济" },
   { path: "/literature", cmd: "cd /lit", label: "文学" },
-  { path: "/humanities", cmd: "cd /humanities", label: "人文社科" },
+  { path: "/cse", cmd: "cd /cse", label: "公考" },
   { path: "/tools", cmd: "./tools.sh", label: "工具" },
 ];
 

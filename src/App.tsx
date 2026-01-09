@@ -1,24 +1,39 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Router, Route, Switch } from "wouter";
+import { Router, Route, Switch, useLocation } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Layout from "@/Layout";
+import { useEffect } from "react";
 
 import Home from "@/pages/Home";
 import AI from "@/pages/AI";
 import Math from "@/pages/Math";
 import MathAnalysisNote from "@/pages/notes/math/MathAnalysisNote";
 import RemoteNoteDemo from "@/pages/notes/RemoteNoteDemo";
+import Expression from "@/pages/notes/cse/expression.tsx";
+import Judgment from "@/pages/notes/cse/judgment";
+import Quantitative from "@/pages/notes/cse/quantitative";
+import DataAnalysis from "@/pages/notes/cse/dataAnalysis";
 import Physics from "@/pages/Physics";
 import Philosophy from "@/pages/Philosophy";
 import Psychology from "@/pages/Psychology";
 import Economics from "@/pages/Economics";
 import Literature from "@/pages/Literature";
-import Humanities from "@/pages/Humanities";
+import Cse from "@/pages/cse";
 import Tools from "@/pages/Tools";
 import NotFound from "@/pages/NotFound";
+
+function RedirectToCse() {
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    setLocation("/cse");
+  }, [setLocation]);
+
+  return null;
+}
 
 function AppRouter() {
   return (
@@ -33,11 +48,16 @@ function AppRouter() {
           <Route path="/psychology" component={Psychology} />
           <Route path="/economics" component={Economics} />
           <Route path="/literature" component={Literature} />
-          <Route path="/humanities" component={Humanities} />
+          <Route path="/cse" component={Cse} />
+          <Route path="/humanities" component={RedirectToCse} />
           <Route path="/tools" component={Tools} />
           
           {/* Specific Notes & Logs */}
           <Route path="/notes/math/analysis-note" component={MathAnalysisNote} />
+          <Route path="/notes/cse/expression" component={Expression} />
+          <Route path="/notes/cse/judgment" component={Judgment} />
+          <Route path="/notes/cse/quantitative" component={Quantitative} />
+          <Route path="/notes/cse/data-analysis" component={DataAnalysis} />
           <Route path="/remote-demo" component={RemoteNoteDemo} />
 
           {/* Placeholder Fallbacks */}
