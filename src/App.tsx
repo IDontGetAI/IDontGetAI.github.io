@@ -12,11 +12,9 @@ import AI from "@/pages/AI";
 import Math from "@/pages/Math";
 import MathAnalysisNote from "@/pages/notes/math/MathAnalysisNote";
 import RemoteNoteDemo from "@/pages/notes/RemoteNoteDemo";
-import Expression from "@/pages/notes/cse/expression.tsx";
-import Judgment from "@/pages/notes/cse/judgment";
-import Quantitative from "@/pages/notes/cse/quantitative";
-import DataAnalysis from "@/pages/notes/cse/dataAnalysis";
+
 import PdfViewer from "@/components/PdfViewer";
+import NoteViewer from "@/components/NoteViewer";
 import Physics from "@/pages/Physics";
 import Philosophy from "@/pages/Philosophy";
 import Psychology from "@/pages/Psychology";
@@ -55,11 +53,9 @@ function AppRouter() {
 
           {/* Specific Notes & Logs */}
           <Route path="/notes/math/analysis-note" component={MathAnalysisNote} />
-          <Route path="/notes/cse/expression" component={Expression} />
-          <Route path="/notes/cse/judgment" component={Judgment} />
-          <Route path="/notes/cse/quantitative" component={Quantitative} />
-          <Route path="/notes/cse/data-analysis" component={DataAnalysis} />
+
           <Route path="/pdf-viewer" component={PdfViewer} />
+          <Route path="/note-viewer" component={NoteViewer} />
           <Route path="/remote-demo" component={RemoteNoteDemo} />
 
           {/* Placeholder Fallbacks */}

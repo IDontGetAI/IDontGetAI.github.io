@@ -13,7 +13,7 @@ const notes: ContentData<NoteItem> = [
         links: [
           {
             title: "1.言语精讲精练",
-            url: "/notes/cse/expression"
+            url: `/note-viewer?src=${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.md")}&title=1.言语精讲精练&back=/cse&backLabel=返回公考页`
           }
         ]
       },
@@ -24,20 +24,20 @@ const notes: ContentData<NoteItem> = [
 类比推理：给出一组相关的词，要求通过观察分析，在备选答案中找出一组与之在逻辑关系上最为贴近或相似的词。
 逻辑判断：每道题给出一段陈述，这段陈述被假设是正确的，不容置疑的。要求报考者根据这段陈述，运用一定的逻辑推论，选择一个最恰当的答案。`,
         tags: ["行测", "逻辑"],
-        links: [{ title: "1.判断精讲精练", url: "/notes/cse/judgment" }]
+        links: [{ title: "1.判断精讲精练", url: `/note-viewer?src=${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/02_%E5%88%A4%E6%96%AD%E6%8E%A8%E7%90%86/01_%E5%88%A4%E6%96%AD%E6%8E%A8%E7%90%86%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC%E7%A8%8B%E6%B0%B8%E4%B9%90.md")}&title=1.判断精讲精练&back=/cse&backLabel=返回公考页` }]
       },
       {
         title: "数量关系",
         content:
           "主要测查报考者理解、把握事物间量化关系和解决数量关系问题的能力，主要涉及数据关系的分析、推理、判断、运算等。常用题型有数字推理和数学运算两种。",
         tags: ["行测", "数量"],
-        links: [{ title: "1.数量关系拿分稳稳班", url: "/notes/cse/quantitative" }]
+        links: [{ title: "1.数量关系拿分稳稳班", url: `/note-viewer?src=${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/03_%E6%95%B0%E9%87%8F%E5%85%B3%E7%B3%BB/01_%E6%95%B0%E9%87%8F%E5%85%B3%E7%B3%BB%E6%8B%BF%E5%88%86%E7%A8%B3%E7%A8%B3%E7%8F%AD.md")}&title=1.数量关系拿分稳稳班&back=/cse&backLabel=返回公考页` }]
       },
       {
         title: "资料分析",
         content: "主要测查报考者对文字、数字、图表等统计性资料的综合理解与分析加工能力。",
         tags: ["行测", "资料"],
-        links: [{ title: "1.资料分析理论实战班", url: "/notes/cse/data-analysis" }]
+        links: [{ title: "1.资料分析理论实战班", url: `/note-viewer?src=${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/04_%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90/01_%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90%E7%90%86%E8%AE%BA%E5%AE%9E%E6%88%98%E7%8F%AD.md")}&title=1.资料分析理论实战班&back=/cse&backLabel=返回公考页` }]
       },
       {
         title: "常识",
@@ -61,7 +61,12 @@ const notes: ContentData<NoteItem> = [
         title: "单一综合公文",
         content: "单一综合公文主要测查报考者对公文格式、内容的掌握，以及撰写常见公文的能力。",
         tags: ["申论", "公文"],
-        link: "/notes/shenlun/document"
+        links: [
+          {
+            title: "申论技巧",
+            url: `/note-viewer?src=${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/06_%E7%94%B3%E8%AE%BA/02_%E5%8D%95%E6%B7%91%E7%8E%B2%E7%94%B3%E8%AE%BA%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.md")}&title=申论技巧&back=/cse&backLabel=返回`
+          }
+        ]
       },
       {
         title: "作文",
