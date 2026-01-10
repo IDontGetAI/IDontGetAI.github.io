@@ -82,7 +82,7 @@ const resources: ContentData<ResourceItem> = [
         content: "言语理解专项训练资料。",
         links: [
           { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Verbal", type: "Video" },
-          { title: "讲义 PDF", url: "/refs/cse/pdf-viewer?src=https%3A%2F%2Fraw.githubusercontent.com%2FIDontGetAI%2FCivil%2Faba73289a46316886e3443d03ee634bd7b089fba%2F01_%25E8%25A8%2580%25E8%25AF%25AD%25E7%2590%2586%25E8%25A7%25A3%25E4%25B8%258E%25E8%25A1%25A8%25E8%25BE%25BE%2F01_%25E9%2583%25AD%25E7%2586%2599%25E8%25A8%2580%25E8%25AF%25AD%25E7%25B2%25BE%25E8%25AE%25B2%25E7%25B2%25BE%25E7%2582%25BC.pdf&title=01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC&back=%2Fcse&backLabel=%E8%BF%94%E5%9B%9E%E5%85%AC%E8%80%83%E9%A1%B5", type: "Book" },
+          { title: "讲义 PDF", url: "/pdf-viewer?src=https%3A%2F%2Fraw.githubusercontent.com%2FIDontGetAI%2FCivil%2Faba73289a46316886e3443d03ee634bd7b089fba%2F01_%25E8%25A8%2580%25E8%25AF%25AD%25E7%2590%2586%25E8%25A7%25A3%25E4%25B8%258E%25E8%25A1%25A8%25E8%25BE%25BE%2F01_%25E9%2583%25AD%25E7%2586%2599%25E8%25A8%2580%25E8%25AF%25AD%25E7%25B2%25BE%25E8%25AE%25B2%25E7%25B2%25BE%25E7%2582%25BC.pdf&title=01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC&back=%2Fcse&backLabel=%E8%BF%94%E5%9B%9E%E5%85%AC%E8%80%83%E9%A1%B5", type: "Book" },
           { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Verbal+Reasoning", type: "Database" }
         ]
       },
@@ -91,7 +91,7 @@ const resources: ContentData<ResourceItem> = [
         content: "判断推理与图形推理题库。",
         links: [
           { title: "Search Online Courses", url: "https://www.google.com/search?q=Civil+Service+Exam+Logic", type: "Video" },
-          { title: "Search Books", url: "https://www.google.com/search?q=Civil+Service+Exam+Books", type: "Book" },
+          { title: "讲义 PDF", url: "/pdf-viewer?src=https%3A%2F%2Fraw.githubusercontent.com%2FIDontGetAI%2FCivil%2Faba73289a46316886e3443d03ee634bd7b089fba%2F02_%25E5%2588%25A4%25E6%2596%25AD%25E6%258E%25A8%25E7%2590%2586%2F01_%25E5%2588%25A4%25E6%2596%25AD%25E6%258E%25A8%25E7%2590%2586%25E7%25B2%25BE%25E8%25AE%25B2%25E7%25B2%25BE%25E7%2582%25BC%25E7%25A8%258B%25E6%25B0%25B8%25E4%25B9%2590.pdf&title=01_%E5%88%A4%E6%96%AD%E6%8E%A8%E7%90%86%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC%E7%A8%8B%E6%B0%B8%E4%B9%90&back=%2Fcse&backLabel=%E8%BF%94%E5%9B%9E%E5%85%AC%E8%80%83%E9%A1%B5", type: "Book" },
           { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Logical+Reasoning", type: "Database" }
         ]
       },

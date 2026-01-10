@@ -16,7 +16,7 @@ import Expression from "@/pages/notes/cse/expression.tsx";
 import Judgment from "@/pages/notes/cse/judgment";
 import Quantitative from "@/pages/notes/cse/quantitative";
 import DataAnalysis from "@/pages/notes/cse/dataAnalysis";
-import PdfViewer from "@/pages/refs/cse/pdf-viewer";
+import PdfViewer from "@/components/PdfViewer";
 import Physics from "@/pages/Physics";
 import Philosophy from "@/pages/Philosophy";
 import Psychology from "@/pages/Psychology";
@@ -52,30 +52,30 @@ function AppRouter() {
           <Route path="/cse" component={Cse} />
           <Route path="/humanities" component={RedirectToCse} />
           <Route path="/tools" component={Tools} />
-          
+
           {/* Specific Notes & Logs */}
           <Route path="/notes/math/analysis-note" component={MathAnalysisNote} />
           <Route path="/notes/cse/expression" component={Expression} />
           <Route path="/notes/cse/judgment" component={Judgment} />
           <Route path="/notes/cse/quantitative" component={Quantitative} />
           <Route path="/notes/cse/data-analysis" component={DataAnalysis} />
-          <Route path="/refs/cse/pdf-viewer" component={PdfViewer} />
+          <Route path="/pdf-viewer" component={PdfViewer} />
           <Route path="/remote-demo" component={RemoteNoteDemo} />
 
           {/* Placeholder Fallbacks */}
           <Route path="/notes/:subject/:topic">
             {() => (
-                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
-                    <h1 className="text-2xl font-display text-primary">Note Under Construction</h1>
-                </div>
+              <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
+                <h1 className="text-2xl font-display text-primary">Note Under Construction</h1>
+              </div>
             )}
           </Route>
 
           <Route path="/logs/:subject/:topic">
             {() => (
-                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
-                    <h1 className="text-2xl font-display text-white">Log Under Construction</h1>
-                </div>
+              <div className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-4">
+                <h1 className="text-2xl font-display text-white">Log Under Construction</h1>
+              </div>
             )}
           </Route>
 

@@ -97,7 +97,7 @@ npm run deploy
 1.  **保存代码** (可选，为了存档):
     ```bash
     git add .
-    git commit -m "V6.10"
+    git commit -m "Update notes"
     git push
     ```
 

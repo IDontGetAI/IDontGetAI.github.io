@@ -11,8 +11,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-08-01",
         tags: ["Newton", "Energy"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/mechanics-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/mechanics-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/mechanics-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/mechanics-2" }
         ]
       },
       {
@@ -21,8 +21,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-08-10",
         tags: ["Thermodynamics", "Entropy"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/thermal-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/thermal-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/thermal-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/thermal-2" }
         ]
       },
       {
@@ -31,8 +31,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-08-20",
         tags: ["Maxwell", "Fields"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/electromagnetism-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/electromagnetism-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/electromagnetism-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/electromagnetism-2" }
         ]
       },
       {
@@ -41,8 +41,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-09-01",
         tags: ["Wave", "Particle"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/optics-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/optics-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/optics-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/optics-2" }
         ]
       },
       {
@@ -51,8 +51,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-09-15",
         tags: ["Relativity", "Quantum"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/modern-physics-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/modern-physics-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/modern-physics-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/modern-physics-2" }
         ]
       }
     ]
@@ -66,8 +66,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-10-01",
         tags: ["Lagrangian", "Action"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/analytical-mechanics-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/analytical-mechanics-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/analytical-mechanics-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/analytical-mechanics-2" }
         ]
       },
       {
@@ -76,8 +76,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-10-20",
         tags: ["Maxwell", "Gauge"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/electrodynamics-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/electrodynamics-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/electrodynamics-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/electrodynamics-2" }
         ]
       },
       {
@@ -86,8 +86,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-11-10",
         tags: ["Schrodinger", "Spin"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/quantum-mechanics-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/quantum-mechanics-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/quantum-mechanics-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/quantum-mechanics-2" }
         ]
       },
       {
@@ -96,8 +96,8 @@ const notes: ContentData<NoteItem> = [
         date: "2025-12-05",
         tags: ["Boltzmann", "PhaseTransition"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/statistical-mechanics-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/statistical-mechanics-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/statistical-mechanics-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/statistical-mechanics-2" }
         ]
       }
     ]
@@ -111,8 +111,8 @@ const notes: ContentData<NoteItem> = [
         date: "2026-01-01",
         tags: ["Complex", "Integration"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/complex-variables-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/complex-variables-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/complex-variables-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/complex-variables-2" }
         ]
       },
       {
@@ -121,8 +121,8 @@ const notes: ContentData<NoteItem> = [
         date: "2026-01-15",
         tags: ["PDE", "GreensFunction"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/math-physics-eqs-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/math-physics-eqs-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/math-physics-eqs-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/math-physics-eqs-2" }
         ]
       },
       {
@@ -131,8 +131,8 @@ const notes: ContentData<NoteItem> = [
         date: "2026-02-01",
         tags: ["Symmetry", "LieGroups"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/group-theory-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/group-theory-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/group-theory-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/group-theory-2" }
         ]
       },
       {
@@ -141,8 +141,8 @@ const notes: ContentData<NoteItem> = [
         date: "2026-02-20",
         tags: ["GR", "Topology"],
         links: [
-            { title: "笔记1 (待添加)", url: "/notes/physics/diff-geometry-1" },
-            { title: "笔记2 (待添加)", url: "/notes/physics/diff-geometry-2" }
+          { title: "笔记1 (待添加)", url: "/notes/physics/diff-geometry-1" },
+          { title: "笔记2 (待添加)", url: "/notes/physics/diff-geometry-2" }
         ]
       }
     ]
@@ -157,45 +157,49 @@ const resources: ContentData<ResourceItem> = [
         title: "力学 (Mechanics)",
         content: "Feynman Lectures Vol 1, Kleppner & Kolenkow。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          {
+            title: "Quantum Mechanics",
+            url: `/pdf-viewer?src=${encodeURIComponent("https://www.icourse.club/uploads/files/193e0e79ccf6ba466e8ea8a5f1218473022773b8.pdf")}&title=Search Books&back=/physics&backLabel=Physics Page`,
+            type: "Book"
+          },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "热学 (Thermal Physics)",
         content: "Schroeder, Kittel & Kroemer。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "电磁学 (Electromagnetism)",
         content: "Purcell, Griffiths。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "光学 (Optics)",
         content: "Hecht。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "近代物理 (Modern Physics)",
         content: "Beiser。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       }
     ]
@@ -207,36 +211,36 @@ const resources: ContentData<ResourceItem> = [
         title: "理论力学 (Analytical Mechanics)",
         content: "Landau Vol 1, Goldstein。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "电动力学 (Electrodynamics)",
         content: "Jackson, Landau Vol 2。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "量子力学 (Quantum Mechanics)",
         content: "Shankar, Griffiths, Sakurai。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "统计力学 (Statistical Mechanics)",
         content: "Pathria, Landau Vol 5。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       }
     ]
@@ -248,36 +252,36 @@ const resources: ContentData<ResourceItem> = [
         title: "复变函数 (Complex Variables)",
         content: "Arfken & Weber。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "数学物理方程 (Math Physics Eqs)",
         content: "Courant & Hilbert。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "群论 (Group Theory)",
         content: "Zee, Georgi。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       },
       {
         title: "微分几何与拓扑 (Diff Geometry)",
         content: "Nakahara, Schutz。",
         links: [
-            { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
-            { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
-            { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
+          { title: "Search Online Courses", url: "https://www.google.com/search?q=Physics+Online+Course", type: "Video" },
+          { title: "Search Books", url: "https://www.google.com/search?q=Physics+Books", type: "Book" },
+          { title: "Google Scholar", url: "https://scholar.google.com/scholar?q=Physics", type: "Database" }
         ]
       }
     ]
@@ -311,7 +315,7 @@ export default function Physics() {
       title="Physics"
       subtitle="从夸克到类星体：解码现实的物理法则"
       backgroundImage={physicsBg}
-      
+
       notes={notes}
       resources={resources}
       insights={insights}
