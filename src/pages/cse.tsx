@@ -8,12 +8,18 @@ const notes: ContentData<NoteItem> = [
       {
         title: "言语理解与表达",
         content:
-          "主要测查报考者运用语言文字进行思考和交流、迅速准确地理解和把握文字材料内涵的能力。包括根据材料查找主要信息及重要细节；正确理解阅读材料中指定词语、语句的含义；概括归纳阅读材料的中心、主旨；判断新组成的语句与阅读材料原意是否一致；根据上下文内容合理推断阅读材料中的隐含信息；判断作者的态度、意图、倾向、目的；准确、得体地遣词用字等。",
+          `"主要测查报考者运用语言文字进行思考和交流、迅速准确地理解和把握文字材料内涵的能力。包括
+          根据材料查找主要信息及重要细节；
+        正确理解阅读材料中指定词语、语句的含义；
+        概括归纳阅读材料的中心、主旨；
+        判断新组成的语句与阅读材料原意是否一致；
+        根据上下文内容合理推断阅读材料中的隐含信息；
+        判断作者的态度、意图、倾向、目的；准确、得体地遣词用字等。"`,
         tags: ["行测", "言语"],
         links: [
           {
             title: "1.言语精讲精练",
-            url: `/note-viewer?src=${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.md")}&title=1.言语精讲精练&back=/cse&backLabel=返回公考页`
+            url: `/ note - viewer ? src = ${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.md")} & title=1.言语精讲精练 & back=/cse&backLabel=返回公考页`
           }
         ]
       },
@@ -72,7 +78,12 @@ const notes: ContentData<NoteItem> = [
         title: "作文",
         content: "作文主要测查报考者的阅读理解能力、综合分析能力、提出和解决问题能力、文字表达能力。",
         tags: ["申论", "作文"],
-        link: "/notes/shenlun/essay"
+        links: [
+          {
+            title: "02_大作文专题",
+            url: `/note-viewer?src=${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/06_%E7%94%B3%E8%AE%BA/02_%E5%A4%A7%E4%BD%9C%E6%96%87%E4%B8%93%E9%A2%98.md")}&title=02_大作文专题&back=/cse&backLabel=返回`,
+          }
+        ]
       }
     ]
   }
