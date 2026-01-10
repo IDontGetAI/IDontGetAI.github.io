@@ -91,4 +91,44 @@ links: [
 *   **Q: 普通网站的 PDF 能看吗？**
     *   A: 能！这就是这个“万能代码”的厉害之处。就算网站有跨域限制，系统也会自动尝试用直连模式打开。
 
+
+---
+
+## 🌰 根据你的要求，这里有三个实战示例 (Examples)
+
+你可以直接复制下面的代码，然后放到 `links: [...]` 里面。
+
+### 1. 普通网站 PDF (icourse.club)
+**原始链接：** `https://www.icourse.club/uploads/files/193e0e79ccf6ba466e8ea8a5f1218473022773b8.pdf`
+
+```javascript
+{ 
+  title: "普通网站 PDF 示例", 
+  url: `/pdf-viewer?src=${encodeURIComponent("https://www.icourse.club/uploads/files/193e0e79ccf6ba466e8ea8a5f1218473022773b8.pdf")}&title=普通PDF&back=/cse&backLabel=返回`, 
+  type: "Book" 
+},
+```
+
+### 2. GitHub 页面链接 (Blob)
+**原始链接：** `https://github.com/IDontGetAI/Civil/blob/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.pdf`
+
+```javascript
+{ 
+  title: "GitHub 页面链接示例", 
+  url: `/pdf-viewer?src=${encodeURIComponent("https://github.com/IDontGetAI/Civil/blob/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.pdf")}&title=GitHub页面链接&back=/cse&backLabel=返回`, 
+  type: "Book" 
+},
+```
+
+### 3. GitHub 原始链接 (Raw)
+**原始链接：** `https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.pdf`
+
+```javascript
+{ 
+  title: "GitHub Raw 链接示例", 
+  url: `/pdf-viewer?src=${encodeURIComponent("https://raw.githubusercontent.com/IDontGetAI/Civil/refs/heads/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.pdf")}&title=GitHubRaw链接&back=/cse&backLabel=返回`, 
+  type: "Book" 
+},
+```
+
 搞定！🎉

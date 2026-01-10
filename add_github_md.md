@@ -88,4 +88,48 @@ export default function MyNewNote() {
 - [ ] `App.tsx` 里是不是既 `import` 了，又加 `<Route>` 了？
 - [ ] 学科页里的链接地址是不是和 `App.tsx` 里的 `path` 一样？
 
-如果都对，刷新网页，你的笔记应该就出现了！🎉
+
+---
+
+## 🌰 实战示例 (Example)
+
+假设你拿到了这样一个 GitHub 链接：
+`https://github.com/IDontGetAI/Civil/raw/refs/heads/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.md`
+
+### 1. 新建文件 `src/pages/notes/cse/GuoXiNote.tsx`
+
+```tsx
+import { RemoteNoteLayout } from "@/components/RemoteNoteLayout";
+
+// 直接粘贴你的链接
+const RAW_URL = "https://github.com/IDontGetAI/Civil/raw/refs/heads/main/01_%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3%E4%B8%8E%E8%A1%A8%E8%BE%BE/01_%E9%83%AD%E7%86%99%E8%A8%80%E8%AF%AD%E7%B2%BE%E8%AE%B2%E7%B2%BE%E7%82%BC.md";
+
+export default function GuoXiNote() {
+  return (
+    <RemoteNoteLayout
+      title="郭熙言语精讲精炼"
+      subtitle="言语理解与表达核心讲义"
+      rawUrl={RAW_URL}
+      backLink="/cse"
+      backLabel="返回公考页"
+    />
+  );
+}
+```
+
+### 2. 在 `src/App.tsx` 注册
+
+```tsx
+import GuoXiNote from "@/pages/notes/cse/GuoXiNote";
+// ...
+<Route path="/notes/cse/guoxi-note" component={GuoXiNote} />
+```
+
+### 3. 在 `src/pages/cse.tsx` 添加链接
+
+```tsx
+{ title: "郭熙言语精炼", url: "/notes/cse/guoxi-note" },
+```
+
+搞定！这样你的网站上就会多出一篇名为“郭熙言语精炼”的笔记了。
+
