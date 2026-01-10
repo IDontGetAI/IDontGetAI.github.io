@@ -52,44 +52,45 @@ idontgetai-website/
 
 ## 📝 内容管理
 
-网站采用**数据驱动**的架构。要修改内容，无需懂复杂的 React 代码，只需编辑对应页面的**数据数组**。
+网站采用**数据驱动**的架构。要修改内容，无需懂复杂的 React 代码。我们为不同类型的内容准备了详细的**小白保姆级教程**：
 
-**示例：添加一条新的 AI 笔记**
+*   📄 **添加 PDF 资源** (GitHub/普通链接): [**add_pdf.md**](./add_pdf.md)
+*   📝 **添加 GitHub 笔记** (Markdown): [**add_github_md.md**](./add_github_md.md)
+*   🧠 **添加每日思考 (Log)**: [**add_log.md**](./add_log.md)
+*   📚 **添加远程笔记源**: [**add_note.md**](./add_note.md)
+
+**快速示例：添加一条新的 AI 笔记**
 1. 打开 `src/pages/AI.tsx`
 2. 找到 `const notes = [...]` 数组。
-3. 按照现有格式添加新对象：
-   ```typescript
-   {
-     title: "新笔记标题",
-     content: "笔记内容...",
-     date: "2026-01-01",
-     tags: ["Tag1", "Tag2"]
-   },
-   ```
-4. 保存文件，网站会自动更新。
+3. 按照现有格式添加新对象，保存文件即自动更新。
 
 ## 🚢 部署上线
 
 本项目已配置自动化脚本，支持一键部署到 GitHub Pages。
 详情请阅读根目录下的 [**DEPLOY.md**](./DEPLOY.md) 文件。
 
-## ✨ v5.0 版本特性
+## ✨ v6.1 版本特性
 
-1.  **原生 Markdown 引擎**:
+1.  **原生 PDF 阅读器集成 (New)**:
+    *   **混合加载引擎**: 智能识别 GitHub 链接（自动转 Blob 预览）和普通 PDF 链接（iframe 直连），解决跨域与下载问题。
+    *   **沉浸式 UI**: 统一的深色玻璃拟态设计，与主站风格完美融合。
+    *   **全平台兼容**: 依托浏览器原生内核，提供极致清晰度和打印/搜索功能。
+
+2.  **增强的内容管理体系**:
+    *   新增 `add_github_md.md` 与 `add_pdf.md`，提供“填空式”内容添加体验。
+    *   优化路由系统，支持全局 PDF 预览路由 `/pdf-viewer`。
+
+3.  **原生 Markdown 引擎**:
     *   集成 `markdown-it` + `markdown-it-texmath` + `highlight.js`。
     *   支持 LaTeX 数学公式 (`$E=mc^2$`) 和代码高亮。
     *   支持 Typora 主题样式 (Cogito)。
 
-2.  **无头 CMS 模式 (Remote Notes)**:
+4.  **无头 CMS 模式 (Remote Notes)**:
     *   支持直接从 GitHub 仓库加载 Markdown 文件。
     *   只需更新 GitHub 笔记库，网站内容自动同步。
-    *   详见 [**add_note.md**](./add_note.md)。
 
-3.  **极简历史时间轴**:
+5.  **极简历史时间轴**:
     *   各学科页面新增 Minimalist History 板块，展示学科发展里程碑。
-
-4.  **沉浸式阅读体验**:
-    *   笔记详情页采用磨砂玻璃风格 + 极简暗色背景，提供专注的阅读环境。
 
 
 
