@@ -53,6 +53,22 @@ export default function PdfViewer() {
     const [blobUrl, setBlobUrl] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // 简单的移动端检测
+        const checkMobile = () => {
+            const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+            if (/android|ipad|iphone|ipod/i.test(userAgent)) {
+                setIsMobile(true);
+            } else {
+                setIsMobile(window.innerWidth <= 768); // 宽屏兜底
+            }
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         const rawUrl = processUrl(src);
@@ -141,13 +157,26 @@ export default function PdfViewer() {
                         </div>
                     )}
 
-                    {/* 原生 iframe：完美嵌入在玻璃卡片中 */}
+                    {/* 移动端兼容处理：也不支持 iframe 嵌入，显示打开按钮 */}
                     {!loading && !error && blobUrl && (
-                        <iframe
-                            src={blobUrl}
-                            className="w-full h-full border-none block bg-white"
-                            title="PDF Preview"
-                        />
+                        isMobile ? (
+                            <div className="flex flex-col items-center justify-center h-full p-8 text-center text-muted-foreground">
+                                <AlertCircle className="w-12 h-12 mb-4 opacity-50" />
+                                <h3 className="text-lg font-medium text-white mb-2">移动端暂不支持嵌入预览</h3>
+                                <p className="mb-6 text-sm max-w-xs mx-auto">为了获得最佳阅读体验，请使用原生阅读器打开。</p>
+                                <a href={blobUrl} target="_blank" rel="noopener noreferrer">
+                                    <Button className="w-full sm:w-auto" size="lg">
+                                        <Maximize2 className="mr-2 h-4 w-4" /> 在新窗口打开 PDF
+                                    </Button>
+                                </a>
+                            </div>
+                        ) : (
+                            <iframe
+                                src={blobUrl}
+                                className="w-full h-full border-none block bg-white"
+                                title="PDF Preview"
+                            />
+                        )
                     )}
                 </div>
 
