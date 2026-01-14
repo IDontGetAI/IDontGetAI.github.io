@@ -1,48 +1,31 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IDontGetAI</title>
-
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Noto+Sans+SC:wght@100..900&family=Syncopate:wght@400;700&display=swap"
-        rel="stylesheet">
-
+    <title>Redirecting...</title>
     <script>
         /**
-         * GitHub Pages SPA 路由修复（Browser History 模式）
+         * GitHub Pages SPA 路由修复
          * 
-         * 问题：GitHub Pages 无法处理 SPA 的客户端路由
-         * 解决：使用 history.replaceState 修改 URL，但保持在同一页面加载周期内
-         * 
-         * 关键：这样可以保留 OAuth 回调参数，让 Giscus 正常工作
+         * 当用户刷新子路由时（如 /ai），GitHub Pages 会返回 404
+         * 此脚本保存原始路径并重定向到 index.html
+         * React 应用启动后会从 sessionStorage 恢复正确的路由
          */
         (function () {
-            // 保存当前完整路径（包含 OAuth 参数）
+            // 保存当前完整路径（包含查询参数和 hash）
             var currentPath = window.location.pathname + window.location.search + window.location.hash;
-
-            // 如果不是根路径，保存并修改 URL
+            
+            // 如果不是根路径，保存到 sessionStorage
             if (currentPath !== '/' && currentPath !== '') {
-                // 保存原始路径供 React 应用使用
                 sessionStorage.setItem('spa_path', currentPath);
-
-                // 修改浏览器地址栏显示为根路径（不触发页面重新加载）
-                // 这样 React 应用会从根路径启动，然后恢复正确的路由
-                history.replaceState(null, '', '/');
             }
+            
+            // 立即重定向到根路径，让 index.html 加载正确的生产环境脚本
+            location.replace('/');
         })();
     </script>
 </head>
-
 <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- 重定向中... -->
 </body>
-
 </html>
