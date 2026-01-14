@@ -1,10 +1,9 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Router, Route, Switch, useLocation } from "wouter";
+import { Router, Route, Switch, useHashLocation, Redirect } from "wouter";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Layout from "@/Layout";
-import { useEffect } from "react";
 
 import Home from "@/pages/Home";
 import AI from "@/pages/AI";
@@ -22,30 +21,12 @@ import Tools from "@/pages/Tools";
 import NotFound from "@/pages/NotFound";
 
 function RedirectToCse() {
-  const [, setLocation] = useLocation();
-
-  useEffect(() => {
-    setLocation("/cse");
-  }, [setLocation]);
-
-  return null;
+  return <Redirect to="/cse" />;
 }
 
 function AppRouter() {
-  const [, setLocation] = useLocation();
-
-  useEffect(() => {
-    // 恢复从 404.html 保存的路径
-    // 当 GitHub Pages 返回 404 时，404.html 会保存原始路径到 sessionStorage
-    const savedPath = sessionStorage.getItem('spa_path');
-    if (savedPath) {
-      sessionStorage.removeItem('spa_path');
-      setLocation(savedPath);
-    }
-  }, [setLocation]);
-
   return (
-    <Router>
+    <Router hook={useHashLocation}>
       <Layout>
         <Switch>
           <Route path="/" component={Home} />
