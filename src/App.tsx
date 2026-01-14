@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Router, Route, Switch, useHashLocation, Redirect } from "wouter";
+import { Router, Route, Switch, Redirect } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Layout from "@/Layout";
