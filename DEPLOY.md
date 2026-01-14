@@ -1,107 +1,44 @@
-# 网站部署指南 (傻瓜式教程)
+# 部署指南 (Deployment Guide)
 
-本指南将教你如何将网站从零开始部署到 GitHub Pages，让全世界都能访问。
+本项目配置了自动化构建工作流，可以轻松部署到 **GitHub Pages**。
 
-## ⚠️ 核心前置条件
-在开始之前，请务必检查以下两点，否则后续步骤**一定会报错**：
+## 📋 前置要求
 
-1.  **必须安装 Node.js**
-    *   打开终端（CMD 或 PowerShell），输入 `node -v`。
-    *   如果不显示版本号，请去 [Node.js 官网](https://nodejs.org/) 下载安装 LTS 版本。
-    *   **安装完必须重启电脑**或重启所有终端窗口。
+1.  确保你不仅拥有源码，而且拥有该仓库的 **Write** 权限。
+2.  确保本地已安装 `Node.js` 和 `npm`。
 
-2.  **必须进入正确目录**
-    *   解压后，请确保你的终端路径下能看到 `package.json` 文件。
-    *   如果运行 `npm install` 报错 `ENOENT`，说明你可能多套了一层文件夹。请用 `cd idontgetai-website` 进入下一层。
+## 🚀 自动部署 (推荐)
 
----
+我们已经在 `package.json` 中配置了 `gh-pages` 脚本。
 
-## 第一阶段：本地环境配置
+### 1. 提交更改
+在部署之前，请确保所有更改都已提交到本地 Git 仓库：
+```bash
+git add .
+git commit -m "update: ready to deploy"
+```
 
-1.  **打开终端**
-    在项目文件夹内，右键选择 "Open in Terminal" (在终端打开) 或 "Open PowerShell window here"。
-
-2.  **安装依赖**
-    复制并运行以下命令（这一步会下载所有需要的工具）：
-    ```bash
-    npm install
-    ```
-    *(等待进度条跑完，如果不报错就成功了)*
-
----
-
-## 第二阶段：连接 GitHub
-
-1.  **创建远程仓库**
-    *   登录 [GitHub](https://github.com/)。
-    *   点击右上角 `+` 号 -> **New repository**。
-    *   Repository name 填一个名字（如 `my-knowledge-base`）。
-    *   **不要勾选** Initialize with README/License 等选项，直接点击 **Create repository**。
-    *   复制页面上的 HTTPS 地址 (例如: `https://github.com/YourName/my-knowledge-base.git`)。
-
-2.  **初始化并上传代码**
-    回到终端，依次运行以下命令（**每行运行一次**）：
-
-    ```bash
-    # 1. 初始化 Git
-    git init
-    
-    # 2. 添加所有文件
-    git add .
-    
-    # 3. 提交存档
-    git commit -m "Initial commit"
-    
-    # 4. 关联远程仓库 (⚠️ 把下面的地址换成你刚才复制的！)
-    git remote add origin https://github.com/你的用户名/你的仓库名.git
-    
-    # 5. 推送代码 (强制覆盖，避免冲突)
-    git branch -M main
-    git push -u origin main -f
-    ```
-
----
-
-## 第三阶段：一键发布上线 🚀
-
-这是最关键的一步。只要你完成了上面的步骤，以后更新网站只需要运行这一条命令：
-
+### 2. 执行部署命令
+在项目根目录下运行：
 ```bash
 npm run deploy
 ```
 
-**这个命令会自动执行以下魔法：**
-1.  **Build**: 把你的代码编译成网页文件（生成 `dist` 文件夹）。
-2.  **Deploy**: 把 `dist` 文件夹的内容自动上传到 GitHub 的 `gh-pages` 分支。
+> **注意**: 这个命令会执行两个动作：
+> 1. `npm run build`: 编译 TypeScript 和 React 代码，生成 `dist` 目录。
+> 2. `gh-pages -d dist`: 将 `dist` 目录的内容强制推送到远程的 `gh-pages` 分支。
 
-*(如果出现 "Published" 字样，说明成功！)*
+### 3. 设置 GitHub Pages
+部署完成后（终端显示 `Published`）：
+1. 打开 GitHub 仓库页面。
+2. 进入 **Settings** -> **Pages**。
+3. 在 **Build and deployment** 下，确保 Branch 选择的是 **`gh-pages`** (root)。
+4. 保存后等待几分钟，GitHub 会显示你的网站链接。
 
----
+## 🛠️ 常见问题
 
-## 第四阶段：开启访问
+**Q: 部署后打开页面是空白的？**
+A: 请检查 `vite.config.ts` 中的 `base` 配置。对于 GitHub Pages，通常需要设置为 `/仓库名/`。如果你的仓库名是 `<username>.github.io`，则 `base` 不需要设置（默认为 `/`）。
 
-1.  回到 GitHub 仓库页面，点击 **Settings** (设置)。
-2.  在左侧栏找到 **Pages**。
-3.  **Build and deployment** -> **Source** 保持默认 `Deploy from a branch`。
-4.  **Branch** 必须选择 **`gh-pages`** (注意：**不是** main)。
-5.  点击 **Save**。
-
-稍等 1-2 分钟，刷新页面，顶部会出现一个绿色的网址（如 `https://yourname.github.io/repo/`）。点击它，你的网站就上线了！
-
----
-
-## 📅 日后如何更新内容？
-
-当你修改了笔记或添加了新工具后：
-
-1.  **保存代码** (可选，为了存档):
-    ```bash
-    git add .
-    git commit -m "Update notes"
-    git push
-    ```
-
-2.  **更新网站** (必需):
-    ```bash
-    npm run deploy
-    ```
+**Q: 路由跳转后刷新报 404？**
+A: 本项目使用的是 `wouter` 的 Hash 路由模式 (`useHashLocation`)。Hash 路由（URL 中包含 `#`）天然兼容 GitHub Pages，刷新不会 404。如果你修改了路由模式，请务必改回 Hash 模式。

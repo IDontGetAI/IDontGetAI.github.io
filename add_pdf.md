@@ -1,73 +1,63 @@
-# 📄 如何添加 PDF 到网站 (小白保姆级教程)
+# 📄 添加 PDF 文档指南
 
-本教程教你如何添加 PDF（支持 GitHub 和普通网站）。
-
----
-
-## 🛠️ 第一步：获取 PDF 链接
-
-### 情况 A：PDF 在 GitHub 上 (超级简单)
-1. 打开 GitHub 上的 PDF 文件页面。
-2. **直接复制浏览器地址栏里的链接**。
-   * 就像这样：`https://github.com/IDontGetAI/Civil/blob/main/shenlun.pdf`
-   * **不需要** 去找什么 Raw 按钮了，系统会自动帮你处理！😎
-
-### 情况 B：PDF 在普通网站上
-1. 直接复制以 `.pdf` 结尾的网址。
-   * 例如：`https://example.com/books/guide.pdf`
+本指南介绍如何在学科页面中集成 PDF 阅读功能。
 
 ---
 
-## ✂️ 第二步：使用“万能代码”
+## 核心原理
 
-请直接复制下面的代码块。你只需要修改 **中文部分**。
+网站使用内置的 `PdfViewer` 组件。它优先使用 `fetch` + `Blob` 方式加载 PDF 以支持下载功能；如果跨域失败，会自动降级使用 `iframe` 直接加载。
 
-```javascript
-{ 
-  title: "这里写标题 (例如: 线性代数讲义)", 
-  url: `/pdf-viewer?src=${encodeURIComponent("这里粘贴你的PDF链接")}&title=这里再写一遍标题&back=/对应的页面英文名&backLabel=返回按钮文字`, 
-  type: "Book" 
+## 操作步骤
+
+### 1. 获取 PDF 链接
+支持 GitHub 文件链接或普通的 PDF 直链。
+*   **GitHub**: `https://github.com/User/Repo/blob/main/book.pdf`
+*   **Direct**: `https://course.edu/slides.pdf`
+
+### 2. 构造配置对象
+打开对应的页面配置文件（如 `src/pages/Math.tsx`），在 `resources` 列表中添加以下对象。
+
+**请务必严格遵守以下格式（每个属性占一行）：**
+
+```typescript
+{
+  title: "文档标题",
+  url: `/pdf-viewer?src=${encodeURIComponent("你的PDF链接")}&title=预览标题&back=/math`,
+  type: "Book",
 },
 ```
 
-### 📝 填空说明：
-1. **这里粘贴你的PDF链接**：把第一步复制的链接粘贴进去。
-   * **⚠️ 注意**：必须保留外面的双引号 `""` 和 `encodeURIComponent(...)`。
-2. **对应的页面英文名**：
-   * 公考页填：`/cse`
-   * AI 页填：`/ai`
-   * 物理页填：`/physics`
-   * 数学页填：`/math`
-3. **返回按钮文字**：例如 "返回公考页" 或 "Back"。
+### 3. 参数详解
+
+| 参数 | 说明 | 示例 |
+| :--- | :--- | :--- |
+| `src` | **[必填]** PDF 的 URL，**必须**使用 `encodeURIComponent` 包裹。 | `encodeURIComponent("https://...")` |
+| `title` | **[可选]** 预览页顶部标题。 | `&title=线性代数讲义` |
+| `back` | **[可选]** 返回按钮跳转的路由。 | `&back=/math` |
+| `backLabel` | **[可选]** 返回按钮的文字。 | `&backLabel=Back` |
 
 ---
 
-## 📝 第三步：粘贴到文件里
+## ✅ 示例代码
 
-1. 找到对应的学科文件（例如 `src/pages/cse.tsx`）。
-2. 搜索 `const resources`。
-3. 找到 `links: [` 这一行。
-4. 把改好的代码，**粘贴到 `links: [` 的下面**。
+假设你想在数学页面添加一本微积分教材：
 
-### 举个栗子 🌰
+```typescript
+// src/pages/Math.tsx
 
-假设我要添加一本《申论秘籍》：
-
-**修改前：**
-```javascript
-links: [
-  { title: "某某视频", url: "...", type: "Video" }
-]
-```
-
-**修改后（加入了新代码）：**
-```javascript
-links: [
-  { 
-    title: "申论秘籍 (PDF)", 
-    url: `/pdf-viewer?src=${encodeURIComponent("https://github.com/IDontGetAI/Civil/blob/main/shenlun.pdf")}&title=申论秘籍&back=/cse&backLabel=返回`, 
-    type: "Book" 
+const resources: ContentData<ResourceItem> = [
+  // ... 其他资源
+  {
+    title: "Thomas' Calculus (PDF)",
+    content: "经典的微积分入门教材。",
+    links: [
+      {
+        title: "在线阅读",
+        url: `/pdf-viewer?src=${encodeURIComponent("https://github.com/Lib/Books/blob/main/calculus.pdf")}&title=ThomasCalculus&back=/math`,
+        type: "Book",
+      },
+    ],
   },
-  { title: "某某视频", url: "...", type: "Video" }
-]
+];
 ```

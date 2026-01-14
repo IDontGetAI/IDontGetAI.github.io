@@ -1,72 +1,57 @@
-# 📝 如何添加 GitHub 笔记 (新版·极简)
+# 📝 添加 Markdown 笔记指南
 
-本教程教你如何添加 GitHub 上的 Markdown 笔记。
-方法和添加 PDF 一模一样！
-
----
-
-## 🛠️ 第一步：获取笔记链接 (超级简单)
-
-1. 在 GitHub 上找到你的 `.md` 笔记文件。
-2. **直接复制浏览器地址栏里的链接**。
-   * 就像这样：`https://github.com/IDontGetAI/Civil/blob/main/shenlun.md`
-   * **不需要** 去找什么 Raw 按钮了，系统会自动帮你处理！😎
+本指南介绍如何在学科页面中引用 GitHub 上的 Markdown 笔记。
 
 ---
 
-## ✂️ 第二步：使用“万能代码”
+## 核心原理
 
-请直接复制下面的代码块。你只需要修改 **中文部分**。
+网站使用内置的 `MarkdownViewer` 组件来渲染 Markdown。你不需要将 `.md` 文件直接放入 `src` 目录，而是通过 URL 参数引用远程文件。
 
-```javascript
-{ 
-  title: "这里写标题", 
-  url: `/note-viewer?src=${encodeURIComponent("这里粘贴你的笔记链接")}&title=这里再写一遍标题&back=/对应的页面英文名&backLabel=返回按钮文字` 
+## 操作步骤
+
+### 1. 获取 Markdown 链接
+在 GitHub 上找到你想展示的笔记文件（例如 `notes.md`），直接复制浏览器地址栏的 URL。
+*   **支持格式**: `https://github.com/User/Repo/blob/main/path/to/notes.md`
+*   **无需 Raw**: 系统会自动转换 Blob 链接为 Raw 链接。
+
+### 2. 构造配置对象
+打开对应的页面配置文件（如 `src/pages/AI.tsx`），在 `notes` 或 `items` 列表中添加以下对象。
+
+**请务必严格遵守以下格式（每个属性占一行）：**
+
+```typescript
+{
+  title: "笔记标题 (显示在卡片上)",
+  url: `/note-viewer?src=${encodeURIComponent("你的GitHub链接")}&title=页面内标题&back=/ai&backLabel=返回",
 },
 ```
 
-### 📝 填空说明：
-1. **这里粘贴你的笔记链接**：把第一步复制的链接粘贴进去。
-   * **⚠️ 注意**：必须保留 `encodeURIComponent("...")`，一定要放在双引号里面。
-2. **对应的页面英文名**：
-   * 公考页填：`/cse`
-   * AI 页填：`/ai`
-   * 物理页填：`/physics`
-   * 数学页填：`/math`
-3. **返回按钮文字**：例如 "返回公考页" 或 "Back"。
+### 3. 参数详解
+
+| 参数 | 说明 | 示例 |
+| :--- | :--- | :--- |
+| `src` | **[必填]** 笔记的远程 URL，必须使用 `encodeURIComponent` 包裹。 | `encodeURIComponent("https://...")` |
+| `title` | **[可选]** 阅读器顶部显示的标题。 | `&title=深度学习基础` |
+| `back` | **[可选]** 返回按钮跳转的路由。 | `&back=/ai` |
+| `backLabel` | **[可选]** 返回按钮的文字。 | `&backLabel=返回AI主页` |
 
 ---
 
-## 📝 第三步：粘贴到文件里
+## ✅ 示例代码
 
-1. 找到对应的学科文件（例如 `src/pages/cse.tsx`）。
-2. 搜索 `const notes`。
-3. 找到 `links: [` 这一行。
-4. 把改好的代码粘贴进去。
+假设你想在 AI 页面添加一篇关于 Transformer 的笔记：
 
-### 举个栗子 🌰
+```typescript
+// src/pages/AI.tsx
 
-假设我要添加一篇《申论技巧》：
-
-**修改前：**
-```javascript
-links: [
-  { title: "某某视频", url: "...", type: "Video" }
-]
-```
-
-**修改后（加入了新代码）：**
-```javascript
-links: [
-  { 
-    title: "申论技巧", 
-    url: `/note-viewer?src=${encodeURIComponent("https://github.com/IDontGetAI/Civil/blob/main/shenlun.md")}&title=申论技巧&back=/cse&backLabel=返回`,
-    type: "Book" 
+const notes: ContentData<NoteItem> = [
+  // ... 其他笔记
+  {
+    title: "Transformer 架构详解",
+    content: "深入理解 Attention Is All You Need 论文细节。",
+    tags: ["NLP", "Deep Learning"],
+    link: `/note-viewer?src=${encodeURIComponent("https://github.com/MyRepo/Notes/blob/main/transformer.md")}&title=Transformer详解&back=/ai`,
   },
-  { title: "某某视频", 
-  url: "...", 
-  type: "Video" }
-]
+];
 ```
-
-搞定！🎉

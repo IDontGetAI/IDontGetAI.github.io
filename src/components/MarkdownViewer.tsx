@@ -40,7 +40,7 @@ function processUrl(url: string): string {
     return encodeURI(rawUrl);
 }
 
-export default function NoteViewer() {
+export default function MarkdownViewer() {
     const actualQuery = window.location.hash.split("?")[1] || window.location.search.slice(1);
     const { src, title, subtitle, back, backLabel } = parseQuery(actualQuery);
 

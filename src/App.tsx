@@ -11,7 +11,7 @@ import AI from "@/pages/AI";
 import Math from "@/pages/Math";
 
 import PdfViewer from "@/components/PdfViewer";
-import NoteViewer from "@/components/NoteViewer";
+import MarkdownViewer from "@/components/MarkdownViewer";
 import Physics from "@/pages/Physics";
 import Philosophy from "@/pages/Philosophy";
 import Psychology from "@/pages/Psychology";
@@ -44,7 +44,7 @@ function AppRouter() {
 
           {/* Specific Notes & Logs */}
           <Route path="/pdf-viewer" component={PdfViewer} />
-          <Route path="/note-viewer" component={NoteViewer} />
+          <Route path="/note-viewer" component={MarkdownViewer} />
 
           {/* Placeholder Fallbacks */}
           <Route path="/notes/:subject/:topic">
