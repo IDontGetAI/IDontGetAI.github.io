@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Deep Black Background -->
+  <rect width="64" height="64" rx="12" fill="#07060a"/>
+  
+  <!-- Main "?" Symbol - Bold and Clear (Neon Green) -->
+  <g>
+    <!-- Question mark curve and stem -->
+    <path d="M 20,18 Q 20,10 28,10 L 36,10 Q 44,10 44,18 Q 44,26 36,28 L 32,30 L 32,38" 
+          fill="none" stroke="#00ff80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Question mark dot -->
+    <circle cx="32" cy="46" r="3.5" fill="#00ff80"/>
+  </g>
+  
+  <!-- Glitch Layer 1 - Cyan (shifted right and up) -->
+  <g opacity="0.35">
+    <path d="M 21.5,17 Q 21.5,9 29.5,9 L 37.5,9 Q 45.5,9 45.5,17 Q 45.5,25 37.5,27 L 33.5,29 L 33.5,37" 
+          fill="none" stroke="#00d3ff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="33.5" cy="45" r="3" fill="#00d3ff"/>
+  </g>
+  
+  <!-- Glitch Layer 2 - Magenta (shifted left and down) -->
+  <g opacity="0.3">
+    <path d="M 18.5,19 Q 18.5,11 26.5,11 L 34.5,11 Q 42.5,11 42.5,19 Q 42.5,27 34.5,29 L 30.5,31 L 30.5,39" 
+          fill="none" stroke="#ff2bd6" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="30.5" cy="47" r="3" fill="#ff2bd6"/>
+  </g>
+  
+  <!-- Subtle corner accents (tech aesthetic) -->
+  <line x1="14" y1="14" x2="18" y2="14" stroke="#00ff80" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="14" y1="14" x2="14" y2="18" stroke="#00ff80" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  
+  <line x1="50" y1="14" x2="46" y2="14" stroke="#00ff80" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="50" y1="14" x2="50" y2="18" stroke="#00ff80" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  
+  <!-- Scanline effect (subtle) -->
+  <line x1="0" y1="32" x2="64" y2="32" stroke="#00ff80" stroke-width="0.5" opacity="0.12"/>
+</svg>
+
+
+
+
