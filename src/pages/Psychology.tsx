@@ -18,7 +18,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-06-20",
         tags: ["CognitiveScience", "Kahneman"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/psychology/cognitive-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/psychology/cognitive-1",
+          },
         ],
       },
       {
@@ -28,7 +31,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-07-10",
         tags: ["Evolution", "Biology"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/psychology/evolutionary-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/psychology/evolutionary-1",
+          },
         ],
       },
       {
@@ -38,7 +44,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-09-05",
         tags: ["Neuroscience", "Brain"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/psychology/neuroscience-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/psychology/neuroscience-1",
+          },
         ],
       },
     ],
@@ -72,7 +81,8 @@ const resources: ContentData<ResourceItem> = [
       },
       {
         title: "Evolutionary Psychology",
-        content: "The Selfish Gene (Dawkins), Evolutionary Psychology (Buss).",
+        content:
+          "The Selfish Gene (Dawkins), Evolutionary Psychology (Buss).",
         links: [
           {
             title: "Search Online Courses",
@@ -93,7 +103,8 @@ const resources: ContentData<ResourceItem> = [
       },
       {
         title: "Neuroscience: Plasticity",
-        content: "The Brain that Changes Itself, Huberman Lab.",
+        content:
+          "The Brain that Changes Itself, Huberman Lab.",
         links: [
           {
             title: "Search Online Courses",
@@ -143,16 +154,46 @@ export default function Psychology() {
       resources={resources}
       insights={insights}
       history={[
-        { year: "1879", event: "Wundt: First Psychology Lab" },
-        { year: "1890", event: "James: Principles of Psychology" },
-        { year: "1900", event: "Freud: Interpretation of Dreams" },
-        { year: "1904", event: "Pavlov: Classical Conditioning" },
-        { year: "1913", event: "Watson: Behaviorism Manifesto" },
-        { year: "1938", event: "Skinner: Behavior of Organisms" },
-        { year: "1954", event: "Maslow: Motivation and Personality" },
-        { year: "1956", event: "Cognitive Revolution (Miller)" },
-        { year: "1961", event: "Bandura: Bobo Doll Experiment" },
-        { year: "2011", event: "Kahneman: Thinking, Fast and Slow" },
+        {
+          year: "1879",
+          event: "Wundt: First Psychology Lab",
+        },
+        {
+          year: "1890",
+          event: "James: Principles of Psychology",
+        },
+        {
+          year: "1900",
+          event: "Freud: Interpretation of Dreams",
+        },
+        {
+          year: "1904",
+          event: "Pavlov: Classical Conditioning",
+        },
+        {
+          year: "1913",
+          event: "Watson: Behaviorism Manifesto",
+        },
+        {
+          year: "1938",
+          event: "Skinner: Behavior of Organisms",
+        },
+        {
+          year: "1954",
+          event: "Maslow: Motivation and Personality",
+        },
+        {
+          year: "1956",
+          event: "Cognitive Revolution (Miller)",
+        },
+        {
+          year: "1961",
+          event: "Bandura: Bobo Doll Experiment",
+        },
+        {
+          year: "2011",
+          event: "Kahneman: Thinking, Fast and Slow",
+        },
       ]}
     />
   );

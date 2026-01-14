@@ -30,7 +30,12 @@ const notes: ContentData<NoteItem> = [
           "测度论与勒贝格积分。解决了黎曼积分处理极限交换时的缺陷。实数完备性的深入讨论。",
         date: "2025-10-12",
         tags: ["MeasureTheory", "Lebesgue"],
-        links: [{ title: "笔记（待添加）", url: "/notes/math/real-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/math/real-1",
+          },
+        ],
       },
       {
         title: "复分析 (Complex Analysis)",
@@ -38,7 +43,12 @@ const notes: ContentData<NoteItem> = [
           "柯西-黎曼方程 (CR Equations) 描述了复可微函数的条件。留数定理 (Residue Theorem) 将围道积分转化为代数运算，优美而强大。",
         date: "2025-11-05",
         tags: ["ComplexFunctions", "Residue"],
-        links: [{ title: "笔记（待添加）", url: "/notes/math/complex-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/math/complex-1",
+          },
+        ],
       },
       {
         title: "泛函分析 (Functional Analysis)",
@@ -46,7 +56,12 @@ const notes: ContentData<NoteItem> = [
           "无限维空间中的线性代数。巴拿赫空间 (Banach) 与希尔伯特空间 (Hilbert)。算子谱理论。",
         date: "2025-12-01",
         tags: ["HilbertSpace", "Operators"],
-        links: [{ title: "笔记（待添加）", url: "/notes/math/functional-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/math/functional-1",
+          },
+        ],
       },
       {
         title: "微分方程 (Differential Equations)",
@@ -54,7 +69,12 @@ const notes: ContentData<NoteItem> = [
           "描述变化率的方程。常微分方程 (ODE) 与偏微分方程 (PDE) 支配着物理世界的演化。",
         date: "2026-01-10",
         tags: ["ODE", "PDE"],
-        links: [{ title: "笔记（待添加）", url: "/notes/math/de-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/math/de-1",
+          },
+        ],
       },
     ],
   },
@@ -67,7 +87,12 @@ const notes: ContentData<NoteItem> = [
           "向量空间与线性变换。SVD 分解 (A = UΣV^T) 揭示了矩阵的几何本质。特征值分解用于提取主成分。",
         date: "2025-09-15",
         tags: ["Matrix", "SVD"],
-        links: [{ title: "笔记（待添加）", url: "/notes/math/linear-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/math/linear-1",
+          },
+        ],
       },
       {
         title: "抽象代数 (Abstract Algebra)",
@@ -75,7 +100,12 @@ const notes: ContentData<NoteItem> = [
           "研究代数结构：群 (Group)、环 (Ring)、域 (Field)。群论研究对称性，伽罗瓦理论证明了五次方程无根式解。",
         date: "2025-11-20",
         tags: ["GroupTheory", "Symmetry"],
-        links: [{ title: "笔记（待添加）", url: "/notes/math/abstract-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/math/abstract-1",
+          },
+        ],
       },
     ],
   },
@@ -88,7 +118,12 @@ const notes: ContentData<NoteItem> = [
           "橡皮泥几何学。研究连续变形下保持不变的性质。同胚与同伦。欧拉示性数。",
         date: "2025-12-15",
         tags: ["Topology", "Manifolds"],
-        links: [{ title: "笔记（待添加）", url: "/notes/math/topology-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/math/topology-1",
+          },
+        ],
       },
       {
         title: "微分几何 (Differential Geometry)",
@@ -96,7 +131,12 @@ const notes: ContentData<NoteItem> = [
           "在流形上做微积分。曲率 (Curvature) 的内在定义。广义相对论的数学基础。",
         date: "2026-01-05",
         tags: ["Curvature", "Manifolds"],
-        links: [{ title: "笔记（待添加）", url: "/notes/math/diffgeom-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/math/diffgeom-1",
+          },
+        ],
       },
     ],
   },
@@ -343,16 +383,46 @@ export default function MathPage() {
       resources={resources}
       insights={insights}
       history={[
-        { year: "300 BC", event: "Euclid: Elements" },
-        { year: "820", event: "Al-Khwarizmi: Algebra" },
-        { year: "1687", event: "Newton & Leibniz: Calculus" },
-        { year: "1748", event: "Euler: Analysis of the Infinite" },
-        { year: "1832", event: "Galois Theory" },
-        { year: "1854", event: "Riemann Geometry (Non-Euclidean)" },
-        { year: "1874", event: "Cantor: Set Theory" },
-        { year: "1900", event: "Hilbert's 23 Problems" },
-        { year: "1931", event: "Gödel's Incompleteness Theorems" },
-        { year: "1994", event: "Wiles proves Fermat's Last Theorem" },
+        {
+          year: "300 BC",
+          event: "Euclid: Elements",
+        },
+        {
+          year: "820",
+          event: "Al-Khwarizmi: Algebra",
+        },
+        {
+          year: "1687",
+          event: "Newton & Leibniz: Calculus",
+        },
+        {
+          year: "1748",
+          event: "Euler: Analysis of the Infinite",
+        },
+        {
+          year: "1832",
+          event: "Galois Theory",
+        },
+        {
+          year: "1854",
+          event: "Riemann Geometry (Non-Euclidean)",
+        },
+        {
+          year: "1874",
+          event: "Cantor: Set Theory",
+        },
+        {
+          year: "1900",
+          event: "Hilbert's 23 Problems",
+        },
+        {
+          year: "1931",
+          event: "Gödel's Incompleteness Theorems",
+        },
+        {
+          year: "1994",
+          event: "Wiles proves Fermat's Last Theorem",
+        },
       ]}
     />
   );

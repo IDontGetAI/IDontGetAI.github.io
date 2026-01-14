@@ -72,7 +72,10 @@ const notes: ContentData<NoteItem> = [
           "主要测查报考者在经济、文化、社会、生态、法律、科技等方面应知应会的基本知识以及运用这些知识进行分析判断的基本能力。",
         tags: ["行测", "常识"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/xingce/common-knowledge" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/xingce/common-knowledge",
+          },
         ],
       },
       {
@@ -80,7 +83,12 @@ const notes: ContentData<NoteItem> = [
         content:
           "主要测查报考者学习理解掌握党的创新理论及党和国家方针政策的情况。",
         tags: ["行测", "政治"],
-        links: [{ title: "笔记（待添加）", url: "/notes/xingce/politics" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/xingce/politics",
+          },
+        ],
       },
     ],
   },
@@ -316,14 +324,39 @@ export default function Cse() {
       resources={resources}
       insights={insights}
       history={[
-        { year: "1987", event: "中共十三大提出建立国家公务员制度" },
-        { year: "1993", event: "国务院颁布《国家公务员暂行条例》" },
-        { year: "1994", event: "首届中央国家行政机关公务员录用考试举行" },
-        { year: "2000", event: "公共科目增加《申论》，考试模式初具雏形" },
-        { year: "2002", event: "取消公基，确立《行测》+《申论》双科模式" },
-        { year: "2006", event: "《中华人民共和国公务员法》正式实施" },
-        { year: "2009", event: "国考报名人数首次突破100万大关" },
-        { year: "2019", event: "新修订的《公务员法》实施，确立职务与职级并行" },
+        {
+          year: "1987",
+          event: "中共十三大提出建立国家公务员制度",
+        },
+        {
+          year: "1993",
+          event: "国务院颁布《国家公务员暂行条例》",
+        },
+        {
+          year: "1994",
+          event: "首届中央国家行政机关公务员录用考试举行",
+        },
+        {
+          year: "2000",
+          event: "公共科目增加《申论》，考试模式初具雏形",
+        },
+        {
+          year: "2002",
+          event: "取消公基，确立《行测》+《申论》双科模式",
+        },
+        {
+          year: "2006",
+          event: "《中华人民共和国公务员法》正式实施",
+        },
+        {
+          year: "2009",
+          event: "国考报名人数首次突破100万大关",
+        },
+        {
+          year: "2019",
+          event:
+            "新修订的《公务员法》实施，确立职务与职级并行",
+        },
       ]}
     />
   );

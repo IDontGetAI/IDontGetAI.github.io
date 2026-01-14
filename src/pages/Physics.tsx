@@ -17,7 +17,12 @@ const notes: ContentData<NoteItem> = [
           "牛顿三定律是宏观低速世界的法则。动量守恒与能量守恒是物理学中最深刻的原理。",
         date: "2025-08-01",
         tags: ["Newton", "Energy"],
-        links: [{ title: "笔记（待添加）", url: "/notes/physics/mechanics-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/mechanics-1",
+          },
+        ],
       },
       {
         title: "热学 (Thermal Physics)",
@@ -25,7 +30,12 @@ const notes: ContentData<NoteItem> = [
           "温度是分子平均动能的度量。热力学第一定律（能量守恒）与第二定律（熵增）统治着能量的流动。",
         date: "2025-08-10",
         tags: ["Thermodynamics", "Entropy"],
-        links: [{ title: "笔记（待添加）", url: "/notes/physics/thermal-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/thermal-1",
+          },
+        ],
       },
       {
         title: "电磁学 (Electromagnetism)",
@@ -34,15 +44,24 @@ const notes: ContentData<NoteItem> = [
         date: "2025-08-20",
         tags: ["Maxwell", "Fields"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/physics/electromagnetism-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/electromagnetism-1",
+          },
         ],
       },
       {
         title: "光学 (Optics)",
-        content: "光的波粒二象性。干涉、衍射与偏振。几何光学是波动光学的近似。",
+        content:
+          "光的波粒二象性。干涉、衍射与偏振。几何光学是波动光学的近似。",
         date: "2025-09-01",
         tags: ["Wave", "Particle"],
-        links: [{ title: "笔记（待添加）", url: "/notes/physics/optics-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/optics-1",
+          },
+        ],
       },
       {
         title: "近代物理 (Modern Physics)",
@@ -51,7 +70,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-09-15",
         tags: ["Relativity", "Quantum"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/physics/modern-physics-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/modern-physics-1",
+          },
         ],
       },
     ],
@@ -74,11 +96,15 @@ const notes: ContentData<NoteItem> = [
       },
       {
         title: "电动力学 (Electrodynamics)",
-        content: "麦克斯韦方程组的相对论形式。电磁波的辐射与散射。规范不变性。",
+        content:
+          "麦克斯韦方程组的相对论形式。电磁波的辐射与散射。规范不变性。",
         date: "2025-10-20",
         tags: ["Maxwell", "Gauge"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/physics/electrodynamics-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/electrodynamics-1",
+          },
         ],
       },
       {
@@ -114,7 +140,8 @@ const notes: ContentData<NoteItem> = [
     items: [
       {
         title: "复变函数 (Complex Variables)",
-        content: "全纯函数与解析延拓。留数定理在物理积分中的应用。",
+        content:
+          "全纯函数与解析延拓。留数定理在物理积分中的应用。",
         date: "2026-01-01",
         tags: ["Complex", "Integration"],
         links: [
@@ -131,7 +158,10 @@ const notes: ContentData<NoteItem> = [
         date: "2026-01-15",
         tags: ["PDE", "GreensFunction"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/physics/math-physics-eqs-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/math-physics-eqs-1",
+          },
         ],
       },
       {
@@ -141,7 +171,10 @@ const notes: ContentData<NoteItem> = [
         date: "2026-02-01",
         tags: ["Symmetry", "LieGroups"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/physics/group-theory-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/group-theory-1",
+          },
         ],
       },
       {
@@ -151,7 +184,10 @@ const notes: ContentData<NoteItem> = [
         date: "2026-02-20",
         tags: ["GR", "Topology"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/physics/diff-geometry-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/physics/diff-geometry-1",
+          },
         ],
       },
     ],
@@ -164,7 +200,8 @@ const resources: ContentData<ResourceItem> = [
     items: [
       {
         title: "力学 (Mechanics)",
-        content: "Feynman Lectures Vol 1, Kleppner & Kolenkow。",
+        content:
+          "Feynman Lectures Vol 1, Kleppner & Kolenkow。",
         links: [
           {
             title: "Search Online Courses",
@@ -483,16 +520,47 @@ export default function Physics() {
       resources={resources}
       insights={insights}
       history={[
-        { year: "350 BC", event: "Aristotle: Physics" },
-        { year: "1632", event: "Galileo: Dialogue on World Systems" },
-        { year: "1687", event: "Newton: Principia (Classical Mech)" },
-        { year: "1865", event: "Maxwell's Equations (Electromagnetism)" },
-        { year: "1905", event: "Einstein: Special Relativity & Photoelectric" },
-        { year: "1915", event: "Einstein: General Relativity" },
-        { year: "1926", event: "Schrödinger Equation (Wave Mech)" },
-        { year: "1927", event: "Heisenberg Uncertainty Principle" },
-        { year: "1964", event: "The Standard Model Proposed" },
-        { year: "2015", event: "LIGO: Gravitational Waves Detected" },
+        {
+          year: "350 BC",
+          event: "Aristotle: Physics",
+        },
+        {
+          year: "1632",
+          event: "Galileo: Dialogue on World Systems",
+        },
+        {
+          year: "1687",
+          event: "Newton: Principia (Classical Mech)",
+        },
+        {
+          year: "1865",
+          event: "Maxwell's Equations (Electromagnetism)",
+        },
+        {
+          year: "1905",
+          event:
+            "Einstein: Special Relativity & Photoelectric",
+        },
+        {
+          year: "1915",
+          event: "Einstein: General Relativity",
+        },
+        {
+          year: "1926",
+          event: "Schrödinger Equation (Wave Mech)",
+        },
+        {
+          year: "1927",
+          event: "Heisenberg Uncertainty Principle",
+        },
+        {
+          year: "1964",
+          event: "The Standard Model Proposed",
+        },
+        {
+          year: "2015",
+          event: "LIGO: Gravitational Waves Detected",
+        },
       ]}
     />
   );

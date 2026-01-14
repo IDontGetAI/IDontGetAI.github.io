@@ -487,7 +487,8 @@ const tools: ToolItem[] = [
 ];
 
 export default function Tools() {
-  const [activeCategory, setActiveCategory] = useState<CategoryType>("All");
+  const [activeCategory, setActiveCategory] =
+    useState<CategoryType>("All");
 
   const filteredTools =
     activeCategory === "All"
@@ -506,7 +507,11 @@ export default function Tools() {
           {categories.map((cat) => (
             <Button
               key={cat}
-              variant={activeCategory === cat ? "default" : "outline"}
+              variant={
+                activeCategory === cat
+                  ? "default"
+                  : "outline"
+              }
               onClick={() => setActiveCategory(cat)}
               size="sm"
               className={cn(

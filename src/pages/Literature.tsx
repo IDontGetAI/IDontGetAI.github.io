@@ -18,7 +18,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-06-05",
         tags: ["Formalism", "Defamiliarization"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/literature/formalism-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/literature/formalism-1",
+          },
         ],
       },
       {
@@ -28,11 +31,15 @@ const notes: ContentData<NoteItem> = [
         date: "2025-06-20",
         tags: ["NewCriticism", "CloseReading"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/literature/new-criticism-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/literature/new-criticism-1",
+          },
         ],
       },
       {
-        title: "结构主义与解构 (Structuralism & Deconstruction)",
+        title:
+          "结构主义与解构 (Structuralism & Deconstruction)",
         content:
           "罗兰·巴特：作者已死。德里达：延异 (Différance)。文本没有固定的中心或终极意义，只有无尽的能指游戏。",
         date: "2025-07-10",
@@ -56,7 +63,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-08-01",
         tags: ["Tragedy", "Aristotle"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/literature/greek-tragedy-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/literature/greek-tragedy-1",
+          },
         ],
       },
       {
@@ -66,7 +76,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-08-15",
         tags: ["Modernism", "StreamOfConsciousness"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/literature/modernism-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/literature/modernism-1",
+          },
         ],
       },
       {
@@ -94,7 +107,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-09-20",
         tags: ["Goethe", "Translation"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/literature/world-lit-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/literature/world-lit-1",
+          },
         ],
       },
       {
@@ -104,7 +120,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-10-05",
         tags: ["Comparative", "Methodology"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/literature/comparative-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/literature/comparative-1",
+          },
         ],
       },
     ],
@@ -158,7 +177,8 @@ const resources: ContentData<ResourceItem> = [
         ],
       },
       {
-        title: "结构主义与解构 (Structuralism & Deconstruction)",
+        title:
+          "结构主义与解构 (Structuralism & Deconstruction)",
         content: "巴特与德里达。",
         links: [
           {
@@ -331,14 +351,38 @@ export default function Literature() {
       resources={resources}
       insights={insights}
       history={[
-        { year: "8th C BC", event: "Homer: Iliad & Odyssey" },
-        { year: "1320", event: "Dante: Divine Comedy" },
-        { year: "1600", event: "Shakespeare: Hamlet" },
-        { year: "1605", event: "Cervantes: Don Quixote" },
-        { year: "1791", event: "Cao Xueqin: Dream of Red Chamber" },
-        { year: "1857", event: "Flaubert: Madame Bovary (Realism)" },
-        { year: "1922", event: "Joyce: Ulysses (Modernism)" },
-        { year: "1967", event: "Marquez: One Hundred Years of Solitude" },
+        {
+          year: "8th C BC",
+          event: "Homer: Iliad & Odyssey",
+        },
+        {
+          year: "1320",
+          event: "Dante: Divine Comedy",
+        },
+        {
+          year: "1600",
+          event: "Shakespeare: Hamlet",
+        },
+        {
+          year: "1605",
+          event: "Cervantes: Don Quixote",
+        },
+        {
+          year: "1791",
+          event: "Cao Xueqin: Dream of Red Chamber",
+        },
+        {
+          year: "1857",
+          event: "Flaubert: Madame Bovary (Realism)",
+        },
+        {
+          year: "1922",
+          event: "Joyce: Ulysses (Modernism)",
+        },
+        {
+          year: "1967",
+          event: "Marquez: One Hundred Years of Solitude",
+        },
       ]}
     />
   );

@@ -18,7 +18,12 @@ import {
 import { GlitchText } from "@/components/GlitchText";
 import { TypingAnimation } from "@/components/TypingAnimation";
 import { NeuralTopologyCanvas } from "@/components/NeuralTopologyCanvas";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -90,9 +95,15 @@ export default function Home() {
                   </a>
                 </h2>
                 <p className="text-primary font-mono text-sm mt-1">
-                  <span className="text-muted-foreground">STATUS:</span>{" "}
-                  <span className="text-primary">COMPILING REALITY</span>
-                  <span className="whitespace-pre">{dots}</span>
+                  <span className="text-muted-foreground">
+                    STATUS:
+                  </span>{" "}
+                  <span className="text-primary">
+                    COMPILING REALITY
+                  </span>
+                  <span className="whitespace-pre">
+                    {dots}
+                  </span>
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-2 pt-2 flex-shrink-0">
@@ -138,10 +149,14 @@ export default function Home() {
                       speed={35}
                       className="text-white"
                       hideCursorAfterComplete
-                      onComplete={() => setTerminalStage("out1")}
+                      onComplete={() =>
+                        setTerminalStage("out1")
+                      }
                     />
                   ) : (
-                    <span className="text-white">whoami</span>
+                    <span className="text-white">
+                      whoami
+                    </span>
                   )}
                   {terminalStage !== "cmd1" && (
                     <p className="mt-1 text-muted-foreground leading-relaxed pl-4 border-l border-primary/20">
@@ -151,7 +166,9 @@ export default function Home() {
                           speed={10}
                           delay={200}
                           hideCursorAfterComplete
-                          onComplete={() => setTerminalStage("cmd2")}
+                          onComplete={() =>
+                            setTerminalStage("cmd2")
+                          }
                         />
                       ) : (
                         "一个游走在代码与真理之间的探索者。试图通过 AI 理解智能的本质，通过数学窥探宇宙的法则，通过哲学寻找存在的意义..."
@@ -159,9 +176,12 @@ export default function Home() {
                     </p>
                   )}
                 </div>
-                {(terminalStage === "cmd2" || terminalStage === "out2") && (
+                {(terminalStage === "cmd2" ||
+                  terminalStage === "out2") && (
                   <div>
-                    <span className="text-secondary">$</span>{" "}
+                    <span className="text-secondary">
+                      $
+                    </span>{" "}
                     {terminalStage === "cmd2" ? (
                       <TypingAnimation
                         text="cat current_mission.txt"
@@ -169,7 +189,9 @@ export default function Home() {
                         className="text-white"
                         delay={250}
                         hideCursorAfterComplete
-                        onComplete={() => setTerminalStage("out2")}
+                        onComplete={() =>
+                          setTerminalStage("out2")
+                        }
                       />
                     ) : (
                       <span className="text-white">
@@ -197,20 +219,23 @@ export default function Home() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-40" />
             <CardHeader className="pb-2">
               <CardTitle className="text-xs font-mono text-muted-foreground flex items-center gap-2">
-                <BookOpen className="w-3 h-3 text-secondary" /> CURRENT_READING
+                <BookOpen className="w-3 h-3 text-secondary" />{" "}
+                CURRENT_READING
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
               <div className="space-y-1 text-xs font-mono text-muted-foreground">
                 <div>
-                  <span className="text-secondary">+</span> 《沉思录》 / 笛卡尔
+                  <span className="text-secondary">+</span>{" "}
+                  《沉思录》 / 笛卡尔
                 </div>
                 <div>
-                  <span className="text-secondary">+</span> 《理想国》 / 柏拉图
+                  <span className="text-secondary">+</span>{" "}
+                  《理想国》 / 柏拉图
                 </div>
                 <div>
-                  <span className="text-secondary">+</span> 《存在与时间》 /
-                  海德格尔
+                  <span className="text-secondary">+</span>{" "}
+                  《存在与时间》 / 海德格尔
                 </div>
               </div>
             </CardContent>

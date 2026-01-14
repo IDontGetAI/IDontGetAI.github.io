@@ -17,7 +17,12 @@ const notes: ContentData<NoteItem> = [
           "哲学的核心问题：我们能知道什么？什么是真实的？应该做什么？苏格拉底的产婆术与未经审视的生活。",
         date: "2025-06-01",
         tags: ["Intro", "Socrates"],
-        links: [{ title: "笔记（待添加）", url: "/notes/philosophy/intro-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/philosophy/intro-1",
+          },
+        ],
       },
       {
         title: "哲学史 (History of Philosophy)",
@@ -26,7 +31,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-06-15",
         tags: ["History", "Kant"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/philosophy/history-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/philosophy/history-1",
+          },
         ],
       },
       {
@@ -35,7 +43,12 @@ const notes: ContentData<NoteItem> = [
           "命题逻辑与谓词逻辑。三段论。有效性与可靠性。逻辑谬误。弗雷格与现代逻辑的诞生。",
         date: "2025-07-01",
         tags: ["Logic", "Frege"],
-        links: [{ title: "笔记（待添加）", url: "/notes/philosophy/logic-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/philosophy/logic-1",
+          },
+        ],
       },
     ],
   },
@@ -49,7 +62,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-08-01",
         tags: ["Language", "Wittgenstein"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/philosophy/language-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/philosophy/language-1",
+          },
         ],
       },
       {
@@ -58,7 +74,12 @@ const notes: ContentData<NoteItem> = [
           "身心问题：二元论 vs 物理主义。图灵测试与中文屋。功能主义。意识的困难问题。",
         date: "2025-08-20",
         tags: ["Mind", "Consciousness"],
-        links: [{ title: "笔记（待添加）", url: "/notes/philosophy/mind-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/philosophy/mind-1",
+          },
+        ],
       },
       {
         title: "形而上学 (Metaphysics)",
@@ -67,7 +88,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-09-10",
         tags: ["Metaphysics", "Being"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/philosophy/metaphysics-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/philosophy/metaphysics-1",
+          },
         ],
       },
       {
@@ -77,7 +101,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-09-30",
         tags: ["Knowledge", "Gettier"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/philosophy/epistemology-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/philosophy/epistemology-1",
+          },
         ],
       },
     ],
@@ -247,7 +274,8 @@ const resources: ContentData<ResourceItem> = [
 const insights: InsightItem[] = [
   {
     title: "简明逻辑学导论 (Introduction to Logic)",
-    content: "逻辑学是哲学的工具。论证的有效性与可靠性。形式谬误与非形式谬误。",
+    content:
+      "逻辑学是哲学的工具。论证的有效性与可靠性。形式谬误与非形式谬误。",
     date: "2026-01-07",
     link: "/logs/philosophy/logic-log",
   },
@@ -276,16 +304,46 @@ export default function Philosophy() {
       resources={resources}
       insights={insights}
       history={[
-        { year: "399 BC", event: "Death of Socrates" },
-        { year: "380 BC", event: "Plato: The Republic" },
-        { year: "1641", event: "Descartes: Meditations" },
-        { year: "1739", event: "Hume: Treatise of Human Nature" },
-        { year: "1781", event: "Kant: Critique of Pure Reason" },
-        { year: "1883", event: "Nietzsche: Thus Spoke Zarathustra" },
-        { year: "1921", event: "Wittgenstein: Tractatus" },
-        { year: "1927", event: "Heidegger: Being and Time" },
-        { year: "1943", event: "Sartre: Being and Nothingness" },
-        { year: "1971", event: "Rawls: A Theory of Justice" },
+        {
+          year: "399 BC",
+          event: "Death of Socrates",
+        },
+        {
+          year: "380 BC",
+          event: "Plato: The Republic",
+        },
+        {
+          year: "1641",
+          event: "Descartes: Meditations",
+        },
+        {
+          year: "1739",
+          event: "Hume: Treatise of Human Nature",
+        },
+        {
+          year: "1781",
+          event: "Kant: Critique of Pure Reason",
+        },
+        {
+          year: "1883",
+          event: "Nietzsche: Thus Spoke Zarathustra",
+        },
+        {
+          year: "1921",
+          event: "Wittgenstein: Tractatus",
+        },
+        {
+          year: "1927",
+          event: "Heidegger: Being and Time",
+        },
+        {
+          year: "1943",
+          event: "Sartre: Being and Nothingness",
+        },
+        {
+          year: "1971",
+          event: "Rawls: A Theory of Justice",
+        },
       ]}
     />
   );

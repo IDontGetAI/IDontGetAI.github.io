@@ -17,14 +17,25 @@ const notes: ContentData<NoteItem> = [
           "偏导数与梯度。链式法则 (Chain Rule) 是反向传播的数学基础。泰勒展开用于理解函数逼近。",
         date: "2025-05-01",
         tags: ["Calculus", "Gradient"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/calculus-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/calculus-1",
+          },
+        ],
       },
       {
         title: "线性代数 (Linear Algebra)",
-        content: "矩阵运算与向量空间。特征值分解与 PCA。SVD 分解。矩阵求导。",
+        content:
+          "矩阵运算与向量空间。特征值分解与 PCA。SVD 分解。矩阵求导。",
         date: "2025-05-15",
         tags: ["Matrix", "Eigenvalues"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/linear-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/linear-1",
+          },
+        ],
       },
       {
         title: "概率论与数理统计 (Probability & Stats)",
@@ -32,7 +43,12 @@ const notes: ContentData<NoteItem> = [
           "贝叶斯公式。期望、方差与协方差。常见分布（高斯、伯努利）。最大似然估计 (MLE) 与最大后验估计 (MAP)。",
         date: "2025-06-01",
         tags: ["Bayes", "MLE"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/prob-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/prob-1",
+          },
+        ],
       },
       {
         title: "最优化方法 (Optimization)",
@@ -40,7 +56,12 @@ const notes: ContentData<NoteItem> = [
           "凸集与凸函数。拉格朗日乘子法与 KKT 条件。梯度下降法及其变种 (SGD, Adam)。",
         date: "2025-06-15",
         tags: ["Convex", "SGD"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/opt-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/opt-1",
+          },
+        ],
       },
     ],
   },
@@ -48,12 +69,18 @@ const notes: ContentData<NoteItem> = [
     category: "II. 计算机科学核心 (CS Core)",
     items: [
       {
-        title: "数据结构与算法分析 (Data Structures & Algo)",
+        title:
+          "数据结构与算法分析 (Data Structures & Algo)",
         content:
           "树、图、堆、哈希表。动态规划与贪心算法。时间复杂度与空间复杂度 (Big O)。",
         date: "2025-07-01",
         tags: ["Graph", "DP"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/ds-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/ds-1",
+          },
+        ],
       },
       {
         title: "操作系统 (Operating Systems)",
@@ -61,7 +88,12 @@ const notes: ContentData<NoteItem> = [
           "进程与线程。并发与锁。内存管理与虚拟内存。文件系统。Linux 基础。",
         date: "2025-07-15",
         tags: ["OS", "Concurrency"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/os-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/os-1",
+          },
+        ],
       },
       {
         title: "计算机体系结构 (Computer Architecture)",
@@ -69,7 +101,12 @@ const notes: ContentData<NoteItem> = [
           "冯·诺依曼架构。CPU 指令流水线。GPU 架构与 CUDA 编程基础（并行计算）。",
         date: "2025-08-01",
         tags: ["GPU", "Parallel"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/arch-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/arch-1",
+          },
+        ],
       },
     ],
   },
@@ -82,7 +119,12 @@ const notes: ContentData<NoteItem> = [
           "图搜索算法 (A*, Alpha-Beta Pruning)。知识表示与推理。专家系统。规划 (Planning)。",
         date: "2025-08-15",
         tags: ["Search", "Logic"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/intro-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/intro-1",
+          },
+        ],
       },
       {
         title: "机器学习基础 (Machine Learning)",
@@ -90,14 +132,25 @@ const notes: ContentData<NoteItem> = [
           "监督学习（回归、分类）、无监督学习（聚类、降维）。SVM、决策树、随机森林。过拟合与正则化。",
         date: "2025-09-01",
         tags: ["ML", "SVM"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/ml-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/ml-1",
+          },
+        ],
       },
       {
         title: "模式识别 (Pattern Recognition)",
-        content: "贝叶斯决策理论。判别函数。特征提取与选择。聚类分析。",
+        content:
+          "贝叶斯决策理论。判别函数。特征提取与选择。聚类分析。",
         date: "2025-09-15",
         tags: ["Pattern", "Classification"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/pattern-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/pattern-1",
+          },
+        ],
       },
     ],
   },
@@ -110,7 +163,12 @@ const notes: ContentData<NoteItem> = [
           "DNN, CNN (ResNet), RNN (LSTM)。Transformer 架构与 Attention 机制。生成模型 (GAN, VAE, Diffusion)。",
         date: "2025-10-01",
         tags: ["DL", "Transformer"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/dl-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/dl-1",
+          },
+        ],
       },
       {
         title: "强化学习 (Reinforcement Learning)",
@@ -118,7 +176,12 @@ const notes: ContentData<NoteItem> = [
           "马尔可夫决策过程 (MDP)。Q-Learning。Policy Gradient (PPO)。Actor-Critic 架构。RLHF。",
         date: "2025-10-15",
         tags: ["RL", "PPO"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/rl-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/rl-1",
+          },
+        ],
       },
       {
         title: "类脑计算 (Neuromorphic Computing)",
@@ -126,7 +189,12 @@ const notes: ContentData<NoteItem> = [
           "脉冲神经网络 (SNN)。Hebbian 学习规则。STDP。冯·诺依曼瓶颈的突破。",
         date: "2025-11-01",
         tags: ["SNN", "Brain"],
-        links: [{ title: "笔记（待添加）", url: "/notes/ai/neuro-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/ai/neuro-1",
+          },
+        ],
       },
     ],
   },
@@ -226,7 +294,8 @@ const resources: ContentData<ResourceItem> = [
     category: "II. 计算机科学核心 (CS Core)",
     items: [
       {
-        title: "数据结构与算法分析 (Data Structures & Algo)",
+        title:
+          "数据结构与算法分析 (Data Structures & Algo)",
         content: "CLRS (算法导论), LeetCode。",
         links: [
           {
@@ -462,15 +531,43 @@ export default function AI() {
       resources={resources}
       insights={insights}
       history={[
-        { year: "1950", event: "Turing Test Proposed" },
-        { year: "1956", event: "Dartmouth Conference: 'AI' Coined" },
-        { year: "1958", event: "Perceptron Algorithm Invented" },
-        { year: "1969", event: "Minsky & Papert: Perceptrons (First Winter)" },
-        { year: "1986", event: "Hinton et al.: Backpropagation" },
-        { year: "1997", event: "Deep Blue defeats Kasparov" },
-        { year: "2012", event: "AlexNet: The Deep Learning Revolution" },
-        { year: "2017", event: "Vaswani et al.: Transformer Architecture" },
-        { year: "2022", event: "ChatGPT: The Era of Generative AI" },
+        {
+          year: "1950",
+          event: "Turing Test Proposed",
+        },
+        {
+          year: "1956",
+          event: "Dartmouth Conference: 'AI' Coined",
+        },
+        {
+          year: "1958",
+          event: "Perceptron Algorithm Invented",
+        },
+        {
+          year: "1969",
+          event:
+            "Minsky & Papert: Perceptrons (First Winter)",
+        },
+        {
+          year: "1986",
+          event: "Hinton et al.: Backpropagation",
+        },
+        {
+          year: "1997",
+          event: "Deep Blue defeats Kasparov",
+        },
+        {
+          year: "2012",
+          event: "AlexNet: The Deep Learning Revolution",
+        },
+        {
+          year: "2017",
+          event: "Vaswani et al.: Transformer Architecture",
+        },
+        {
+          year: "2022",
+          event: "ChatGPT: The Era of Generative AI",
+        },
       ]}
     />
   );

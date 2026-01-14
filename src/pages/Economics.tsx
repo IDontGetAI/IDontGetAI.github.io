@@ -17,7 +17,12 @@ const notes: ContentData<NoteItem> = [
           "消费者行为理论（效用最大化）、生产者行为理论（成本最小化）。局部均衡分析。市场结构：完全竞争、垄断、寡头。",
         date: "2025-06-01",
         tags: ["Micro", "Utility"],
-        links: [{ title: "笔记（待添加）", url: "/notes/economics/micro-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/economics/micro-1",
+          },
+        ],
       },
       {
         title: "高级微观经济学 (Advanced Micro)",
@@ -26,7 +31,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-06-15",
         tags: ["GeneralEquilibrium", "InfoEcon"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/economics/advanced-micro-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/economics/advanced-micro-1",
+          },
         ],
       },
       {
@@ -35,7 +43,12 @@ const notes: ContentData<NoteItem> = [
           "IS-LM 模型与 AD-AS 模型。短期波动与长期增长。索洛增长模型 (Solow Model)。",
         date: "2025-07-01",
         tags: ["Macro", "IS-LM"],
-        links: [{ title: "笔记（待添加）", url: "/notes/economics/macro-1" }],
+        links: [
+          {
+            title: "笔记（待添加）",
+            url: "/notes/economics/macro-1",
+          },
+        ],
       },
       {
         title: "高级宏观经济学 (Advanced Macro)",
@@ -44,7 +57,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-07-20",
         tags: ["DSGE", "Growth"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/economics/advanced-macro-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/economics/advanced-macro-1",
+          },
         ],
       },
       {
@@ -54,7 +70,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-08-01",
         tags: ["Regression", "OLS"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/economics/econometrics-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/economics/econometrics-1",
+          },
         ],
       },
       {
@@ -82,7 +101,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-05-01",
         tags: ["Optimization", "KKT"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/economics/math-econ-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/economics/math-econ-1",
+          },
         ],
       },
       {
@@ -92,7 +114,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-05-15",
         tags: ["Nash", "Strategy"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/economics/game-theory-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/economics/game-theory-1",
+          },
         ],
       },
       {
@@ -115,7 +140,10 @@ const notes: ContentData<NoteItem> = [
         date: "2025-09-15",
         tags: ["FixedPoint", "Convexity"],
         links: [
-          { title: "笔记（待添加）", url: "/notes/economics/math-economics-1" },
+          {
+            title: "笔记（待添加）",
+            url: "/notes/economics/math-economics-1",
+          },
         ],
       },
     ],
@@ -127,8 +155,10 @@ const resources: ContentData<ResourceItem> = [
     category: "I. 核心经济理论 (Core Theory)",
     items: [
       {
-        title: "Microeconomic Theory (Mas-Colell, Whinston, Green)",
-        content: "MWG，微观经济学的终极圣经，数学要求极高。",
+        title:
+          "Microeconomic Theory (Mas-Colell, Whinston, Green)",
+        content:
+          "MWG，微观经济学的终极圣经，数学要求极高。",
         links: [
           {
             title: "Search Online Courses",
@@ -274,15 +304,42 @@ export default function Economics() {
       resources={resources}
       insights={insights}
       history={[
-        { year: "1776", event: "Smith: The Wealth of Nations" },
-        { year: "1817", event: "Ricardo: Comparative Advantage" },
-        { year: "1867", event: "Marx: Das Kapital" },
-        { year: "1936", event: "Keynes: The General Theory" },
-        { year: "1944", event: "Bretton Woods / Hayek's Road to Serfdom" },
-        { year: "1950", event: "Nash Equilibrium (Game Theory)" },
-        { year: "1979", event: "Prospect Theory (Behavioral Econ)" },
-        { year: "2008", event: "Financial Crisis & QE" },
-        { year: "2009", event: "Bitcoin Genesis Block" },
+        {
+          year: "1776",
+          event: "Smith: The Wealth of Nations",
+        },
+        {
+          year: "1817",
+          event: "Ricardo: Comparative Advantage",
+        },
+        {
+          year: "1867",
+          event: "Marx: Das Kapital",
+        },
+        {
+          year: "1936",
+          event: "Keynes: The General Theory",
+        },
+        {
+          year: "1944",
+          event: "Bretton Woods / Hayek's Road to Serfdom",
+        },
+        {
+          year: "1950",
+          event: "Nash Equilibrium (Game Theory)",
+        },
+        {
+          year: "1979",
+          event: "Prospect Theory (Behavioral Econ)",
+        },
+        {
+          year: "2008",
+          event: "Financial Crisis & QE",
+        },
+        {
+          year: "2009",
+          event: "Bitcoin Genesis Block",
+        },
       ]}
     />
   );
