@@ -153,6 +153,8 @@ export function SubjectPageLayout({
             )}
             {noteItem.links?.map((link, idx) => {
               const isExternal = link.url.startsWith('http') || link.url.startsWith('//');
+              // 检查是否是带查询参数的内部链接（如 /note-viewer?src=...）
+              const hasQueryParams = link.url.includes('?') && !isExternal;
 
               const ButtonContent = (
                 <Button variant="outline" size="sm" className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1 px-2">
@@ -164,15 +166,35 @@ export function SubjectPageLayout({
                 </Button>
               );
 
-              return isExternal ? (
-                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
-                  {ButtonContent}
-                </a>
-              ) : (
-                <Link key={idx} href={link.url}>
-                  {ButtonContent}
-                </Link>
-              );
+              if (isExternal) {
+                return (
+                  <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+                    {ButtonContent}
+                  </a>
+                );
+              } else if (hasQueryParams) {
+                // 对于带查询参数的内部链接，使用自定义导航确保 URL 格式正确
+                // 格式：#/note-viewer?src=... 而不是 ?src=...#/note-viewer
+                return (
+                  <a
+                    key={idx}
+                    href={`#${link.url}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = window.location.origin + window.location.pathname + '#' + link.url;
+                    }}
+                    className="block w-full"
+                  >
+                    {ButtonContent}
+                  </a>
+                );
+              } else {
+                return (
+                  <Link key={idx} href={link.url}>
+                    {ButtonContent}
+                  </Link>
+                );
+              }
             })}
           </div>
 
