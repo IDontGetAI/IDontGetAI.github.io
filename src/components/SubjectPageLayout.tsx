@@ -111,15 +111,26 @@ export function SubjectPageLayout({
                 </Button>
               );
 
-              return isExternal ? (
-                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
-                  {ButtonContent}
-                </a>
-              ) : (
-                <Link key={idx} href={link.url}>
-                  {ButtonContent}
-                </Link>
-              );
+              if (isExternal) {
+                return (
+                  <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+                    {ButtonContent}
+                  </a>
+                );
+              } else if (link.url.includes('?')) {
+                const [path, query] = link.url.split('?');
+                return (
+                  <a key={idx} href={`?${query}#${path}`} className="block w-full">
+                    {ButtonContent}
+                  </a>
+                );
+              } else {
+                return (
+                  <Link key={idx} href={link.url}>
+                    {ButtonContent}
+                  </Link>
+                );
+              }
             })}
           </div>
         </CardContent>
@@ -164,15 +175,26 @@ export function SubjectPageLayout({
                 </Button>
               );
 
-              return isExternal ? (
-                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
-                  {ButtonContent}
-                </a>
-              ) : (
-                <Link key={idx} href={link.url}>
-                  {ButtonContent}
-                </Link>
-              );
+              if (isExternal) {
+                return (
+                  <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+                    {ButtonContent}
+                  </a>
+                );
+              } else if (link.url.includes('?')) {
+                const [path, query] = link.url.split('?');
+                return (
+                  <a key={idx} href={`?${query}#${path}`} className="block w-full">
+                    {ButtonContent}
+                  </a>
+                );
+              } else {
+                return (
+                  <Link key={idx} href={link.url}>
+                    {ButtonContent}
+                  </Link>
+                );
+              }
             })}
           </div>
 

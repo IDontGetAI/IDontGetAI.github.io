@@ -25,12 +25,41 @@ function RedirectToCse() {
   return <Redirect to="/cse" />;
 }
 
+
+function GiscusCallback() {
+  const [, setLocation] = useHashLocation();
+
+  // This component handles the redirect from Giscus which ends with #comments
+  // We try to restore the user's context (Note or PDF) from the query string
+  if (typeof window !== 'undefined') {
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const src = params.get('src');
+
+    if (src) {
+      // Simple heuristic to determine viewer type
+      if (src.toLowerCase().endsWith('.pdf')) {
+        // Use replace to avoid history pollution
+        window.location.hash = '/pdf-viewer';
+        console.log("Recovered PDF session from Giscus login");
+      } else {
+        window.location.hash = '/note-viewer';
+        console.log("Recovered Note session from Giscus login");
+      }
+      return <div className="flex items-center justify-center min-h-[50vh]">Restoring session...</div>;
+    }
+  }
+
+  return <Redirect to="/" />;
+}
+
 function AppRouter() {
   return (
     <Router hook={useHashLocation}>
       <Layout>
         <Switch>
           <Route path="/" component={Home} />
+          <Route path="/comments" component={GiscusCallback} />
           <Route path="/ai" component={AI} />
           <Route path="/math" component={Math} />
           <Route path="/physics" component={Physics} />
