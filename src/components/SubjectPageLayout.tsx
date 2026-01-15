@@ -103,6 +103,8 @@ export function SubjectPageLayout({
             {item.links?.map((link, idx) => {
               const Icon = link.type ? ResourceIcon[link.type] : LinkIcon;
               const isExternal = link.url.startsWith("http") || link.url.startsWith("//");
+              // 检查是否是带查询参数的内部链接
+              const hasQueryParams = link.url.includes('?') && !isExternal;
 
               const ButtonContent = (
                 <Button variant="ghost" size="sm" className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono">
@@ -111,15 +113,34 @@ export function SubjectPageLayout({
                 </Button>
               );
 
-              return isExternal ? (
-                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
-                  {ButtonContent}
-                </a>
-              ) : (
-                <Link key={idx} href={link.url}>
-                  {ButtonContent}
-                </Link>
-              );
+              if (isExternal) {
+                return (
+                  <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+                    {ButtonContent}
+                  </a>
+                );
+              } else if (hasQueryParams) {
+                // 对于带查询参数的内部链接，使用正确的哈希 URL 格式
+                return (
+                  <a
+                    key={idx}
+                    href={`#${link.url}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = window.location.origin + window.location.pathname + '#' + link.url;
+                    }}
+                    className="block w-full"
+                  >
+                    {ButtonContent}
+                  </a>
+                );
+              } else {
+                return (
+                  <Link key={idx} href={link.url}>
+                    {ButtonContent}
+                  </Link>
+                );
+              }
             })}
           </div>
         </CardContent>
