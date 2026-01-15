@@ -44,9 +44,7 @@ function AppRouter() {
 
           {/* Specific Notes & Logs */}
           <Route path="/pdf-viewer" component={PdfViewer} />
-          <Route path="/pdf-viewer/*" component={PdfViewer} />
           <Route path="/note-viewer" component={MarkdownViewer} />
-          <Route path="/note-viewer/*" component={MarkdownViewer} />
 
           {/* Placeholder Fallbacks */}
           <Route path="/notes/:subject/:topic">
