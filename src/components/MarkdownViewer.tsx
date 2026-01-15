@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { RemoteNoteLayout } from "@/components/RemoteNoteLayout";
 
@@ -40,8 +41,18 @@ function processUrl(url: string): string {
     return encodeURI(rawUrl);
 }
 
+
 export default function MarkdownViewer() {
-    const actualQuery = window.location.hash.split("?")[1] || window.location.search.slice(1);
+    // Listen to hash changes to update content even if the path part is unchanged
+    const [hash, setHash] = useState(window.location.hash);
+
+    useEffect(() => {
+        const onHashChange = () => setHash(window.location.hash);
+        window.addEventListener("hashchange", onHashChange);
+        return () => window.removeEventListener("hashchange", onHashChange);
+    }, []);
+
+    const actualQuery = hash.split("?")[1] || window.location.search.slice(1);
     const { src, title, subtitle, back, backLabel } = parseQuery(actualQuery);
 
     if (!src) {

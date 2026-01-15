@@ -48,7 +48,16 @@ function processUrl(url: string): string {
 // -----------------------------------------------------------------------------
 export default function PdfViewer() {
     const [location] = useLocation();
-    const actualQuery = window.location.hash.split("?")[1] || window.location.search.slice(1);
+
+    // Listen to hash changes re-actively
+    const [hash, setHash] = useState(window.location.hash);
+    useEffect(() => {
+        const onHashChange = () => setHash(window.location.hash);
+        window.addEventListener("hashchange", onHashChange);
+        return () => window.removeEventListener("hashchange", onHashChange);
+    }, []);
+
+    const actualQuery = hash.split("?")[1] || window.location.search.slice(1);
 
     const { src, title, back, backLabel } = parseQuery(actualQuery);
     const [blobUrl, setBlobUrl] = useState("");
@@ -126,7 +135,7 @@ export default function PdfViewer() {
                 fileName = urlFileName.endsWith('.pdf') ? urlFileName : `${urlFileName}.pdf`;
             }
         }
-        
+
         // If we already have a blobUrl from fetch, use it directly for download
         if (blobUrl && blobUrl.startsWith("blob:")) {
             const link = document.createElement('a');
@@ -177,14 +186,14 @@ export default function PdfViewer() {
                                 <ArrowLeft className="mr-2 h-4 w-4" /> {backLabel}
                             </Button>
                         </Link>
-                        
+
                         {blobUrl && (
                             <Button variant="outline" className="text-muted-foreground" onClick={downloadPdf}>
                                 <Download className="mr-2 h-4 w-4" /> 下载源文件
                             </Button>
                         )}
                     </div>
-                    
+
                     {/* 全屏打开按钮 (备用) */}
                     {blobUrl && (
                         <a href={blobUrl} target="_blank" rel="noopener noreferrer">
