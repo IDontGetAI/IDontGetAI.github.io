@@ -4,9 +4,7 @@ import tm from 'markdown-it-texmath';
 import anchor from 'markdown-it-anchor';
 import katex from 'katex';
 import hljs from 'highlight.js';
-import { createRoot } from 'react-dom/client';
-import type { Root } from 'react-dom/client';
-import MermaidDiagram from './MermaidDiagram';
+
 
 import ImageModal from './ImageModal';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -106,12 +104,6 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       const token = tokens[idx];
       const lang = (token.info || '').trim().toLowerCase(); // Normalize language
       const code = token.content; // Raw code
-
-      // 处理 Mermaid 图表
-      if (lang === 'mermaid') {
-        const encodedCode = encodeURIComponent(code);
-        return `<div class="mermaid-placeholder" data-code="${encodedCode}"></div>`;
-      }
 
       let highlightedCode = '';
       // Use original token info for display (preserve case if needed) or normalized lang for highlighting
@@ -310,34 +302,8 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
 
     container.addEventListener('click', handleCopy);
 
-    // 挂载 Mermaid 图表（只在初始化时执行一次）
-    const roots = new Map<Element, Root>();
-
-    const mountDiagrams = () => {
-      const placeholders = container.querySelectorAll('.mermaid-placeholder');
-
-      placeholders.forEach((placeholder) => {
-        if (roots.has(placeholder)) return;
-
-        const code = decodeURIComponent(placeholder.getAttribute('data-code') || '');
-        if (code) {
-          const root = createRoot(placeholder);
-          root.render(<MermaidDiagram code={code} theme={theme} />);
-          roots.set(placeholder, root);
-        }
-      });
-    };
-
-    // 延迟挂载以避免阻塞主渲染
-    const timer = requestAnimationFrame(() => {
-      mountDiagrams();
-    });
-
     return () => {
       container.removeEventListener('click', handleCopy);
-      cancelAnimationFrame(timer);
-      roots.forEach(root => root.unmount());
-      roots.clear();
     };
   }, [html, theme]); // Re-run effect when theme changes
 
