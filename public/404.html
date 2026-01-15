@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>IDontGetAI</title>
-    <script type="text/javascript">
-      // GitHub Pages SPA 404 重定向
-      // 将 404 页面的路径转换为哈希路由并重定向到首页
-      // 支持 Giscus OAuth 回调
-      
-      var pathSegmentsToKeep = 0;
+
+<head>
+  <meta charset="utf-8">
+  <title>IDontGetAI</title>
+  <script type="text/javascript">
+    // GitHub Pages SPA 404 重定向
+    // 将任何 404 路径重定向到首页
+    // 注意：由于使用哈希路由，大多数导航不会触发 404
+
+    (function () {
       var l = window.location;
-      
-      // 检查是否是 giscus OAuth 回调
-      if (l.search.includes('giscus')) {
-        // 如果是 giscus 回调，保持原样让 giscus 处理
-        l.replace(
-          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/#/' +
-          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-          (l.search ? '?' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-          l.hash
-        );
-      } else {
-        // 普通 404 重定向到首页
-        l.replace(
-          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/#/' +
-          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-          (l.search ? '~q~' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-          l.hash
-        );
-      }
-    </script>
-  </head>
-  <body>
-  </body>
+      var pathname = l.pathname;
+      var search = l.search;
+      var hash = l.hash;
+
+      // 直接重定向到首页，保留原始路径作为哈希
+      // 格式: https://site.com/#/original-path
+      window.location.replace(
+        l.protocol + '//' + l.host + '/#' + pathname + search + hash
+      );
+    })();
+  </script>
+</head>
+
+<body>
+  <p>正在重定向...</p>
+</body>
+
 </html>
