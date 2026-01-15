@@ -310,7 +310,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
 
     container.addEventListener('click', handleCopy);
 
-    // 挂载 Mermaid 图表
+    // 挂载 Mermaid 图表（只在初始化时执行一次）
     const roots = new Map<Element, Root>();
 
     const mountDiagrams = () => {
@@ -328,27 +328,14 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       });
     };
 
-    mountDiagrams();
-
-    // 监听动态添加的内容
-    const observer = new MutationObserver((mutations) => {
-      let shouldScan = false;
-      for (const mutation of mutations) {
-        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-          shouldScan = true;
-          break;
-        }
-      }
-      if (shouldScan) {
-        mountDiagrams();
-      }
+    // 延迟挂载以避免阻塞主渲染
+    const timer = requestAnimationFrame(() => {
+      mountDiagrams();
     });
-
-    observer.observe(container, { childList: true, subtree: true });
 
     return () => {
       container.removeEventListener('click', handleCopy);
-      observer.disconnect();
+      cancelAnimationFrame(timer);
       roots.forEach(root => root.unmount());
       roots.clear();
     };

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import mermaid from 'mermaid';
 
 interface MermaidDiagramProps {
     code: string;
@@ -37,12 +36,15 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({ code, theme }) => {
         return () => observer.disconnect();
     }, [status]);
 
-    // 渲染 Mermaid 图表
+    // 渲染 Mermaid 图表（动态导入 mermaid 库）
     useEffect(() => {
         if (status !== 'loading' && status !== 'rendered') return;
 
         const renderDiagram = async () => {
             try {
+                // 动态导入 mermaid 库（减少初始包大小）
+                const mermaid = (await import('mermaid')).default;
+
                 // 基于现代扁平化设计的主题配置
                 const themeVariables = theme === 'dark' ? {
                     // 深色主题
