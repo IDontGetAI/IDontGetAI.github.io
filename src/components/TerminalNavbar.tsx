@@ -42,21 +42,34 @@ export function TerminalNavbar() {
       >
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
           {/* Logo / Terminal Prompt */}
-          <Link href="/">
+          <a
+            href="#/"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = window.location.origin + window.location.pathname + '#/';
+            }}
+          >
             <div className="flex items-center gap-2 cursor-pointer group">
               <Terminal className="w-5 h-5 text-primary animate-pulse" />
               <span className="font-mono text-sm md:text-base font-bold text-primary">
                 root@idontgetai:~<span className="animate-pulse">_</span>
               </span>
             </div>
-          </Link>
+          </a>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-4">
             {navItems.map((item) => {
               const isActive = location === item.path;
               return (
-                <Link key={item.path} href={item.path}>
+                <a
+                  key={item.path}
+                  href={`#${item.path}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = window.location.origin + window.location.pathname + '#' + item.path;
+                  }}
+                >
                   <div
                     className={cn(
                       "font-mono text-sm cursor-pointer transition-colors relative group",
@@ -68,7 +81,7 @@ export function TerminalNavbar() {
                     </span>
                     {item.cmd}
                   </div>
-                </Link>
+                </a>
               );
             })}
           </nav>
@@ -89,9 +102,16 @@ export function TerminalNavbar() {
           <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 border-b border-primary/20 backdrop-blur-xl animate-in slide-in-from-top-2">
             <nav className="flex flex-col p-4 space-y-2">
               {navItems.map((item) => (
-                <Link key={item.path} href={item.path}>
+                <a
+                  key={item.path}
+                  href={`#${item.path}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = window.location.origin + window.location.pathname + '#' + item.path;
+                    setIsOpen(false);
+                  }}
+                >
                   <div
-                    onClick={() => setIsOpen(false)}
                     className={cn(
                       "font-mono text-sm py-2 px-4 rounded border border-transparent transition-all cursor-pointer",
                       location === item.path
@@ -105,7 +125,7 @@ export function TerminalNavbar() {
                       // {item.label}
                     </span>
                   </div>
-                </Link>
+                </a>
               ))}
             </nav>
           </div>
