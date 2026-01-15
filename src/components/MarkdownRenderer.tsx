@@ -4,9 +4,10 @@ import tm from 'markdown-it-texmath';
 import anchor from 'markdown-it-anchor';
 import katex from 'katex';
 import hljs from 'highlight.js';
-import mermaid from 'mermaid';
 import { createRoot } from 'react-dom/client';
+import type { Root } from 'react-dom/client';
 import MermaidDiagram from './MermaidDiagram';
+
 import ImageModal from './ImageModal';
 import { useTheme } from '@/contexts/ThemeContext';
 import 'katex/dist/katex.min.css';
@@ -24,19 +25,19 @@ const splitHljsOutput = (html: string): string[] => {
   const lines: string[] = [];
   const stack: string[] = [];
   let currentLine = '';
-  
+
   // Split by newline, capturing tags to maintain stack
   // We iterate through the string to handle this robustly
   // Regex to match tags or newlines
   const regex = /(<span[^>]*>|<\/span>|\n)/g;
   const parts = html.split(regex);
-  
+
   for (const part of parts) {
     if (part === '\n') {
       // End of line: close all open tags
       const closing = stack.slice().reverse().join('');
       lines.push(currentLine + closing);
-      
+
       // Start new line: re-open tags
       const opening = stack.join('');
       currentLine = opening;
@@ -51,10 +52,10 @@ const splitHljsOutput = (html: string): string[] => {
       if (part) currentLine += part;
     }
   }
-  
+
   // Add the last line
   lines.push(currentLine);
-  
+
   return lines;
 };
 
@@ -90,8 +91,8 @@ const copyToClipboard = async (text: string): Promise<boolean> => {
 export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, baseUrl }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme(); // Consume theme context
-  const [modalImage, setModalImage] = useState<{src: string, alt: string} | null>(null);
-  
+  const [modalImage, setModalImage] = useState<{ src: string, alt: string } | null>(null);
+
   const md = useMemo(() => {
     const instance = new MarkdownIt({
       html: true,
@@ -105,8 +106,8 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       const token = tokens[idx];
       const lang = (token.info || '').trim().toLowerCase(); // Normalize language
       const code = token.content; // Raw code
-      
-      // Handle Mermaid diagrams
+
+      // 处理 Mermaid 图表
       if (lang === 'mermaid') {
         const encodedCode = encodeURIComponent(code);
         return `<div class="mermaid-placeholder" data-code="${encodedCode}"></div>`;
@@ -115,8 +116,8 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       let highlightedCode = '';
       // Use original token info for display (preserve case if needed) or normalized lang for highlighting
       // hljs expects lowercase usually, but let's be safe
-      const hljsLang = lang; 
-      
+      const hljsLang = lang;
+
       if (hljsLang && hljs.getLanguage(hljsLang)) {
         try {
           highlightedCode = hljs.highlight(code, { language: hljsLang, ignoreIllegals: true }).value;
@@ -138,14 +139,14 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
         .replace(/hljs-variable/g, 'cm-variable')
         .replace(/hljs-operator/g, 'cm-operator')
         .replace(/hljs-meta/g, 'cm-meta')
-        .replace(/hljs-title function_/g, 'cm-def') 
+        .replace(/hljs-title function_/g, 'cm-def')
         .replace(/hljs-title class_/g, 'cm-variable-2')
         .replace(/hljs-title/g, 'cm-def')
         .replace(/hljs-params/g, 'cm-variable')
         .replace(/hljs-attr/g, 'cm-attribute')
         .replace(/hljs-attribute/g, 'cm-attribute')
         .replace(/hljs-tag/g, 'cm-tag')
-        .replace(/hljs-name/g, 'cm-tag') 
+        .replace(/hljs-name/g, 'cm-tag')
         .replace(/hljs-literal/g, 'cm-atom')
         .replace(/hljs-section/g, 'cm-header')
         .replace(/hljs-quote/g, 'cm-quote');
@@ -153,7 +154,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       // Split highlighted code into lines
       // Trim trailing newline to avoid an empty extra line at the end
       const codeLines = splitHljsOutput(highlightedCode.replace(/\n$/, ''));
-      
+
       // Generate Table Rows
       const rows = codeLines.map((line, index) => {
         const lineNumber = index + 1;
@@ -196,7 +197,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
     instance.use(tm, { engine: katex, delimiters: 'dollars' });
     instance.use(anchor, { slugify: slugify });
 
-    const defaultRender = instance.renderer.rules.image || function(tokens, idx, options, env, self) {
+    const defaultRender = instance.renderer.rules.image || function (tokens, idx, options, env, self) {
       return self.renderToken(tokens, idx, options);
     };
 
@@ -206,12 +207,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       if (srcIndex >= 0) {
         const src = token.attrs[srcIndex][1];
         if (baseUrl && !src.startsWith('http') && !src.startsWith('//') && !src.startsWith('/')) {
-           const cleanBase = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
-           const cleanSrc = src.replace(/^\.\//, '');
-           token.attrs[srcIndex][1] = cleanBase + cleanSrc;
-        } 
+          const cleanBase = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
+          const cleanSrc = src.replace(/^\.\//, '');
+          token.attrs[srcIndex][1] = cleanBase + cleanSrc;
+        }
         else if (!baseUrl && (src.startsWith('assets/') || src.startsWith('./assets/'))) {
-           token.attrs[srcIndex][1] = src.replace(/^(\.\/)?assets\//, '/assets/');
+          token.attrs[srcIndex][1] = src.replace(/^(\.\/)?assets\//, '/assets/');
         }
       }
       // Wrap image in a clickable container for modal
@@ -226,11 +227,11 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
   const processedContent = useMemo(() => {
     if (!content) return "";
     if (baseUrl) {
-       const cleanBase = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
-       return content.replace(/(src=["'])(\.?\/)?([^"']+)["']/g, (match, prefix, dotSlash, url) => {
-          if (url.startsWith('http') || url.startsWith('//') || url.startsWith('/')) return match;
-          return `${prefix}${cleanBase}${url}"`;
-       });
+      const cleanBase = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
+      return content.replace(/(src=["'])(\.?\/)?([^"']+)["']/g, (match, prefix, dotSlash, url) => {
+        if (url.startsWith('http') || url.startsWith('//') || url.startsWith('/')) return match;
+        return `${prefix}${cleanBase}${url}"`;
+      });
     }
     return content
       .replace(/(src=["'])(\.?\/)?assets\//g, '$1/assets/')
@@ -243,49 +244,10 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
     const container = containerRef.current;
     if (!container) return;
 
-    // Keep track of mounted roots for cleanup
-    const roots = new Map<Element, { unmount: () => void }>();
-
-    // Function to mount diagrams
-    const mountDiagrams = () => {
-      const placeholders = container.querySelectorAll('.mermaid-placeholder');
-      
-      placeholders.forEach((placeholder) => {
-        // Skip if already mounted
-        if (roots.has(placeholder)) return;
-
-        const code = decodeURIComponent(placeholder.getAttribute('data-code') || '');
-        if (code) {
-          const root = createRoot(placeholder);
-          root.render(<MermaidDiagram code={code} theme={theme} />);
-          roots.set(placeholder, root);
-        }
-      });
-    };
-
-    // Initial mount
-    mountDiagrams();
-
-    // Setup MutationObserver to handle dynamically added content
-    const observer = new MutationObserver((mutations) => {
-      let shouldScan = false;
-      for (const mutation of mutations) {
-        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-          shouldScan = true;
-          break;
-        }
-      }
-      if (shouldScan) {
-        mountDiagrams();
-      }
-    });
-
-    observer.observe(container, { childList: true, subtree: true });
-
     // Event Delegation for Copy
     const handleCopy = async (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      
+
       // Handle Image Click for Modal
       const imageContainer = target.closest('.zoomable-image-container');
       if (imageContainer) {
@@ -301,36 +263,36 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       }
 
       const button = target.closest('.copy-code-btn') as HTMLButtonElement;
-      
+
       if (!button) return;
 
       e.stopPropagation();
-      
+
       const encodedCode = button.getAttribute('data-code');
       if (!encodedCode) return;
-      
+
       const textToCopy = decodeURIComponent(encodedCode);
       const success = await copyToClipboard(textToCopy);
-      
+
       const copyIcon = button.querySelector('.copy-icon');
       const checkIcon = button.querySelector('.check-icon');
-      
+
       if (success) {
         const blockContainer = button.closest('.code-block-container');
         const feedbackText = blockContainer?.querySelector('.copy-feedback-text') as HTMLElement;
-        
+
         if (feedbackText) feedbackText.style.opacity = '1';
-        
+
         if (copyIcon) copyIcon.classList.add('hidden');
         if (checkIcon) checkIcon.classList.remove('hidden');
-        
+
         button.classList.add('border-green-500/50', 'bg-green-500/10');
         button.setAttribute('aria-label', 'Code copied');
-        
+
         setTimeout(() => {
           if (copyIcon) copyIcon.classList.remove('hidden');
           if (checkIcon) checkIcon.classList.add('hidden');
-          
+
           button.classList.remove('border-green-500/50', 'bg-green-500/10');
           button.setAttribute('aria-label', 'Copy code');
           if (feedbackText) feedbackText.style.opacity = '0';
@@ -338,7 +300,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
       } else {
         button.classList.add('border-red-500/50', 'bg-red-500/10');
         button.setAttribute('aria-label', 'Copy failed');
-        
+
         setTimeout(() => {
           button.classList.remove('border-red-500/50', 'bg-red-500/10');
           button.setAttribute('aria-label', 'Copy code');
@@ -348,10 +310,45 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
 
     container.addEventListener('click', handleCopy);
 
+    // 挂载 Mermaid 图表
+    const roots = new Map<Element, Root>();
+
+    const mountDiagrams = () => {
+      const placeholders = container.querySelectorAll('.mermaid-placeholder');
+
+      placeholders.forEach((placeholder) => {
+        if (roots.has(placeholder)) return;
+
+        const code = decodeURIComponent(placeholder.getAttribute('data-code') || '');
+        if (code) {
+          const root = createRoot(placeholder);
+          root.render(<MermaidDiagram code={code} theme={theme} />);
+          roots.set(placeholder, root);
+        }
+      });
+    };
+
+    mountDiagrams();
+
+    // 监听动态添加的内容
+    const observer = new MutationObserver((mutations) => {
+      let shouldScan = false;
+      for (const mutation of mutations) {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          shouldScan = true;
+          break;
+        }
+      }
+      if (shouldScan) {
+        mountDiagrams();
+      }
+    });
+
+    observer.observe(container, { childList: true, subtree: true });
+
     return () => {
-      observer.disconnect();
       container.removeEventListener('click', handleCopy);
-      // Clean up React roots
+      observer.disconnect();
       roots.forEach(root => root.unmount());
       roots.clear();
     };
@@ -359,12 +356,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
 
   return (
     <>
-      <div 
+      <div
         ref={containerRef}
         className="typora-content"
-        dangerouslySetInnerHTML={{ __html: html }} 
+        dangerouslySetInnerHTML={{ __html: html }}
       />
-      <ImageModal 
+      <ImageModal
         isOpen={!!modalImage}
         src={modalImage?.src || ''}
         alt={modalImage?.alt || ''}

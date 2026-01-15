@@ -174,8 +174,8 @@ const resources: ContentData<ResourceItem> = [
         content: "数学运算技巧与公式。",
         links: [
           {
-            title: "Search Books",
-            url: "https://www.google.com/search?q=Civil+Service+Exam+Books",
+            title: "数量关系 PDF",
+            url: `/pdf-viewer?src=${encodeURIComponent("https://github.com/IDontGetAI/Civil/blob/main/03_数量关系/01_数量关系拿分稳稳班.pdf")}&title=数量关系&back=/cse&backLabel=返回公考页`,
             type: "Book",
           },
           {
@@ -195,8 +195,8 @@ const resources: ContentData<ResourceItem> = [
         content: "速算技巧与统计术语。",
         links: [
           {
-            title: "Search Books",
-            url: "https://www.google.com/search?q=Civil+Service+Exam+Books",
+            title: "资料分析 PDF",
+            url: `/pdf-viewer?src=${encodeURIComponent("https://github.com/IDontGetAI/Civil/blob/main/04_资料分析/01_资料分析理论实战班.pdf")}&title=资料分析&back=/cse&backLabel=返回公考页`,
             type: "Book",
           },
           {
