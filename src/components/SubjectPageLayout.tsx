@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import type { ComponentType } from "react";
+import { normalizeInternalHref } from "@/lib/normalizeInternalHref";
 
 export interface NoteLink {
   title: string;
@@ -103,32 +104,37 @@ export function SubjectPageLayout({
             {item.links?.map((link, idx) => {
               const Icon = link.type ? ResourceIcon[link.type] : LinkIcon;
               const isExternal = link.url.startsWith("http") || link.url.startsWith("//");
-
-              const ButtonContent = (
-                <Button variant="ghost" size="sm" className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono">
-                  <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
-                  <span className="truncate">{link.title}</span>
-                </Button>
-              );
+              const internalHref = normalizeInternalHref(link.url);
 
               if (isExternal) {
                 return (
-                  <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
-                    {ButtonContent}
-                  </a>
-                );
-              } else if (link.url.includes('?')) {
-                const [path, query] = link.url.split('?');
-                return (
-                  <a key={idx} href={`?${query}#${path}`} className="block w-full">
-                    {ButtonContent}
-                  </a>
+                  <Button
+                    key={idx}
+                    asChild
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono"
+                  >
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                      <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{link.title}</span>
+                    </a>
+                  </Button>
                 );
               } else {
                 return (
-                  <Link key={idx} href={link.url}>
-                    {ButtonContent}
-                  </Link>
+                  <Button
+                    key={idx}
+                    asChild
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start border border-secondary/10 text-secondary/80 hover:text-white hover:bg-secondary/20 h-auto py-2 text-xs font-mono"
+                  >
+                    <Link href={internalHref}>
+                      <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{link.title}</span>
+                    </Link>
+                  </Button>
                 );
               }
             })}
@@ -156,43 +162,56 @@ export function SubjectPageLayout({
 
           <div className="mt-auto space-y-2">
             {noteItem.link && !noteItem.links && (
-              <Link href={noteItem.link}>
-                <Button variant="outline" size="sm" className="w-full justify-between border-primary/20 text-primary hover:bg-primary/10 h-8 text-xs font-mono">
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="w-full justify-between border-primary/20 text-primary hover:bg-primary/10 h-8 text-xs font-mono"
+              >
+                <Link href={normalizeInternalHref(noteItem.link)}>
                   Read Note <ArrowRight className="w-3 h-3 ml-2" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             )}
             {noteItem.links?.map((link, idx) => {
               const isExternal = link.url.startsWith('http') || link.url.startsWith('//');
-
-              const ButtonContent = (
-                <Button variant="outline" size="sm" className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1 px-2">
-                  <div className="flex items-center overflow-hidden">
-                    <FileText className="w-3 h-3 mr-2 flex-shrink-0 opacity-70" />
-                    <span className="truncate">{link.title}</span>
-                  </div>
-                  <ArrowRight className="w-3 h-3 ml-2 opacity-50 flex-shrink-0" />
-                </Button>
-              );
+              const internalHref = normalizeInternalHref(link.url);
 
               if (isExternal) {
                 return (
-                  <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full">
-                    {ButtonContent}
-                  </a>
-                );
-              } else if (link.url.includes('?')) {
-                const [path, query] = link.url.split('?');
-                return (
-                  <a key={idx} href={`?${query}#${path}`} className="block w-full">
-                    {ButtonContent}
-                  </a>
+                  <Button
+                    key={idx}
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1 px-2"
+                  >
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                      <div className="flex items-center overflow-hidden">
+                        <FileText className="w-3 h-3 mr-2 flex-shrink-0 opacity-70" />
+                        <span className="truncate">{link.title}</span>
+                      </div>
+                      <ArrowRight className="w-3 h-3 ml-2 opacity-50 flex-shrink-0" />
+                    </a>
+                  </Button>
                 );
               } else {
                 return (
-                  <Link key={idx} href={link.url}>
-                    {ButtonContent}
-                  </Link>
+                  <Button
+                    key={idx}
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-between border-white/10 text-muted-foreground hover:text-white hover:border-primary/30 hover:bg-white/5 h-8 text-xs font-mono mb-1 px-2"
+                  >
+                    <Link href={internalHref}>
+                      <div className="flex items-center overflow-hidden">
+                        <FileText className="w-3 h-3 mr-2 flex-shrink-0 opacity-70" />
+                        <span className="truncate">{link.title}</span>
+                      </div>
+                      <ArrowRight className="w-3 h-3 ml-2 opacity-50 flex-shrink-0" />
+                    </Link>
+                  </Button>
                 );
               }
             })}

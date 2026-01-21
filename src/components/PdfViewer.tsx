@@ -182,11 +182,11 @@ export default function PdfViewer() {
                 {/* 顶部导航 */}
                 <div className="flex items-center justify-between mb-6 shrink-0">
                     <div className="flex gap-2">
-                        <Link href={back}>
-                            <Button variant="ghost" className="pl-0 text-muted-foreground hover:text-white">
+                        <Button asChild variant="ghost" className="pl-0 text-muted-foreground hover:text-white">
+                            <Link href={back}>
                                 <ArrowLeft className="mr-2 h-4 w-4" /> {backLabel}
-                            </Button>
-                        </Link>
+                            </Link>
+                        </Button>
 
                         {blobUrl && (
                             <Button variant="outline" className="text-muted-foreground" onClick={downloadPdf}>
@@ -197,11 +197,11 @@ export default function PdfViewer() {
 
                     {/* 全屏打开按钮 (备用) */}
                     {blobUrl && (
-                        <a href={blobUrl} target="_blank" rel="noopener noreferrer">
-                            <Button variant="ghost" className="text-muted-foreground hover:text-white">
+                        <Button asChild variant="ghost" className="text-muted-foreground hover:text-white">
+                            <a href={blobUrl} target="_blank" rel="noopener noreferrer">
                                 <Maximize2 className="mr-2 h-4 w-4" /> 全屏打开
-                            </Button>
-                        </a>
+                            </a>
+                        </Button>
                     )}
                 </div>
 
@@ -233,11 +233,11 @@ export default function PdfViewer() {
                                 <AlertCircle className="w-12 h-12 mb-4 opacity-50" />
                                 <h3 className="text-lg font-medium text-white mb-2">移动端暂不支持嵌入预览</h3>
                                 <p className="mb-6 text-sm max-w-xs mx-auto">为了获得最佳阅读体验，请使用原生阅读器打开。</p>
-                                <a href={blobUrl} target="_blank" rel="noopener noreferrer">
-                                    <Button className="w-full sm:w-auto" size="lg">
+                                <Button asChild className="w-full sm:w-auto" size="lg">
+                                    <a href={blobUrl} target="_blank" rel="noopener noreferrer">
                                         <Maximize2 className="mr-2 h-4 w-4" /> 在新窗口打开 PDF
-                                    </Button>
-                                </a>
+                                    </a>
+                                </Button>
                             </div>
                         ) : (
                             <iframe

@@ -164,11 +164,11 @@ export function RemoteNoteLayout({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex gap-2 mb-6">
-          <Link href={backLink}>
-            <Button variant="ghost" className="pl-0 text-muted-foreground hover:text-primary">
+          <Button asChild variant="ghost" className="pl-0 text-muted-foreground hover:text-primary">
+            <Link href={backLink}>
               <ArrowLeft className="mr-2 h-4 w-4" /> {backLabel}
-            </Button>
-          </Link>
+            </Link>
+          </Button>
           <Button variant="outline" className="text-muted-foreground" onClick={downloadMarkdown}>
             <Download className="mr-2 h-4 w-4" /> 下载源文件
           </Button>
