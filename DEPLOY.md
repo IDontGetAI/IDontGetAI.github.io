@@ -26,6 +26,17 @@ VITE_GISCUS_CATEGORY_ID=your_category_id
 
 如果使用 CI/CD 部署，请在对应的 Secrets/Variables 中设置同名变量。
 
+## 🧯 Giscus 故障排查
+
+**Q: 评论区提示 `Discussion not found`？**
+A: 这通常表示「当前页面对应的 Discussion 尚未创建」，属于常见情况（尤其是新页面/新 term）。一般有三种处理方式：
+- 直接在评论框中登录并发表第一条评论，Giscus 通常会自动创建 Discussion；
+- 通过评论区右上角的 “打开 GitHub 讨论” 去 GitHub 搜索或手动创建 Discussion，然后刷新页面；
+- 确认仓库已开启 Discussions，并且已安装/授权 giscus app 访问该仓库。
+
+**Q: 评论区一直加载/超时？**
+A: 优先检查网络是否能访问 `https://giscus.app` 与 `https://github.com`。若使用了隐私/广告拦截插件，建议在无痕窗口或禁用插件后复测。
+
 ## 🚀 部署到 Vercel (推荐)
 
 Vercel 是本项目推荐的部署平台，支持 SPA 路由、自动预览和更快的全球访问速度。

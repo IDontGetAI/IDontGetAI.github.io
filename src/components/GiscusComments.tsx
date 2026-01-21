@@ -5,6 +5,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { slugify } from "@/lib/slugify";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { getGiscusErrorMessage, isDiscussionNotFoundError } from "@/lib/giscusError";
 
 type PageType = "pdf" | "note";
 
@@ -45,6 +46,7 @@ export function GiscusComments({
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isDiscussionMissing, setIsDiscussionMissing] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -99,17 +101,26 @@ export function GiscusComments({
     setIsLoading(true);
     setHasError(false);
     setErrorMessage("");
+    setIsDiscussionMissing(false);
 
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== "https://giscus.app") return;
       if (!(typeof event.data === "object" && event.data.giscus)) return;
-      
-      console.log("Giscus message received:", event.data.giscus);
 
       if (event.data.giscus.error) {
-        console.error("Giscus reported error:", event.data.giscus.error);
+        const message = getGiscusErrorMessage(event.data.giscus.error);
+        console.error("Giscus reported error:", {
+          message,
+          giscus: event.data.giscus,
+        });
+        if (isDiscussionNotFoundError(message)) {
+          setIsDiscussionMissing(true);
+          setIsLoading(false);
+          return;
+        }
+
         setHasError(true);
-        setErrorMessage(typeof event.data.giscus.error === 'string' ? event.data.giscus.error : "Unknown error from Giscus");
+        setErrorMessage(message || "Unknown error from Giscus");
         setIsLoading(false);
         return;
       }
@@ -181,6 +192,38 @@ export function GiscusComments({
                      重试
                    </Button>
                  </div>
+              )}
+              {isDiscussionMissing && (
+                <div className="mb-4 rounded-md border border-white/10 bg-black/30 p-4 text-sm text-muted-foreground">
+                  <div className="flex items-start gap-2">
+                    <AlertCircle className="mt-0.5 h-4 w-4 text-secondary" />
+                    <div className="space-y-2">
+                      <div>
+                        未找到与当前页面匹配的 Discussion。首次发表评论时通常会自动创建；也可以手动创建后刷新页面。
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {discussionsUrl && (
+                          <Button asChild size="sm" variant="outline">
+                            <a href={discussionsUrl} target="_blank" rel="noopener noreferrer">
+                              在 GitHub 中搜索
+                            </a>
+                          </Button>
+                        )}
+                        {repo && (
+                          <Button asChild size="sm" variant="outline">
+                            <a
+                              href={`https://github.com/${repo}/discussions/new`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              手动创建 Discussion
+                            </a>
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
               <div ref={containerRef} className={cn("transition-opacity", (isLoading || hasError) && "opacity-0")}>
                 <Giscus
