@@ -1,7 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Router, Route, Switch, Redirect } from "wouter";
-import { useHashLocation } from "./hooks/useHashLocation";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Layout from "@/Layout";
@@ -26,62 +25,12 @@ function RedirectToCse() {
 }
 
 
-/**
- * Giscus OAuth 回调处理组件
- * 当用户从 Giscus 登录返回时，URL hash 会变成 #comments
- * 此组件负责恢复用户原来的页面上下文（PDF 或 Note Viewer）
- */
-function GiscusCallback() {
-  // NOTE: 这里不使用 useHashLocation 因为我们需要直接操作 window.location
-  
-  if (typeof window !== 'undefined') {
-    const search = window.location.search;
-    const params = new URLSearchParams(search);
-    const src = params.get('src');
-    const giscus = params.get('giscus');
-
-    console.log('[GiscusCallback] 检测到 Giscus 回调', { src, hasGiscus: !!giscus });
-
-    if (src) {
-      // 根据 src 参数判断应该恢复到哪个 viewer
-      const targetRoute = src.toLowerCase().endsWith('.pdf') 
-        ? '/pdf-viewer' 
-        : '/note-viewer';
-      
-      // 构建新 URL，保留所有 query 参数，只修正 hash
-      const newUrl = `${window.location.origin}${window.location.pathname}${search}#${targetRoute}`;
-      
-      console.log('[GiscusCallback] 恢复会话到:', targetRoute);
-      
-      // 使用 replaceState 避免污染浏览器历史记录
-      window.history.replaceState(null, '', newUrl);
-      
-      // 强制刷新以确保组件正确加载（因为 hash change 可能不触发完整的组件重载）
-      window.location.reload();
-      
-      // 返回加载提示（实际上页面会立即刷新，用户看不到这个）
-      return (
-        <div className="flex flex-col items-center justify-center min-h-[50vh] space-y-4">
-          <div className="animate-pulse text-primary">正在恢复会话...</div>
-          <div className="text-xs text-muted-foreground font-mono opacity-70">
-            Restoring session from Giscus login
-          </div>
-        </div>
-      );
-    }
-  }
-
-  // 如果没有 src 参数，重定向到首页
-  return <Redirect to="/" />;
-}
-
 function AppRouter() {
   return (
-    <Router hook={useHashLocation}>
+    <Router>
       <Layout>
         <Switch>
           <Route path="/" component={Home} />
-          <Route path="/comments" component={GiscusCallback} />
           <Route path="/ai" component={AI} />
           <Route path="/math" component={Math} />
           <Route path="/physics" component={Physics} />

@@ -7,8 +7,9 @@ import {
 
 // 引入布局组件以统一风格
 import { PageLayout } from "@/components/PageLayout";
+import { GiscusComments } from "@/components/GiscusComments";
 import readingBg from "@/assets/reading.jpeg";
-import { Comments } from "@/components/Comments";
+
 
 // -----------------------------------------------------------------------------
 // 工具函数
@@ -248,9 +249,7 @@ export default function PdfViewer() {
                     )}
                 </div>
 
-                {/* 评论区 */}
-                <Comments mapping="specific" term={title} />
-
+                <GiscusComments pageType="pdf" title={title} sourceUrl={src} />
             </div>
         </PageLayout>
     );

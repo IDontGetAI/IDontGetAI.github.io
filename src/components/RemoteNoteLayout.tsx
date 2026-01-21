@@ -1,4 +1,5 @@
 import { PageLayout } from "@/components/PageLayout";
+import { GiscusComments } from "@/components/GiscusComments";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { useFetchMarkdown } from "@/hooks/useFetchMarkdown";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,6 @@ import readingBg from "@/assets/reading.jpeg";
 import { slugify } from "@/lib/slugify";
 import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Comments } from "@/components/Comments";
 
 interface RemoteNoteLayoutProps {
   title: string;
@@ -229,13 +229,8 @@ export function RemoteNoteLayout({
             </aside>
           )}
         </div>
+        <GiscusComments pageType="note" title={title} sourceUrl={rawUrl} />
 
-        {/* 评论区 */}
-        {!loading && !error && (
-          <div className="lg:col-span-9 lg:col-start-1">
-            <Comments mapping="specific" term={title} />
-          </div>
-        )}
       </div>
     </PageLayout>
   );

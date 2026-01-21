@@ -6,6 +6,25 @@
 
 1.  确保你不仅拥有源码，而且拥有该仓库的 **Write** 权限。
 2.  确保本地已安装 `Node.js` 和 `npm`。
+3.  确保已启用 GitHub Discussions 并创建用于 Giscus 的分类。
+
+## 💬 Giscus 评论系统配置
+
+### 1. 开启 Discussions 与应用权限
+1.  进入 GitHub 仓库 Settings -> General。
+2.  勾选 Features 中的 Discussions。
+3.  在 Giscus 应用页面授权该仓库访问 Discussions。
+
+### 2. 获取并配置环境变量
+在本地创建 `.env.local`（不要提交），并补充以下变量：
+```bash
+VITE_GISCUS_REPO=owner/repo
+VITE_GISCUS_REPO_ID=your_repo_id
+VITE_GISCUS_CATEGORY=General
+VITE_GISCUS_CATEGORY_ID=your_category_id
+```
+
+如果使用 CI/CD 部署，请在对应的 Secrets/Variables 中设置同名变量。
 
 ## 🚀 自动部署 (推荐)
 
