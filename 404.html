@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // GitHub Pages SPA 重定向 Hack
+      // 逻辑：当访问 /foo 时，GitHub Pages 返回 404.html
+      // 此脚本将路径 /foo 转换为 /#/foo 并重定向
+      
+      (function() {
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        
+        // 只有当路径不是根路径时才需要重定向
+        if (path !== '/' && path !== '/index.html') {
+          // 构造新的目标 URL
+          // 假设部署在根目录 (username.github.io)，直接使用 path
+          // 如果是项目子目录，需要自行调整，但这里 base="/"
+          
+          var newUrl = '/#' + path + search + hash;
+          
+          // 执行重定向
+          window.location.replace(newUrl);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <script>document.write(window.location.pathname)</script>...</p>
+  </body>
+</html>
