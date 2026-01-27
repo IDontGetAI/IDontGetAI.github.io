@@ -15,6 +15,7 @@ import { compressGitHubUrl, expandGitHubUrl } from "@/lib/utils";
 import { useLocationSnapshot } from "@/hooks/useLocationSnapshot";
 import { devLog, getQueryStringFromSnapshot } from "@/lib/location";
 import { fetchWithCache } from "@/lib/httpCache";
+import { clearViewerActive, markViewerActive } from "@/lib/giscusReturnTo";
 
 // -----------------------------------------------------------------------------
 // 工具函数
@@ -100,6 +101,14 @@ export default function PdfViewer() {
             const newUrl = `${snapshot.pathname}?${params.toString()}`;
             window.history.replaceState(null, "", newUrl);
         }
+    }, [src]);
+
+    useEffect(() => {
+        if (!src) return;
+        markViewerActive("pdf");
+        return () => {
+            clearViewerActive();
+        };
     }, [src]);
 
     const [blobUrl, setBlobUrl] = useState("");

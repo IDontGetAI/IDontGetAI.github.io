@@ -25,5 +25,11 @@ describe("normalizeInternalHref", () => {
       "/note-viewer?src=1&title=2"
     );
   });
-});
 
+  it("compresses viewer src param for giscus-friendly urls", () => {
+    const input = "/pdf-viewer?src=https%3A%2F%2Fgithub.com%2Fo%2Fr%2Fblob%2Fmain%2Fdocs%2Fa.pdf&title=hi";
+    expect(normalizeInternalHref(input)).toBe(
+      "/pdf-viewer?src=ghs%2Fo%2Fr%2Fmain%2Fdocs%2Fa.pdf&title=hi"
+    );
+  });
+});

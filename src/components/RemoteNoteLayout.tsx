@@ -9,6 +9,7 @@ import readingBg from "@/assets/reading.jpeg";
 import { slugify } from "@/lib/slugify";
 import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
+import { clearViewerActive, markViewerActive } from "@/lib/giscusReturnTo";
 
 interface RemoteNoteLayoutProps {
   title: string;
@@ -40,6 +41,13 @@ export function RemoteNoteLayout({
 
   // Auto-derive baseUrl from rawUrl if not provided
   const derivedBaseUrl = baseUrl || rawUrl.substring(0, rawUrl.lastIndexOf('/') + 1);
+
+  useEffect(() => {
+    markViewerActive("note");
+    return () => {
+      clearViewerActive();
+    };
+  }, []);
 
   const toc = useMemo<TocItem[]>(() => {
     if (!content) return [];
