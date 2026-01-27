@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { navigate } from "wouter/use-hash-location";
 
 // Helper to get the current location path (excluding query string)
 const currentLocation = () => {

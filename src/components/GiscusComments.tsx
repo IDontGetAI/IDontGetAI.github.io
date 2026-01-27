@@ -98,10 +98,13 @@ export function GiscusComments({
   }, [repo, term]);
 
   useEffect(() => {
-    setIsLoading(true);
-    setHasError(false);
-    setErrorMessage("");
-    setIsDiscussionMissing(false);
+    const resetState = () => {
+      setIsLoading(true);
+      setHasError(false);
+      setErrorMessage("");
+      setIsDiscussionMissing(false);
+    };
+    queueMicrotask(resetState);
 
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== "https://giscus.app") return;

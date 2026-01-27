@@ -66,7 +66,7 @@ const copyToClipboard = async (text: string): Promise<boolean> => {
     } else {
       throw new Error('Clipboard API not available');
     }
-  } catch (e) {
+  } catch {
     try {
       const textarea = document.createElement('textarea');
       textarea.value = text;
@@ -100,7 +100,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, bas
     });
 
     // Override fence renderer to have full control
-    instance.renderer.rules.fence = function (tokens, idx, options, env, self) {
+    instance.renderer.rules.fence = function (tokens, idx) {
       const token = tokens[idx];
       const lang = (token.info || '').trim().toLowerCase(); // Normalize language
       const code = token.content; // Raw code

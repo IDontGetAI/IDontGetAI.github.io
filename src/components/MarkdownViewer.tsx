@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
 import { RemoteNoteLayout } from "@/components/RemoteNoteLayout";
 
 function parseQuery(queryString: string) {

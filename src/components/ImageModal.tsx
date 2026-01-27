@@ -17,8 +17,10 @@ const ImageModal: React.FC<ImageModalProps> = ({ src, alt, isOpen, onClose }) =>
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      setZoom(1);
-      setPosition({ x: 0, y: 0 });
+      queueMicrotask(() => {
+        setZoom(1);
+        setPosition({ x: 0, y: 0 });
+      });
     } else {
       document.body.style.overflow = '';
     }

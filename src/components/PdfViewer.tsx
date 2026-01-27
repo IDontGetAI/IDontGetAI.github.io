@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, Link } from "wouter";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import {
     ArrowLeft, Download, Loader2, AlertCircle, Maximize2
@@ -48,8 +48,6 @@ function processUrl(url: string): string {
 // 主组件 (原生 iframe 内核 + PageLayout 外壳)
 // -----------------------------------------------------------------------------
 export default function PdfViewer() {
-    const [location] = useLocation();
-
     // Listen to hash changes re-actively
     const [hash, setHash] = useState(window.location.hash);
     useEffect(() => {
@@ -69,7 +67,7 @@ export default function PdfViewer() {
     useEffect(() => {
         // 简单的移动端检测
         const checkMobile = () => {
-            const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+            const userAgent = navigator.userAgent || navigator.vendor || "";
             if (/android|ipad|iphone|ipod/i.test(userAgent)) {
                 setIsMobile(true);
             } else {
@@ -86,8 +84,11 @@ export default function PdfViewer() {
         if (!rawUrl) return;
 
         let active = true;
-        setLoading(true);
-        setError(null);
+        let objectUrl = "";
+        queueMicrotask(() => {
+            setLoading(true);
+            setError(null);
+        });
 
         // 混合策略：优先尝试 Fetch+Blob (解决下载问题)，失败则回退到直接链接 (解决跨域问题)
         fetch(rawUrl)
@@ -95,7 +96,9 @@ export default function PdfViewer() {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const blob = await res.blob();
                 const pdfBlob = new Blob([blob], { type: "application/pdf" });
-                return URL.createObjectURL(pdfBlob);
+                const url = URL.createObjectURL(pdfBlob);
+                objectUrl = url;
+                return url;
             })
             .then((url) => {
                 if (active) {
@@ -115,8 +118,8 @@ export default function PdfViewer() {
 
         return () => {
             active = false;
-            if (blobUrl && blobUrl.startsWith("blob:")) {
-                URL.revokeObjectURL(blobUrl);
+            if (objectUrl) {
+                URL.revokeObjectURL(objectUrl);
             }
         };
     }, [src]);
