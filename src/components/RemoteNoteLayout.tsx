@@ -44,9 +44,6 @@ export function RemoteNoteLayout({
 
   useEffect(() => {
     markViewerActive("note");
-    return () => {
-      clearViewerActive();
-    };
   }, []);
 
   const toc = useMemo<TocItem[]>(() => {
