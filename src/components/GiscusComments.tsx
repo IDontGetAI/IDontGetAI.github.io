@@ -155,7 +155,9 @@ export function GiscusComments({
     setRetryCount(c => c + 1);
   };
 
-  const isConfigured = Boolean(repo && repoId && category && categoryId);
+  // 确保 Giscus 在 sourceUrl 稳定后再加载
+  // 使用 key 属性强制 Giscus 在 term 变化时完全重新挂载
+  const giscusKey = useMemo(() => `${term}-${retryCount}`, [term, retryCount]);
 
   return (
     <section className={cn("w-full mt-10", className)}>
@@ -230,7 +232,7 @@ export function GiscusComments({
               )}
               <div ref={containerRef} className={cn("transition-opacity", (isLoading || hasError) && "opacity-0")}>
                 <Giscus
-                  key={retryCount} // Force remount on retry
+                  key={giscusKey} // Force remount on term change or retry
                   id="comments"
                   host="https://giscus.app"
                   repo={repo}

@@ -51,6 +51,7 @@ function processUrl(url: string): string {
 export default function MarkdownViewer() {
     // Listen to hash changes to update content even if the path part is unchanged
     const [hash, setHash] = useState(window.location.hash);
+    const [finalSrc, setFinalSrc] = useState<string>("");
 
     useEffect(() => {
         const onHashChange = () => setHash(window.location.hash);
@@ -90,6 +91,20 @@ export default function MarkdownViewer() {
                  window.history.replaceState(null, "", newUrl);
             }
         }
+        
+        // 只有当 src 稳定（即已经是最优压缩状态或无法压缩）时，才将其设为 finalSrc
+        // 这里我们可以简单认为，每次 src 变化都可能是最终状态，但如果触发了压缩，
+        // 页面 URL 会变，但组件 props 可能还没变（取决于路由实现）。
+        // 不过由于我们使用了 silent replaceState，src 还是原始值。
+        // 所以这里我们应该始终使用 src，但为了防止竞态，我们可以稍微延迟一下？
+        // 其实不需要延迟，只要 ensure processUrl 能处理所有情况即可。
+        
+        // setFinalSrc(src); // 移除同步调用
+    }, [src]);
+    
+    // 使用 useEffect 来异步更新 finalSrc，避免同步更新导致渲染循环或警告
+    useEffect(() => {
+        setFinalSrc(src);
     }, [src]);
 
     if (!src) {
@@ -99,9 +114,12 @@ export default function MarkdownViewer() {
             </div>
         );
     }
+    
+    // 只有当 finalSrc 有值时才渲染内容，避免初始空状态或闪烁
+    if (!finalSrc) return null;
 
     // Process the URL to handle GitHub blob links
-    const procesedUrl = processUrl(src);
+    const procesedUrl = processUrl(finalSrc);
 
     return (
         <RemoteNoteLayout
