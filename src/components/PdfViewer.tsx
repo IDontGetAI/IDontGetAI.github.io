@@ -11,6 +11,8 @@ import { GiscusComments } from "@/components/GiscusComments";
 import readingBg from "@/assets/reading.jpeg";
 
 
+import { compressGitHubUrl, expandGitHubUrl } from "@/lib/utils";
+
 // -----------------------------------------------------------------------------
 // 工具函数
 // -----------------------------------------------------------------------------
@@ -25,22 +27,37 @@ function parseQuery(queryString: string) {
 
 function processUrl(url: string): string {
     if (!url) return "";
+    
+    // 尝试展开压缩的 ghs 链接
+    let expanded = expandGitHubUrl(url);
+    
+    // 如果没有压缩过，执行标准的递归解码
     const decodeRecursive = (u: string): string => {
         try {
             const d = decodeURIComponent(u);
             return d === u ? u : decodeRecursive(d);
         } catch { return u; }
     };
-    const decoded = decodeRecursive(url);
-    let rawUrl = decoded.trim();
-    // GitHub Blob -> Raw
-    const githubRegex = /^https:\/\/github\.com\/([^/]+)\/([^/]+)\/(?:blob|raw)\/([^/]+)\/(.+)$/;
+    
+    // 如果已经是 ghs 开头，expandGitHubUrl 已经处理过，这里主要处理传统的长链接
+    // 注意：expandGitHubUrl 内部已经返回了 https 链接
+    
+    // 为了兼容旧逻辑，我们再次进行标准处理（如果是长链接的话）
+    if (!expanded.startsWith("https://") && !expanded.startsWith("http://")) {
+         // ghs 没匹配上？或者其他协议
+         expanded = decodeRecursive(url);
+    }
+    
+    let rawUrl = expanded.trim();
+    
+    // GitHub Blob -> Raw (如果 expandGitHubUrl 没处理完，或者本来就是长链接)
+    const githubRegex = /^(?:https?:\/\/)?(?:github\.com)\/([^/]+)\/([^/]+)\/(?:blob|raw)\/([^/]+)\/(.+)$/;
     const match = rawUrl.match(githubRegex);
     if (match) {
         const [, owner, repo, branch, path] = match;
-        // 使用 encodeURI 编码，确保 fetch 请求正确
         rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
     }
+    
     return encodeURI(rawUrl);
 }
 
@@ -59,6 +76,47 @@ export default function PdfViewer() {
     const actualQuery = hash.split("?")[1] || window.location.search.slice(1);
 
     const { src, title, back, backLabel } = parseQuery(actualQuery);
+    
+    // 自动压缩 URL 逻辑：如果发现是长链接，自动替换为短链接，解决 Giscus 登录 404 问题
+    useEffect(() => {
+        if (!src) return;
+        
+        // 尝试压缩
+        const compressed = compressGitHubUrl(src);
+        
+        // 如果压缩后长度变短了，且当前不是压缩格式
+        if (compressed !== src && compressed.length < src.length) {
+            console.log("Compressing URL for Giscus compatibility:", { from: src.length, to: compressed.length });
+            
+            // 构造新的 URL
+            // const currentUrl = new URL(window.location.href);
+            // 保持其他参数不变，只更新 src
+            // 注意：如果是 Hash 路由，需要处理 Hash 部分
+            
+            if (window.location.hash) {
+                // Hash 路由模式: #/path?src=...
+                const [path, query] = window.location.hash.split("?");
+                const params = new URLSearchParams(query);
+                params.set("src", compressed);
+                const newHash = `${path}?${params.toString()}`;
+                
+                // 使用 replaceState 避免产生历史记录
+                // 注意：这里需要确保不会触发无限循环，因为我们监听了 hashchange
+                // 但 replaceState 不会触发 hashchange (除非跨浏览器差异，通常不会)
+                // 为了安全，我们手动检查一下
+                 window.history.replaceState(null, "", newHash);
+                 // 手动更新内部状态，防止 UI 闪烁（虽然 hashchange 不会触发，但为了严谨）
+                 // setHash(newHash); // 注释掉以避免触发不必要的重渲染
+            } else {
+                 // History 路由模式 (如果未来切换)
+                 const params = new URLSearchParams(window.location.search);
+                 params.set("src", compressed);
+                 const newUrl = `${window.location.pathname}?${params.toString()}`;
+                 window.history.replaceState(null, "", newUrl);
+            }
+        }
+    }, [src]);
+
     const [blobUrl, setBlobUrl] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
