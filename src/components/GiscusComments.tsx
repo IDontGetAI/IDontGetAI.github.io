@@ -54,6 +54,7 @@ export function GiscusComments({
   const repoId = import.meta.env.VITE_GISCUS_REPO_ID || "";
   const category = import.meta.env.VITE_GISCUS_CATEGORY || "";
   const categoryId = import.meta.env.VITE_GISCUS_CATEGORY_ID || "";
+  const isConfigured = Boolean(repo && repoId && category && categoryId);
 
   const giscusTheme = theme === "dark" ? "dark_dimmed" : "light";
   const pageLabel = pageType === "pdf" ? "pdf-viewer" : "note-viewer";
