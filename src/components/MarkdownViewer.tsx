@@ -1,6 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { RemoteNoteLayout } from "@/components/RemoteNoteLayout";
 import { compressGitHubUrl, expandGitHubUrl } from "@/lib/utils";
+import { useLocationSnapshot } from "@/hooks/useLocationSnapshot";
+import { devLog, getQueryStringFromSnapshot } from "@/lib/location";
+import { PageLayout } from "@/components/PageLayout";
+import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
+import { ArrowLeft } from "lucide-react";
+import readingBg from "@/assets/reading.jpeg";
 
 function parseQuery(queryString: string) {
     const params = new URLSearchParams(queryString);
@@ -49,17 +56,8 @@ function processUrl(url: string): string {
 
 
 export default function MarkdownViewer() {
-    // Listen to hash changes to update content even if the path part is unchanged
-    const [hash, setHash] = useState(window.location.hash);
-    const [finalSrc, setFinalSrc] = useState<string>("");
-
-    useEffect(() => {
-        const onHashChange = () => setHash(window.location.hash);
-        window.addEventListener("hashchange", onHashChange);
-        return () => window.removeEventListener("hashchange", onHashChange);
-    }, []);
-
-    const actualQuery = hash.split("?")[1] || window.location.search.slice(1);
+    const snapshot = useLocationSnapshot();
+    const actualQuery = getQueryStringFromSnapshot(snapshot);
     const { src, title, subtitle, back, backLabel } = parseQuery(actualQuery);
 
     // 自动压缩 URL 逻辑：如果发现是长链接，自动替换为短链接，解决 Giscus 登录 404 问题
@@ -71,55 +69,50 @@ export default function MarkdownViewer() {
         
         // 如果压缩后长度变短了，且当前不是压缩格式
         if (compressed !== src && compressed.length < src.length) {
-            console.log("Compressing URL for Giscus compatibility:", { from: src.length, to: compressed.length });
-            
-            // 构造新的 URL
-            if (window.location.hash) {
-                const [path, query] = window.location.hash.split("?");
+            devLog("viewer.compress", { page: "note", from: src.length, to: compressed.length });
+
+            if (snapshot.hash) {
+                const [hashPath, query = ""] = snapshot.hash.split("?");
                 const params = new URLSearchParams(query);
                 params.set("src", compressed);
-                const newHash = `${path}?${params.toString()}`;
-                
+                const newHash = `${hashPath}?${params.toString()}`;
                 window.history.replaceState(null, "", newHash);
-                // 仅更新 URL，不触发重渲染循环，因为 parseQuery 依赖于 hash prop，
-                // 而我们这里是静默更新 URL 以服务于 Giscus
-                // setHash(newHash); 
-            } else {
-                 const params = new URLSearchParams(window.location.search);
-                 params.set("src", compressed);
-                 const newUrl = `${window.location.pathname}?${params.toString()}`;
-                 window.history.replaceState(null, "", newUrl);
+                return;
             }
+
+            const params = new URLSearchParams(snapshot.search.startsWith("?") ? snapshot.search.slice(1) : snapshot.search);
+            params.set("src", compressed);
+            const newUrl = `${snapshot.pathname}?${params.toString()}`;
+            window.history.replaceState(null, "", newUrl);
         }
-        
-        // 只有当 src 稳定（即已经是最优压缩状态或无法压缩）时，才将其设为 finalSrc
-        // 这里我们可以简单认为，每次 src 变化都可能是最终状态，但如果触发了压缩，
-        // 页面 URL 会变，但组件 props 可能还没变（取决于路由实现）。
-        // 不过由于我们使用了 silent replaceState，src 还是原始值。
-        // 所以这里我们应该始终使用 src，但为了防止竞态，我们可以稍微延迟一下？
-        // 其实不需要延迟，只要 ensure processUrl 能处理所有情况即可。
-        
-        // setFinalSrc(src); // 移除同步调用
-    }, [src]);
-    
-    // 使用 useEffect 来异步更新 finalSrc，避免同步更新导致渲染循环或警告
-    useEffect(() => {
-        setFinalSrc(src);
     }, [src]);
 
     if (!src) {
         return (
-            <div className="flex items-center justify-center h-screen text-muted-foreground">
-                Missing "src" parameter.
-            </div>
+            <PageLayout
+                title={title || "笔记预览"}
+                subtitle="Remote Markdown Viewer"
+                backgroundImage={readingBg}
+            >
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+                    <div className="flex gap-2 mb-6">
+                        <Button asChild variant="ghost" className="pl-0 text-muted-foreground hover:text-primary">
+                            <Link href={back || "/"}>
+                                <ArrowLeft className="mr-2 h-4 w-4" /> {backLabel || "返回"}
+                            </Link>
+                        </Button>
+                    </div>
+                    <div className="bg-black/40 backdrop-blur-md rounded-xl border border-white/10 shadow-2xl p-8 text-muted-foreground">
+                        缺少 src 参数，无法加载笔记内容。
+                    </div>
+                </div>
+            </PageLayout>
         );
     }
-    
-    // 只有当 finalSrc 有值时才渲染内容，避免初始空状态或闪烁
-    if (!finalSrc) return null;
 
     // Process the URL to handle GitHub blob links
-    const procesedUrl = processUrl(finalSrc);
+    const procesedUrl = processUrl(src);
+    devLog("viewer.query", { page: "note", hash: snapshot.hash, search: snapshot.search, srcLength: src.length, processedUrlLength: procesedUrl.length });
 
     return (
         <RemoteNoteLayout

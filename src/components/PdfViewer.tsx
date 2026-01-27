@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +12,9 @@ import readingBg from "@/assets/reading.jpeg";
 
 
 import { compressGitHubUrl, expandGitHubUrl } from "@/lib/utils";
+import { useLocationSnapshot } from "@/hooks/useLocationSnapshot";
+import { devLog, getQueryStringFromSnapshot } from "@/lib/location";
+import { fetchWithCache } from "@/lib/httpCache";
 
 // -----------------------------------------------------------------------------
 // 工具函数
@@ -65,17 +68,12 @@ function processUrl(url: string): string {
 // 主组件 (原生 iframe 内核 + PageLayout 外壳)
 // -----------------------------------------------------------------------------
 export default function PdfViewer() {
-    // Listen to hash changes re-actively
-    const [hash, setHash] = useState(window.location.hash);
-    useEffect(() => {
-        const onHashChange = () => setHash(window.location.hash);
-        window.addEventListener("hashchange", onHashChange);
-        return () => window.removeEventListener("hashchange", onHashChange);
-    }, []);
-
-    const actualQuery = hash.split("?")[1] || window.location.search.slice(1);
+    const snapshot = useLocationSnapshot();
+    const actualQuery = getQueryStringFromSnapshot(snapshot);
 
     const { src, title, back, backLabel } = parseQuery(actualQuery);
+    const bypassCacheNextRef = useRef(false);
+    const [retryNonce, setRetryNonce] = useState(0);
     
     // 自动压缩 URL 逻辑：如果发现是长链接，自动替换为短链接，解决 Giscus 登录 404 问题
     useEffect(() => {
@@ -86,34 +84,21 @@ export default function PdfViewer() {
         
         // 如果压缩后长度变短了，且当前不是压缩格式
         if (compressed !== src && compressed.length < src.length) {
-            console.log("Compressing URL for Giscus compatibility:", { from: src.length, to: compressed.length });
-            
-            // 构造新的 URL
-            // const currentUrl = new URL(window.location.href);
-            // 保持其他参数不变，只更新 src
-            // 注意：如果是 Hash 路由，需要处理 Hash 部分
-            
-            if (window.location.hash) {
-                // Hash 路由模式: #/path?src=...
-                const [path, query] = window.location.hash.split("?");
+            devLog("viewer.compress", { page: "pdf", from: src.length, to: compressed.length });
+
+            if (snapshot.hash) {
+                const [hashPath, query = ""] = snapshot.hash.split("?");
                 const params = new URLSearchParams(query);
                 params.set("src", compressed);
-                const newHash = `${path}?${params.toString()}`;
-                
-                // 使用 replaceState 避免产生历史记录
-                // 注意：这里需要确保不会触发无限循环，因为我们监听了 hashchange
-                // 但 replaceState 不会触发 hashchange (除非跨浏览器差异，通常不会)
-                // 为了安全，我们手动检查一下
-                 window.history.replaceState(null, "", newHash);
-                 // 手动更新内部状态，防止 UI 闪烁（虽然 hashchange 不会触发，但为了严谨）
-                 // setHash(newHash); // 注释掉以避免触发不必要的重渲染
-            } else {
-                 // History 路由模式 (如果未来切换)
-                 const params = new URLSearchParams(window.location.search);
-                 params.set("src", compressed);
-                 const newUrl = `${window.location.pathname}?${params.toString()}`;
-                 window.history.replaceState(null, "", newUrl);
+                const newHash = `${hashPath}?${params.toString()}`;
+                window.history.replaceState(null, "", newHash);
+                return;
             }
+
+            const params = new URLSearchParams(snapshot.search.startsWith("?") ? snapshot.search.slice(1) : snapshot.search);
+            params.set("src", compressed);
+            const newUrl = `${snapshot.pathname}?${params.toString()}`;
+            window.history.replaceState(null, "", newUrl);
         }
     }, [src]);
 
@@ -121,6 +106,7 @@ export default function PdfViewer() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [isMobile, setIsMobile] = useState(false);
+    const [isDirectFallback, setIsDirectFallback] = useState(false);
 
     useEffect(() => {
         // 简单的移动端检测
@@ -141,46 +127,52 @@ export default function PdfViewer() {
         const rawUrl = processUrl(src);
         if (!rawUrl) return;
 
-        let active = true;
         let objectUrl = "";
+        const controller = new AbortController();
+        const bypassCache = bypassCacheNextRef.current;
+        bypassCacheNextRef.current = false;
+
         queueMicrotask(() => {
             setLoading(true);
             setError(null);
+            setIsDirectFallback(false);
         });
 
-        // 混合策略：优先尝试 Fetch+Blob (解决下载问题)，失败则回退到直接链接 (解决跨域问题)
-        fetch(rawUrl)
-            .then(async (res) => {
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const blob = await res.blob();
+        devLog("pdf.load.start", { rawUrl, bypassCache, retryNonce });
+
+        fetchWithCache(rawUrl, { cacheName: "idontgetai-pdf-v1", bypassCache, signal: controller.signal })
+            .then(async ({ response, fromCache }) => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const blob = await response.blob();
                 const pdfBlob = new Blob([blob], { type: "application/pdf" });
                 const url = URL.createObjectURL(pdfBlob);
                 objectUrl = url;
-                return url;
-            })
-            .then((url) => {
-                if (active) {
-                    setBlobUrl(url);
-                    setLoading(false);
-                }
+                setBlobUrl(url);
+                setLoading(false);
+                setIsDirectFallback(false);
+                devLog("pdf.load.success", { rawUrl, fromCache, bytes: blob.size });
             })
             .catch((err) => {
-                if (active) {
-                    console.warn("Fetch failed (likely CORS), falling back to direct URL:", err);
-                    // 失败回退：直接使用原始 URL，让 iframe 尝试加载
-                    setBlobUrl(rawUrl);
-                    setLoading(false);
-                    // 这里不设置 error，因为直接链接可能能正常工作
-                }
+                if (controller.signal.aborted) return;
+                const message = err instanceof Error ? err.message : String(err);
+                devLog("pdf.load.error", { rawUrl, error: message });
+                setIsDirectFallback(true);
+                setBlobUrl(rawUrl);
+                setLoading(false);
             });
 
         return () => {
-            active = false;
+            controller.abort();
             if (objectUrl) {
                 URL.revokeObjectURL(objectUrl);
             }
         };
-    }, [src]);
+    }, [src, retryNonce]);
+
+    const retryLoad = (options?: { bypassCache?: boolean }) => {
+        bypassCacheNextRef.current = Boolean(options?.bypassCache);
+        setRetryNonce((v) => v + 1);
+    };
 
     const downloadPdf = () => {
         const rawUrl = processUrl(src);
@@ -198,7 +190,6 @@ export default function PdfViewer() {
             }
         }
 
-        // If we already have a blobUrl from fetch, use it directly for download
         if (blobUrl && blobUrl.startsWith("blob:")) {
             const link = document.createElement('a');
             link.href = blobUrl;
@@ -207,11 +198,10 @@ export default function PdfViewer() {
             link.click();
             document.body.removeChild(link);
         } else {
-            // Otherwise, fetch the file and download it
-            fetch(rawUrl)
-                .then(res => {
-                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                    return res.blob();
+            fetchWithCache(rawUrl, { cacheName: "idontgetai-pdf-v1" })
+                .then(async ({ response }) => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.blob();
                 })
                 .then(blob => {
                     const pdfBlob = new Blob([blob], { type: 'application/pdf' });
@@ -226,7 +216,7 @@ export default function PdfViewer() {
                 })
                 .catch(err => {
                     console.error("Download failed:", err);
-                    // Fallback: open in new window
+                    setError(err instanceof Error ? err.message : String(err));
                     window.open(rawUrl, '_blank');
                 });
         }
@@ -282,8 +272,21 @@ export default function PdfViewer() {
                         <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center text-red-400">
                             <AlertCircle className="w-10 h-10 mb-4" />
                             <p className="font-medium mb-2">加载失败</p>
-                            <p className="text-sm opacity-80">{error}</p>
-                            <Button onClick={() => window.location.reload()} variant="outline" className="mt-6 border-red-500/50 text-red-500 hover:bg-red-500/10">重试</Button>
+                            <p className="text-sm opacity-80 break-all">{error}</p>
+                            <div className="mt-6 flex flex-col sm:flex-row gap-2">
+                                <Button onClick={() => retryLoad()} variant="outline" className="border-red-500/50 text-red-500 hover:bg-red-500/10">
+                                    重试
+                                </Button>
+                                <Button onClick={() => retryLoad({ bypassCache: true })} variant="outline" className="border-red-500/50 text-red-500 hover:bg-red-500/10">
+                                    强制重新拉取
+                                </Button>
+                            </div>
+                        </div>
+                    )}
+
+                    {!loading && !error && isDirectFallback && blobUrl && !isMobile && (
+                        <div className="absolute top-0 inset-x-0 z-10 px-4 py-2 text-xs font-mono text-muted-foreground bg-black/60 border-b border-white/10">
+                            已切换为直连模式（可能因跨域限制无法 Blob 解析）；如预览异常请点击“强制重新拉取”。
                         </div>
                     )}
 

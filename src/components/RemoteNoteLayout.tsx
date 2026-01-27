@@ -35,7 +35,7 @@ export function RemoteNoteLayout({
   backgroundImage = readingBg,
   baseUrl,
 }: RemoteNoteLayoutProps) {
-  const { content, loading, error } = useFetchMarkdown(rawUrl);
+  const { content, loading, error, fromCache, retry } = useFetchMarkdown(rawUrl);
   const [activeId, setActiveId] = useState<string>("");
 
   // Auto-derive baseUrl from rawUrl if not provided
@@ -181,24 +181,40 @@ export function RemoteNoteLayout({
               {loading && (
                 <div className="flex flex-col items-center justify-center h-full py-20 text-muted-foreground">
                   <Loader2 className="w-10 h-10 animate-spin mb-4 text-primary" />
-                  <p>正在从 GitHub 拉取笔记...</p>
+                  <p>正在加载笔记内容...</p>
                 </div>
               )}
 
               {error && (
                 <div className="flex flex-col items-center justify-center h-full py-20 text-red-400">
                   <AlertCircle className="w-10 h-10 mb-4" />
-                  <p>加载失败: {error}</p>
-                  <p className="text-sm mt-2 text-muted-foreground">请检查网络连接或 GitHub 链接权限。</p>
+                  <p className="font-medium mb-2">加载失败</p>
+                  <p className="text-sm opacity-80 text-center break-all">{error}</p>
+                  <div className="mt-6 flex flex-col sm:flex-row gap-2">
+                    <Button variant="outline" onClick={() => retry()}>
+                      重试
+                    </Button>
+                    <Button variant="outline" onClick={() => retry({ bypassCache: true })}>
+                      强制重新拉取
+                    </Button>
+                  </div>
+                  <p className="text-sm mt-4 text-muted-foreground">请检查网络连接或 GitHub 链接权限。</p>
                 </div>
               )}
 
               {!loading && !error && (
-                <MarkdownRenderer content={content} baseUrl={derivedBaseUrl} />
+                <>
+                  <div className="mb-4 flex items-center justify-end">
+                    <span className="text-xs font-mono text-muted-foreground">
+                      {fromCache ? "缓存命中" : "实时拉取"}
+                    </span>
+                  </div>
+                  <MarkdownRenderer content={content} baseUrl={derivedBaseUrl} />
+                </>
               )}
             </div>
-          </div>
 
+          </div>
           {/* Table of Contents Sidebar */}
           {!loading && !error && toc.length > 0 && (
             <aside className="hidden lg:block lg:col-span-3 sticky top-24">

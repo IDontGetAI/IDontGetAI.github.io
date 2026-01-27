@@ -1,63 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from "react";
+import { useCachedText } from "@/hooks/useCachedText";
 
 interface FetchMarkdownResult {
   content: string;
   loading: boolean;
   error: string | null;
+  fromCache: boolean;
+  retry: (options?: { bypassCache?: boolean }) => void;
 }
 
 export function useFetchMarkdown(url: string): FetchMarkdownResult {
-  const [content, setContent] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const { text, loading, error, fromCache, retry } = useCachedText(url, { cacheName: "idontgetai-md-v1" });
+  const lastUrlRef = useRef<string>("");
 
   useEffect(() => {
-    if (!url) {
-      setLoading(false);
-      return;
-    }
-
-    let isMounted = true;
-    let retryCount = 0;
-    const maxRetries = 2;
-
-    const fetchContent = async () => {
-      setLoading(true);
-      setError(null);
-      
-      const attemptFetch = async (): Promise<void> => {
-        try {
-          const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(`Failed to fetch markdown: ${response.statusText} (${response.status})`);
-          }
-          const text = await response.text();
-          if (isMounted) {
-            setContent(text);
-            setLoading(false);
-          }
-        } catch (err) {
-          if (retryCount < maxRetries && isMounted) {
-            retryCount++;
-            console.warn(`Fetch failed, retrying (${retryCount}/${maxRetries})...`, err);
-            // 指数退避重试
-            setTimeout(attemptFetch, 1000 * retryCount);
-          } else if (isMounted) {
-             setError(err instanceof Error ? err.message : "Unknown error");
-             setLoading(false);
-          }
-        }
-      };
-
-      await attemptFetch();
-    };
-
-    fetchContent();
-
-    return () => {
-      isMounted = false;
-    };
+    if (!url) return;
+    if (lastUrlRef.current === url) return;
+    lastUrlRef.current = url;
   }, [url]);
 
-  return { content, loading, error };
+  return { content: text, loading, error, fromCache, retry };
 }
