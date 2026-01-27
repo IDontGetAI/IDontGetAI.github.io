@@ -9,6 +9,30 @@ const RESTORED_FOR_KEY = "idontgetai:giscus:restoredFor";
 
 const MAX_AGE_MS = 15 * 60 * 1000;
 
+function safeStorageGet(storage: Storage, key: string): string | null {
+  try {
+    return storage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeStorageSet(storage: Storage, key: string, value: string) {
+  try {
+    storage.setItem(key, value);
+  } catch {
+    return;
+  }
+}
+
+function safeStorageRemove(storage: Storage, key: string) {
+  try {
+    storage.removeItem(key);
+  } catch {
+    return;
+  }
+}
+
 function safeSessionGet(key: string): string | null {
   try {
     return sessionStorage.getItem(key);
@@ -31,6 +55,35 @@ function safeSessionRemove(key: string) {
   } catch {
     return;
   }
+}
+
+function safeLocalGet(key: string): string | null {
+  if (typeof localStorage === "undefined") return null;
+  return safeStorageGet(localStorage, key);
+}
+
+function safeLocalSet(key: string, value: string) {
+  if (typeof localStorage === "undefined") return;
+  safeStorageSet(localStorage, key, value);
+}
+
+function safeLocalRemove(key: string) {
+  if (typeof localStorage === "undefined") return;
+  safeStorageRemove(localStorage, key);
+}
+
+function safeGet(key: string) {
+  return safeSessionGet(key) ?? safeLocalGet(key);
+}
+
+function safeSet(key: string, value: string) {
+  safeSessionSet(key, value);
+  safeLocalSet(key, value);
+}
+
+function safeRemove(key: string) {
+  safeSessionRemove(key);
+  safeLocalRemove(key);
 }
 
 function parseHashLocation(hash: string) {
@@ -107,13 +160,13 @@ export function normalizeViewerSrcParamInPlace() {
 
 export function markViewerActive(pageType: ViewerPageType) {
   if (typeof window === "undefined") return;
-  safeSessionSet(VIEWER_ACTIVE_KEY, pageType);
-  safeSessionSet(RETURN_TO_KEY, window.location.href);
-  safeSessionSet(RETURN_TO_AT_KEY, String(Date.now()));
+  safeSet(VIEWER_ACTIVE_KEY, pageType);
+  safeSet(RETURN_TO_KEY, window.location.href);
+  safeSet(RETURN_TO_AT_KEY, String(Date.now()));
 }
 
 export function clearViewerActive() {
-  safeSessionRemove(VIEWER_ACTIVE_KEY);
+  safeRemove(VIEWER_ACTIVE_KEY);
 }
 
 function isRecentEnough(tsRaw: string | null) {
@@ -147,44 +200,50 @@ function isBrokenViewerState() {
   return hashPath === "/" || hashPath === "";
 }
 
+function isViewerRouteMissingSrc() {
+  const { path: hashPath, queryString: hashQuery } = parseHashLocation(window.location.hash);
+  if (hashPath !== "/pdf-viewer" && hashPath !== "/note-viewer") return false;
+  const searchQuery = window.location.search.startsWith("?") ? window.location.search.slice(1) : window.location.search;
+  const params = new URLSearchParams(hashQuery || searchQuery);
+  return !params.get("src");
+}
+
 export function restoreReturnToIfNeeded() {
   if (typeof window === "undefined" || typeof history === "undefined") return false;
 
-  const active = safeSessionGet(VIEWER_ACTIVE_KEY);
-  const returnTo = safeSessionGet(RETURN_TO_KEY);
-  const returnToAt = safeSessionGet(RETURN_TO_AT_KEY);
+  const active = safeGet(VIEWER_ACTIVE_KEY);
+  const returnTo = safeGet(RETURN_TO_KEY);
+  const returnToAt = safeGet(RETURN_TO_AT_KEY);
+  const hasGiscusToken = Boolean(getGiscusCallbackToken());
 
-  if (!active || !returnTo || !isRecentEnough(returnToAt)) {
-    safeSessionRemove(VIEWER_ACTIVE_KEY);
-    safeSessionRemove(RETURN_TO_KEY);
-    safeSessionRemove(RETURN_TO_AT_KEY);
+  if ((!active && !hasGiscusToken) || !returnTo || !isRecentEnough(returnToAt)) {
+    safeRemove(VIEWER_ACTIVE_KEY);
     return false;
   }
 
   if (!isTrustedReturnToUrl(returnTo)) {
-    safeSessionRemove(VIEWER_ACTIVE_KEY);
-    safeSessionRemove(RETURN_TO_KEY);
-    safeSessionRemove(RETURN_TO_AT_KEY);
+    safeRemove(VIEWER_ACTIVE_KEY);
+    safeRemove(RETURN_TO_KEY);
+    safeRemove(RETURN_TO_AT_KEY);
     return false;
   }
 
   if (window.location.href === returnTo) return false;
 
   const referrer = document.referrer || "";
-  const hasGiscusToken = Boolean(getGiscusCallbackToken());
   const fromAuthReferrer = /(^|\/\/)(github\.com|giscus\.app)(\/|$)/i.test(referrer);
   const fromAuth = hasGiscusToken || fromAuthReferrer;
 
   if (!isBrokenViewerState()) return false;
-  if (!fromAuth && referrer) return false;
+  if (!fromAuth && !active && !isViewerRouteMissingSrc() && referrer) return false;
 
   const finalUrl = addGiscusTokenToTargetUrl(returnTo);
 
-  const restoredFor = safeSessionGet(RESTORED_FOR_KEY);
+  const restoredFor = safeGet(RESTORED_FOR_KEY);
   if (restoredFor === finalUrl) return false;
 
   history.replaceState(null, "", finalUrl);
-  safeSessionSet(RESTORED_FOR_KEY, finalUrl);
-  safeSessionRemove(VIEWER_ACTIVE_KEY);
+  safeSet(RESTORED_FOR_KEY, finalUrl);
+  safeRemove(VIEWER_ACTIVE_KEY);
   return true;
 }

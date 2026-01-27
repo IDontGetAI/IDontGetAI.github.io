@@ -80,6 +80,34 @@ describe("giscusReturnTo", () => {
     expect(window.location.href).toBe(`${window.location.origin}/?giscus=abc123#/pdf-viewer?src=ghs%2Fo%2Fr%2Fmain%2Fdocs%2Fa.pdf&title=hi`);
   });
 
+  it("restores from localStorage when callback opens in a new tab", async () => {
+    if (typeof window === "undefined" || typeof history === "undefined") {
+      expect(true).toBe(true);
+      return;
+    }
+
+    vi.resetModules();
+    const mod = await import("./giscusReturnTo");
+    sessionStorage.clear();
+    localStorage.clear();
+
+    Object.defineProperty(document, "referrer", {
+      value: "",
+      configurable: true,
+    });
+
+    const returnTo = `${window.location.origin}/#/note-viewer?src=ghs%2Fo%2Fr%2Fmain%2Fdocs%2Fa.md`;
+
+    localStorage.setItem("idontgetai:giscus:returnTo", returnTo);
+    localStorage.setItem("idontgetai:giscus:returnToAt", String(Date.now()));
+
+    history.replaceState(null, "", `${window.location.origin}/?giscus=abc123#comments`);
+
+    const restored = mod.restoreReturnToIfNeeded();
+    expect(restored).toBe(true);
+    expect(window.location.href).toBe(`${window.location.origin}/?giscus=abc123#/note-viewer?src=ghs%2Fo%2Fr%2Fmain%2Fdocs%2Fa.md`);
+  });
+
   it("does not restore when referrer is unrelated and current state is not broken", async () => {
     if (typeof window === "undefined" || typeof history === "undefined") {
       expect(true).toBe(true);
