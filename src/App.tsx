@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Router, Route, Switch, Redirect } from "wouter";
+import { useHashLocation } from "@/hooks/useHashLocation";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Layout from "@/Layout";
@@ -27,7 +28,7 @@ function RedirectToCse() {
 
 function AppRouter() {
   return (
-    <Router>
+    <Router hook={useHashLocation}>
       <Layout>
         <Switch>
           <Route path="/" component={Home} />
